@@ -36,4 +36,6 @@ const BookingSchema = new Schema({
         type: Number,
         required: true
     }
-})
+});
+
+module.exports = BookingSchema;
