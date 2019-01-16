@@ -8,7 +8,7 @@ app.use(express.json());
 
 app.use(morgan("combined"));
 
-// app.use(require("./routes"));
+app.use(require("./routes"));
 
 //Allows express to serve static files e.g. css, images
 app.use(express.static("public"));
