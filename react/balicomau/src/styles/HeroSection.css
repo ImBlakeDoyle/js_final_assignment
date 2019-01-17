@@ -11,4 +11,5 @@ header .hero-image img {
     max-height: 100%;
     height: 300px;
     padding-top: 10px;
+    padding-bottom: 10px;
 }

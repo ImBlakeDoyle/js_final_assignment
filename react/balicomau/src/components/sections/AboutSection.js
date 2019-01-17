@@ -11,10 +11,13 @@ const AboutSection = () => {
                 spacing={32}
                 justify="center"
             >
-                <Grid item xs={10}>
+                <Grid item xs={11}>
                     <div>
                         <Typography variant="h6" gutterBottom>
-                        <p>Why don't you consider the luxury of staying at a beautiful villa?</p>
+                            Why don't you consider the luxury of staying at a beautiful villa?
+                        </Typography>
+                        <Typography variant="body2" gutterBottom>
+                            Villa Dewata can offer you 2 beautiful luxurious villas each with air-conditioned bedrooms, lovely ensuite bathrooms, spacious open-plan living and dining areas, and your own private swimming pool, aswell as trained staff including a fulltime Chef and butler to tend to your every need.
                         </Typography>
                     </div>
                 </Grid>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import HeroSection from "../sections/HeroSection";
 import AboutSection from "../sections/AboutSection";
+import FeatureSection from "../sections/FeatureSection";
 
 class HomePage extends Component {
     render () {
@@ -12,7 +13,8 @@ class HomePage extends Component {
                     price="From $800 / night"
                     buttonText="Book"
                 />
-
+                <AboutSection />
+                <FeatureSection />
             </div>
         )
     };

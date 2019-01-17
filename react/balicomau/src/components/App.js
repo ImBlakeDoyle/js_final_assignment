@@ -8,10 +8,7 @@ import AboutSection from './sections/AboutSection';
 class App extends Component {
     render() {
         return (
-            <div>
             <HomePage />
-            <AboutSection />
-            </div>
         );
     }
 }
