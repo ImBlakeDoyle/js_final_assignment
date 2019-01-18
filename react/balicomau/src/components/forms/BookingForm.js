@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 // import { connect } from "react-redux";
 // import { createBooking } from "./../../actions";
 // import { reduxForm, Field } from "redux-form";
@@ -14,8 +16,8 @@ class BookingForm extends Component {
         name: "",
         email: "",
         guests: null,
-        checkin: null,
-        checkout: null,
+        checkin: new Date(),
+        checkout: new Date(),
         cost: null,
         phone: null,
         comment: "",
@@ -25,6 +27,14 @@ class BookingForm extends Component {
     onFieldChange = (event) => {
         console.log(event.target.name, event.target.value);
         this.setState({ [event.target.name]: event.target.value});
+    }
+
+    onStartDateChange = (date) => {
+        this.setState({ checkin: date});
+    }
+
+    onEndDateChange = (date) => {
+        this.setState({ checkout: date});
     }
 
     onFormSubmit = (event) => {
@@ -48,13 +58,17 @@ class BookingForm extends Component {
                     <label>Guests:</label>
                         <input type="number" value={guests} name="guests" onChange={this.onFieldChange} />
                 </div>
-                <div>
+                {/* <div>
                     <label>Check-in:</label>
                         <input type="date" value={checkin} name="checkin" onChange={this.onFieldChange} />
+                </div> */}
+                <div>
+                    <label>Check-in:</label>
+                    <DatePicker selected={checkin} onChange={this.onStartDateChange} />
                 </div>
                 <div>
                     <label>Check-out:</label>
-                        <input type="date" value={checkout} name="checkout" onChange={this.onFieldChange} />
+                    <DatePicker selected={checkout} onChange={this.onEndDateChange} />
                 </div>
                 <div>
                     <label>Cost:</label>
