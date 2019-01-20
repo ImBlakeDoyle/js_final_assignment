@@ -11,8 +11,8 @@ router.use("/booking", BookingRoutes);
 
 router.get("/test", (req, res) => {
     const oauth2Client = new google.auth.OAuth2(
-        "751376918859-h34cn4l582ln872b5fictm53lhiokkb2.apps.googleusercontent.com",
-        "YqteBNX-2j09cwHDiOhn7Pbj",
+        process.env.GOOGLE_CLIENT_ID,
+        process.env.GOOGLE_CLIENT_SECRET
       );
     oauth2Client.setCredentials({
     refresh_token: "1/wMmG3mhhEtBEuBmvBdd3sU61TZxbV_ltp4VokEFFFEc"
