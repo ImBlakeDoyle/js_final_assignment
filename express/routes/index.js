@@ -25,7 +25,11 @@ router.get("/test", (req, res) => {
         singleEvents: true,
         orderBy: 'startTime',
     })
-        .then(res => console.log(res))
+        // .then(res => console.log(res.data.items))
+        .then(res => {
+            const events = res.data.items;
+            console.log(events);
+        })
         .catch(err => console.log("ERROR!!!!!", err));
 });
 
