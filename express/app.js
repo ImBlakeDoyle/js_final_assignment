@@ -3,6 +3,10 @@ const morgan = require("morgan");
 const app = express();
 const cors = require("cors");
 
+app.use(cors({
+    origin: process.env.FRONT_END_DOMAIN
+}));
+
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
