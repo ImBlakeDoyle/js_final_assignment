@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { connect } from "react-redux";
 import { createBooking } from "./../../actions";
@@ -37,12 +35,13 @@ class BookingForm extends Component {
         const { name, email, guests, checkin, checkout, cost, phone, comment, stripe_id } = formValues;
         const { createBooking } = this.props;
 
-        createBooking({name, email, guests, checkin, checkout, cost, phone, comment, stripe_id })
+        createBooking({name, email, guests, checkin, checkout, cost, phone, comment, stripe_id });
     }
 
     render(){
     // const { name, email, guests, checkin, checkout, cost, phone, comment, stripe_id } = this.state;
     const { handleSubmit } = this.props;
+    
         return(
             <form onSubmit={handleSubmit(this.onFormSubmit)}>
                 <div>
@@ -71,17 +70,18 @@ class BookingForm extends Component {
                 </div>
                 <div>
                     <label>Check-in:</label>
-                    
-                    {/* <DatePicker selected={checkin} onChange={this.onStartDateChange} /> */}
                     <Field 
                         name="checkin"
                         component={DatePickerField}
                     />
                 </div>
-                {/* <div>
+                <div>
                     <label>Check-out:</label>
-                    <DatePicker selected={checkout} onChange={this.onEndDateChange} />
-                </div> */}
+                    <Field 
+                        name="checkout"
+                        component={DatePickerField}
+                    />
+                </div>
                 <div>
                     <label>Cost:</label>
                         <Field 

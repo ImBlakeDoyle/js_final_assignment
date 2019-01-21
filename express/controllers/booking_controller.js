@@ -2,8 +2,10 @@ const BookingModel = require("./../database/models/booking_model");
 const { google } = require("googleapis");
 
 async function create(req, res) {
-    const { name, email, guests, checkin, checkout, cost, phone, comment, stripe_id } = req.body;
+    const { name, email, guests, cost, phone, comment, stripe_id } = req.body;
     // const newCheckin = checkin.toISOString();
+    const checkin = "2019-01-25";
+    const checkout = "2019-01-28"
     // const newCheckoutDate = checkout.toISOString();
     const booking = await BookingModel.create({ name, email, guests, checkin, checkout, cost, phone, comment, stripe_id});
 
