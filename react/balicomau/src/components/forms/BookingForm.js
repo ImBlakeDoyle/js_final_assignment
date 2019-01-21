@@ -6,30 +6,14 @@ import { reduxForm, Field } from "redux-form";
 import DatePickerField from "./fields/DatePicker";
 
 class BookingForm extends Component {
-    // state = {
-    //     name: "",
-    //     email: "",
-    //     guests: null,
-    //     checkin: new Date(),
-    //     checkout: new Date(),
-    //     cost: null,
-    //     phone: null,
-    //     comment: "",
-    //     stripe_id: ""
-    // };
 
-    // onFieldChange = (event) => {
-    //     console.log(event.target.name, event.target.value);
-    //     this.setState({ [event.target.name]: event.target.value});
+    // onStartDateChange = (date) => {
+    //     this.setState({ checkin: date});
     // }
 
-    onStartDateChange = (date) => {
-        this.setState({ checkin: date});
-    }
-
-    onEndDateChange = (date) => {
-        this.setState({ checkout: date});
-    }
+    // onEndDateChange = (date) => {
+    //     this.setState({ checkout: date});
+    // }
 
     onFormSubmit = async (formValues) => {
         const { name, email, guests, checkin, checkout, cost, phone, comment, stripe_id } = formValues;
@@ -41,7 +25,7 @@ class BookingForm extends Component {
     render(){
     // const { name, email, guests, checkin, checkout, cost, phone, comment, stripe_id } = this.state;
     const { handleSubmit } = this.props;
-    
+
         return(
             <form onSubmit={handleSubmit(this.onFormSubmit)}>
                 <div>
