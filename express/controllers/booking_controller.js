@@ -3,6 +3,8 @@ const { google } = require("googleapis");
 
 async function create(req, res) {
     const { name, email, guests, checkin, checkout, cost, phone, comment, stripe_id } = req.body;
+    const newCheckin = checkin.toISOString();
+    const newCheckoutDate = checkout.toISOString();
     const booking = await BookingModel.create({ name, email, guests, checkin, checkout, cost, phone, comment, stripe_id});
 
 
@@ -14,9 +16,9 @@ async function create(req, res) {
         refresh_token: "1/wMmG3mhhEtBEuBmvBdd3sU61TZxbV_ltp4VokEFFFEc"
     });
     // const newCheckinDate = checkin.split("/").reverse().join("-");
-    const newCheckinDate = "2019-01-25";
+    // const newCheckinDate = "2019-01-25";
     // const newCheckoutDate = checkout.split("/").reverse().join("-");
-    const newCheckoutDate = "2019-01-28";
+    // const newCheckoutDate = "2019-01-28";
     const event = {
         'summary': `${name} ${guests} ${comment}`,
         'start': {
