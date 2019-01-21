@@ -78,7 +78,7 @@ router.post("/bookingtest", (req, res) => {
         console.log(events);
     })
     .catch(err => console.log("ERROR!!!!!", err));
-})
+});
 
 // router.use("/inquiry", InquiryRoutes);
 
