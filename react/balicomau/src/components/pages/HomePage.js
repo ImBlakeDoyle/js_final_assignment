@@ -28,7 +28,7 @@ class HomePage extends Component {
                     }
                     feature2={
                         <FeatureSection 
-                            image="/accommodation.jpg"
+                            image="/facilities.jpg"
                             title="Facilities"
                             content="Villa Dewata has 4 air-conditioned bedrooms each with King sized bed, ensuite bathroom. Two front bedrooms overlook the pool, and contain baths within their ensuites. Each bedroom has an ottoman which can be used as extra bedding if required."
                             expandedContent="Large open plan living, and dining areas with ceiling fans to keep you cool, this villa has concertina doors that can open up the living area to the swimming pool and garden to make it feel even more spacious."
@@ -36,7 +36,7 @@ class HomePage extends Component {
                     }
                     feature3={
                         <FeatureSection 
-                        image="/accommodation.jpg"
+                        image="/services.jpg"
                         title="Services"
                         content="Villa Dewata has 4 air-conditioned bedrooms each with King sized bed, ensuite bathroom. Two front bedrooms overlook the pool, and contain baths within their ensuites. Each bedroom has an ottoman which can be used as extra bedding if required."
                         expandedContent="Large open plan living, and dining areas with ceiling fans to keep you cool, this villa has concertina doors that can open up the living area to the swimming pool and garden to make it feel even more spacious."

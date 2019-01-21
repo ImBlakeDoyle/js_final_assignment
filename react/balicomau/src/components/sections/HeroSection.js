@@ -12,8 +12,8 @@ const HeroSection = props => {
             <div className="header-menu">
                 <AppBar />
             </div>
-            <div className="hero-image">
-                <img src={props.img}/>
+            <div className="hero-image" style={{backgroundImage: `url(${props.img})`}}>
+                {/* <img src={props.img}/> */}
             </div>
         </header>
     );

@@ -2,3 +2,11 @@ body #root {
     /* margin: 10px; */
     overflow-x: hidden;
 }
+
+@media only screen and (min-width: 1200px) {
+    body #root {
+        margin: auto;
+        overflow-x: hidden;
+        width: 1200px;
+    }
+  }
