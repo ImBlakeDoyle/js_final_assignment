@@ -20,6 +20,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 const styles = theme => ({
   card: {
     maxWidth: 400,
+    margin: 'auto',
   },
   media: {
     height: 0,
@@ -37,10 +38,7 @@ const styles = theme => ({
   },
   expandOpen: {
     transform: 'rotate(180deg)',
-  },
-  avatar: {
-    backgroundColor: red[500],
-  },
+  }
 });
 
 class RecipeReviewCard extends React.Component {
@@ -51,45 +49,35 @@ class RecipeReviewCard extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
+    // const { image, title, classes } = this.props;
 
     return (
-      <Card className={classes.card}>
-        <CardHeader
-          avatar={
-            <Avatar aria-label="Recipe" className={classes.avatar}>
-              R
-            </Avatar>
-          }
-          action={
-            <IconButton>
-              <MoreVertIcon />
-            </IconButton>
-          }
-          title="Shrimp and Chorizo Paella"
-          subheader="September 14, 2016"
-        />
+      <Card className={this.props.classes.card}>
         <CardMedia
-          className={classes.media}
-          image="/static/images/cards/paella.jpg"
-          title="Paella dish"
+          className={this.props.classes.media}
+        //   image="/accommodation.jpg"
+            image={this.props.image}
+            title={this.props.title}
         />
         <CardContent>
-          <Typography component="p">
-            This impressive paella is a perfect party dish and a fun meal to cook together with your
-            guests. Add 1 cup of frozen peas along with the mussels, if you like.
-          </Typography>
+            <Typography variant="h6">
+                {this.props.title}
+            </Typography>
+            <Typography component="p">
+                {this.props.content}
+            </Typography>
         </CardContent>
-        <CardActions className={classes.actions} disableActionSpacing>
-          <IconButton aria-label="Add to favorites">
-            <FavoriteIcon />
-          </IconButton>
-          <IconButton aria-label="Share">
-            <ShareIcon />
-          </IconButton>
+        <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
+          <CardContent>
+            <Typography paragraph>
+                {this.props.expandedContent}
+            </Typography>
+          </CardContent>
+        </Collapse>
+        <CardActions className={this.props.classes.actions} disableActionSpacing>
           <IconButton
-            className={classnames(classes.expand, {
-              [classes.expandOpen]: this.state.expanded,
+            className={classnames(this.props.classes.expand, {
+              [this.props.classes.expandOpen]: this.state.expanded,
             })}
             onClick={this.handleExpandClick}
             aria-expanded={this.state.expanded}
@@ -98,33 +86,6 @@ class RecipeReviewCard extends React.Component {
             <ExpandMoreIcon />
           </IconButton>
         </CardActions>
-        <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
-          <CardContent>
-            <Typography paragraph>Method:</Typography>
-            <Typography paragraph>
-              Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
-              minutes.
-            </Typography>
-            <Typography paragraph>
-              Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over medium-high
-              heat. Add chicken, shrimp and chorizo, and cook, stirring occasionally until lightly
-              browned, 6 to 8 minutes. Transfer shrimp to a large plate and set aside, leaving
-              chicken and chorizo in the pan. Add pimentón, bay leaves, garlic, tomatoes, onion,
-              salt and pepper, and cook, stirring often until thickened and fragrant, about 10
-              minutes. Add saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil.
-            </Typography>
-            <Typography paragraph>
-              Add rice and stir very gently to distribute. Top with artichokes and peppers, and cook
-              without stirring, until most of the liquid is absorbed, 15 to 18 minutes. Reduce heat
-              to medium-low, add reserved shrimp and mussels, tucking them down into the rice, and
-              cook again without stirring, until mussels have opened and rice is just tender, 5 to 7
-              minutes more. (Discard any mussels that don’t open.)
-            </Typography>
-            <Typography>
-              Set aside off of the heat to let rest for 10 minutes, and then serve.
-            </Typography>
-          </CardContent>
-        </Collapse>
       </Card>
     );
   }

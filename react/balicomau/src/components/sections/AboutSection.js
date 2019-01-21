@@ -12,7 +12,7 @@ const AboutSection = () => {
                 justify="center"
             >
                 <Grid item xs={11}>
-                    <div>
+                    <div className="content">
                         <Typography variant="h6" gutterBottom>
                             Why don't you consider the luxury of staying at a beautiful villa?
                         </Typography>
