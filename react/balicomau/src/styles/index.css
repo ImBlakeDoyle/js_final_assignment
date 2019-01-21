@@ -3,10 +3,17 @@ body #root {
     overflow-x: hidden;
 }
 
-@media only screen and (min-width: 1200px) {
+/* @media only screen and (min-width: 1200px) {
     body #root {
         margin: auto;
         overflow-x: hidden;
+        width: 1200px;
+    }
+  } */
+
+  @media only screen and (min-width: 1200px) {
+    body .content {
+        margin: auto;
         width: 1200px;
     }
   }
