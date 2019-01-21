@@ -5,6 +5,7 @@ import FeatureSection from "../sections/FeatureSection";
 import FeatureContainer from "../sections/FeatureContainer";
 import Grid from '@material-ui/core/Grid';
 import ImageSection from "../sections/ImageSection";
+import CarouselSection from "../sections/CarouselSection";
 
 class HomePage extends Component {
     render () {
@@ -49,7 +50,7 @@ class HomePage extends Component {
                     <ImageSection 
                         img="/map.jpg"
                     />
-                    
+                    <CarouselSection />
                 </div>
             </div>
         )
