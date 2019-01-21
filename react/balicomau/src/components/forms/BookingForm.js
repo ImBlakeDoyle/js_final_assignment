@@ -1,33 +1,27 @@
 import React, { Component } from "react";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-// import { connect } from "react-redux";
-// import { createBooking } from "./../../actions";
-// import { reduxForm, Field } from "redux-form";
-
-// const Input = ({input, meta, type}) => {
-//     return <span>
-//                 <input {...input} type={type} autoComplete="off" />
-//             </span>  
-// }
+import { connect } from "react-redux";
+import { createBooking } from "./../../actions";
+import { reduxForm, Field } from "redux-form";
+import DatePickerField from "./fields/DatePicker";
 
 class BookingForm extends Component {
-    state = {
-        name: "",
-        email: "",
-        guests: null,
-        checkin: new Date(),
-        checkout: new Date(),
-        cost: null,
-        phone: null,
-        comment: "",
-        stripe_id: ""
-    };
+    // state = {
+    //     name: "",
+    //     email: "",
+    //     guests: null,
+    //     checkin: new Date(),
+    //     checkout: new Date(),
+    //     cost: null,
+    //     phone: null,
+    //     comment: "",
+    //     stripe_id: ""
+    // };
 
-    onFieldChange = (event) => {
-        console.log(event.target.name, event.target.value);
-        this.setState({ [event.target.name]: event.target.value});
-    }
+    // onFieldChange = (event) => {
+    //     console.log(event.target.name, event.target.value);
+    //     this.setState({ [event.target.name]: event.target.value});
+    // }
 
     onStartDateChange = (date) => {
         this.setState({ checkin: date});
@@ -37,54 +31,88 @@ class BookingForm extends Component {
         this.setState({ checkout: date});
     }
 
-    onFormSubmit = (event) => {
-        event.preventDefault();
-        console.log(this.state);
+    onFormSubmit = async (formValues) => {
+        const { name, email, guests, checkin, checkout, cost, phone, comment, stripe_id } = formValues;
+        const { createBooking } = this.props;
+
+        createBooking({name, email, guests, checkin, checkout, cost, phone, comment, stripe_id });
     }
 
     render(){
-    const { name, email, guests, checkin, checkout, cost, phone, comment, stripe_id } = this.state;
+    // const { name, email, guests, checkin, checkout, cost, phone, comment, stripe_id } = this.state;
+    const { handleSubmit } = this.props;
+    
         return(
-            <form onSubmit={this.onFormSubmit}>
+            <form onSubmit={handleSubmit(this.onFormSubmit)}>
                 <div>
                     <label>Name:</label>
-                        <input type="text" value={name} name="name" onChange={this.onFieldChange} />
+                        <Field 
+                            type="text"
+                            name="name"
+                            component="input"
+                        />
                 </div>
                 <div>
                     <label>Email:</label>
-                        <input type="email" value={email} name="email" onChange={this.onFieldChange} />
+                        <Field 
+                            type="email"
+                            name="email"
+                            component="input"
+                        />                
                 </div>
                 <div>
                     <label>Guests:</label>
-                        <input type="number" value={guests} name="guests" onChange={this.onFieldChange} />
+                        <Field 
+                            type="number"
+                            name="guests"
+                            component="input"
+                        />                
                 </div>
-                {/* <div>
-                    <label>Check-in:</label>
-                        <input type="date" value={checkin} name="checkin" onChange={this.onFieldChange} />
-                </div> */}
                 <div>
                     <label>Check-in:</label>
-                    <DatePicker selected={checkin} onChange={this.onStartDateChange} />
+                    <Field 
+                        name="checkin"
+                        component={DatePickerField}
+                    />
                 </div>
                 <div>
                     <label>Check-out:</label>
-                    <DatePicker selected={checkout} onChange={this.onEndDateChange} />
+                    <Field 
+                        name="checkout"
+                        component={DatePickerField}
+                    />
                 </div>
                 <div>
                     <label>Cost:</label>
-                        <input type="number" value={cost} name="cost" onChange={this.onFieldChange} />
+                        <Field 
+                            type="number"
+                            name="cost"
+                            component="input"
+                        />
                 </div>
                 <div>
                     <label>Phone:</label>
-                        <input type="number" value={phone} name="phone" onChange={this.onFieldChange} />
+                        <Field 
+                            type="number"
+                            name="phone"
+                            component="input"
+                        />
                 </div>
                 <div>
                     <label>Comment:</label>
-                        <input type="text" value={comment} name="comment" onChange={this.onFieldChange} />
+                        <Field 
+                            type="text"
+                            name="comment"
+                            component="input"
+                        />
                 </div>
                 <div>
                     <label>Stripe id:</label>
-                        <input type="number" value={stripe_id} name="stripe_id" onChange={this.onFieldChange} />
+                        <Field 
+                            type="number"
+                            name="stripe_id"
+                            component="input"
+                        />
                 </div>
                 <div>
                     <input type="submit" value="submit" />
@@ -94,4 +122,10 @@ class BookingForm extends Component {
     }
 }
 
-export default BookingForm;
+const WrappedBookingForm = reduxForm({
+    form: "booking"
+})(BookingForm);
+
+export default connect(null, {
+    createBooking
+})(WrappedBookingForm);
