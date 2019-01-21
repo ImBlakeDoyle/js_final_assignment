@@ -1,0 +1,10 @@
+.image-section img {
+    height: auto; 
+    width: auto; 
+    max-width: 270px; 
+    max-height: 270px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 5px;
+}
