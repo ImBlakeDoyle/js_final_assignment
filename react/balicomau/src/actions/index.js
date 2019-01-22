@@ -10,3 +10,14 @@ export const createBooking = ({ name, email, guests, checkin, checkout, cost, ph
         });
     }
 }
+
+export const bookingAvailability = ({checkin, checkout, guests}) => {
+    return async (dispatch, getState) => {
+        let response = await axios.get("http://localhost:3000/booking/new");
+
+        dispatch ({
+            type: "BOOKING",
+            payload: response.data
+        })
+    }
+}

@@ -1,33 +1,23 @@
 import React, { Component } from "react";
-import "react-datepicker/dist/react-datepicker.css";
 import { connect } from "react-redux";
-import { createBooking } from "./../../actions";
+import { createBooking } from "../../actions";
 import { reduxForm, Field } from "redux-form";
 import DatePickerField from "./fields/DatePicker";
 
-class BookingForm extends Component {
+class BookingForm2 extends Component {
 
-    // onStartDateChange = (date) => {
-    //     this.setState({ checkin: date});
+    // onFormSubmit = async (formValues) => {
+    //     const { name, email, guests, checkin, checkout, cost, phone, comment, stripe_id } = formValues;
+    //     const { createBooking } = this.props;
+
+    //     createBooking({name, email, guests, checkin, checkout, cost, phone, comment, stripe_id });
     // }
-
-    // onEndDateChange = (date) => {
-    //     this.setState({ checkout: date});
-    // }
-
-    onFormSubmit = async (formValues) => {
-        const { name, email, guests, checkin, checkout, cost, phone, comment, stripe_id } = formValues;
-        const { createBooking } = this.props;
-
-        createBooking({name, email, guests, checkin, checkout, cost, phone, comment, stripe_id });
-    }
 
     render(){
-    // const { name, email, guests, checkin, checkout, cost, phone, comment, stripe_id } = this.state;
-    const { handleSubmit } = this.props;
+    const { handleSubmit, previousPage } = this.props;
 
         return(
-            <form onSubmit={handleSubmit(this.onFormSubmit)}>
+            <form onSubmit={handleSubmit}>
                 <div>
                     <label>Name:</label>
                         <Field 
@@ -43,28 +33,6 @@ class BookingForm extends Component {
                             name="email"
                             component="input"
                         />                
-                </div>
-                <div>
-                    <label>Guests:</label>
-                        <Field 
-                            type="number"
-                            name="guests"
-                            component="input"
-                        />                
-                </div>
-                <div>
-                    <label>Check-in:</label>
-                    <Field 
-                        name="checkin"
-                        component={DatePickerField}
-                    />
-                </div>
-                <div>
-                    <label>Check-out:</label>
-                    <Field 
-                        name="checkout"
-                        component={DatePickerField}
-                    />
                 </div>
                 <div>
                     <label>Cost:</label>
@@ -99,6 +67,9 @@ class BookingForm extends Component {
                         />
                 </div>
                 <div>
+                    <button type="button" name="previous" onClick={previousPage}>
+                    Previous
+                    </button>
                     <input type="submit" value="submit" />
                 </div>
             </form>
@@ -106,10 +77,16 @@ class BookingForm extends Component {
     }
 }
 
-const WrappedBookingForm = reduxForm({
-    form: "booking"
-})(BookingForm);
+// const WrappedBookingForm = reduxForm({
+//     form: "booking"
+// })(BookingForm);
 
-export default connect(null, {
-    createBooking
-})(WrappedBookingForm);
+// export default connect(null, {
+//     createBooking
+// })(WrappedBookingForm);
+
+export default reduxForm({
+    form:"booking",
+    destroyOnUnmount: false,
+    forceUnregisterOnUnmount: true
+})(BookingForm2);
