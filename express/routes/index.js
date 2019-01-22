@@ -7,6 +7,8 @@ const { google } = require("googleapis");
 
 router.use("/booking", BookingRoutes);
 
+router.use("/inquiry", InquiryRoutes);
+
   
 
 router.get("/test", (req, res) => {
