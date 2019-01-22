@@ -7,7 +7,6 @@ import 'normalize.css';
 import "./../styles/index.css";
 import BookingForm from "./forms/BookingForm";
 
-
 class App extends Component {
     render() {
         return (
