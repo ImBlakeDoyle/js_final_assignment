@@ -26,7 +26,6 @@ renderInput = ({ input, label, meta, type }) => {
 }  
 
 onSubmit = async (formValues) => {
-    console.log(formValues);
 const { name, email, comment, phone } = formValues;
 const { createInquiry, reset, setSubmitStatus } = this.props;
 
@@ -35,12 +34,13 @@ reset();
 setSubmitStatus(true);
 // this.props.history.push('/inquiry/success')
 // console.log(this.props)
+setTimeout(() => {
+    setSubmitStatus(false)
+}, 4000)
 
 
 }
-
   render() {
-      console.log(this.props.submitStatus)
     return (
         <div>
         <form onSubmit={this.props.handleSubmit(this.onSubmit)} >
@@ -67,7 +67,7 @@ setSubmitStatus(true);
         <button>Submit</button>
         
         </form>
-        {this.props.submitStatus && <div>success message</div> }
+        {this.props.submitStatus && <div>Your message was sent</div> }
         </div>
     );
   }
