@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from "react-redux";
 import { createInquiry } from "./../../actions";
+import { withRouter } from 'react-router-dom';
 
 class UserForm extends Component {
 
@@ -26,9 +27,11 @@ renderInput = ({ input, label, meta, type }) => {
 onSubmit = async (formValues) => {
     console.log(formValues);
 const { name, email, comment, phone } = formValues;
-const { createInquiry } = this.props;
+const { createInquiry, reset } = this.props;
 
 createInquiry({ name, email, comment, phone });
+reset();
+this.props.history.push('/inquiry/success')
 
 
 }
@@ -84,4 +87,4 @@ const WrappedUserForm = reduxForm({
 
 export default connect(null, {
     createInquiry 
-})(WrappedUserForm);
+})(withRouter(WrappedUserForm));
