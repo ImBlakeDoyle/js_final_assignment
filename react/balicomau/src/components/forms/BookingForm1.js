@@ -1,24 +1,17 @@
 import React, { Component } from "react";
 import "react-datepicker/dist/react-datepicker.css";
-import { connect } from "react-redux";
-import { bookingAvailability } from "../../actions";
+// import { connect } from "react-redux";
+// import { bookingAvailability } from "../../actions";
 import { reduxForm, Field } from "redux-form";
 import DatePickerField from "./fields/DatePicker";
 
 class BookingForm1 extends Component{
 
-    // onFormSubmit = async (formValues) => {
-    //     const { guests, checkin, checkout } = formValues;
-    //     const { bookingAvailability } = this.props;
-
-    //     bookingAvailability({guests, checkin, checkout});
-    // }
-
     render(){
     const { handleSubmit } = this.props;
 
         return(
-            <form onSubmit={handleSubmit(this.onFormSubmit)}>
+            <form onSubmit={handleSubmit}>
                 <div>
                     <label>Check-in:</label>
                     <Field 

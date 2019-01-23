@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { createBooking } from "../../actions";
+// import { connect } from "react-redux";
+// import { createBooking } from "../../actions";
 import { reduxForm, Field } from "redux-form";
-import DatePickerField from "./fields/DatePicker";
+// import DatePickerField from "./fields/DatePicker";
 
 class BookingForm2 extends Component {
 

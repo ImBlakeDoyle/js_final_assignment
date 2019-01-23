@@ -4,6 +4,6 @@ const { celebrate, Joi } = require("celebrate");
 const BookingController = require("./../controllers/booking_controller");
 
 router.post("/new", BookingController.create);
-router.get("/new", BookingController.form)
+// router.get("/new", )
 
 module.exports = router;
