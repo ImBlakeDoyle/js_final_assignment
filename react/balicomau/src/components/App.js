@@ -7,13 +7,15 @@ import AboutSection from './sections/AboutSection';
 import Payments from "./forms/Payments";
 import 'normalize.css';
 import "./../styles/index.css";
+import UserForm from "./forms/UserForm";
 
 class App extends Component {
     render() {
         return (
-            // <HomePage />
-            <WizardForm />
-            // <Payments />
+            <div>
+            <HomePage />
+            <UserForm />
+            </div>
         );
     }
 }

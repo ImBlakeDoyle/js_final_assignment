@@ -11,6 +11,7 @@ export const createBooking = ({ name, email, guests, checkin, checkout, cost, ph
     }
 }
 
+
 // export const bookingAvailability = ({checkin, checkout, guests}) => {
 //     return async (dispatch, getState) => {
 //         let response = await axios.get("http://localhost:3000/booking/new");
@@ -21,3 +22,15 @@ export const createBooking = ({ name, email, guests, checkin, checkout, cost, ph
 //         })
 //     }
 // }
+
+export const createInquiry = ({ name, email, comment, phone }) => {
+    return async (dispatch, getState) => {
+        let response = await axios.post("http://localhost:3000/inquiry/new", {name, email, comment, phone});
+
+        dispatch({
+            type: "INQUIRY_CREATE",
+            payload: response.data
+        });
+    }
+}
+

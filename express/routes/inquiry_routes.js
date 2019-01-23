@@ -3,6 +3,6 @@ const router = express.Router();
 const { celebrate, Joi } = require("celebrate");
 const InquiryController = require("./../controllers/inquiry_controller");
 
-// router.get("/", InquiryController.index);
+router.post("/new", InquiryController.create);
 
 module.exports = router;
