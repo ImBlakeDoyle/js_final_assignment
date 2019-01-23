@@ -15,6 +15,7 @@ class App extends Component {
             <div>
             <HomePage />
             <UserForm />
+            <WizardForm />
             </div>
         );
     }

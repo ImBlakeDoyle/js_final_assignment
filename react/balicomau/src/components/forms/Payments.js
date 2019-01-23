@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import StripeCheckout from 'react-stripe-checkout';
+import { connect } from "react-redux";
 import { reduxForm, Field } from "redux-form";
 
 
 class Payments extends Component {
     render() {
-        console.log(this.props);
+        const {cost} = this.props;
         return (
             <StripeCheckout
-                amount={500}
+                amount={cost * 100}
                 token={token => console.log(token)}
                 stripeKey={process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY}
             />
@@ -16,4 +17,12 @@ class Payments extends Component {
     }
 }
 
-export default Payments;
+const mapStateToProps = (state) => {
+    return{
+        cost: state.form.booking.values.cost
+    }
+}
+
+export default connect(mapStateToProps)(Payments);
+
+// export default Payments;

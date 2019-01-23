@@ -40,6 +40,12 @@ class WizardForm extends Component {
     }
 }
 
+// const mapStateToProps = (state) => {
+//     return {
+//         cost: state.form
+//     }
+// }
+
 WizardForm.PropTypes = {
     onSubmit: PropTypes.func.isRequired
 }
