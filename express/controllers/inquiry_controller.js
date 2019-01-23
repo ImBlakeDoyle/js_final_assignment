@@ -8,7 +8,7 @@ async function create(req, res) {
 
     const inquiry = await InquiryModel.create({ name, email, comment, phone });
 
-    const mailer = new Mailer("carlgrayau@gmail.com", "admin@bali.com.au", "new inquiry", JSON.stringify(inquiryemail));
+    const mailer = new Mailer("coooogee@hotmail.com", "admin@bali.com.au", "new inquiry", JSON.stringify(inquiryemail));
     mailer.send();
     return res.status(200)
 }
