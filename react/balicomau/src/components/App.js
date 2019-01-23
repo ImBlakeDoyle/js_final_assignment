@@ -6,12 +6,15 @@ import BurgerMenu from './ui/BurgerMenu';
 import AboutSection from './sections/AboutSection';
 import 'normalize.css';
 import "./../styles/index.css";
+import UserForm from "./forms/UserForm";
 
 class App extends Component {
     render() {
         return (
-            // <HomePage />
-            <WizardForm />
+            <div>
+            <HomePage />
+            <UserForm />
+            </div>
         );
     }
 }
