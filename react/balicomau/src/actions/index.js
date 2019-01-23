@@ -34,3 +34,11 @@ export const createInquiry = ({ name, email, comment, phone }) => {
     }
 }
 
+
+export function setSubmitStatus(setSubmitStatus) {
+    return {
+         type: 'SET_SUBMIT_STATUS',
+         payload: setSubmitStatus
+    };
+ }
+

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from "react-redux";
 import { createInquiry } from "./../../actions";
+import { setSubmitStatus } from "./../../actions";
+import { withRouter } from 'react-router-dom';
 
 class UserForm extends Component {
 
@@ -24,17 +26,23 @@ renderInput = ({ input, label, meta, type }) => {
 }  
 
 onSubmit = async (formValues) => {
-    console.log(formValues);
 const { name, email, comment, phone } = formValues;
-const { createInquiry } = this.props;
+const { createInquiry, reset, setSubmitStatus } = this.props;
 
 createInquiry({ name, email, comment, phone });
+reset();
+setSubmitStatus(true);
+// this.props.history.push('/inquiry/success')
+// console.log(this.props)
+setTimeout(() => {
+    setSubmitStatus(false)
+}, 4000)
 
 
 }
-
   render() {
     return (
+        <div>
         <form onSubmit={this.props.handleSubmit(this.onSubmit)} >
             <Field 
             name="name" 
@@ -57,7 +65,10 @@ createInquiry({ name, email, comment, phone });
             component={this.renderInput} 
             label="Phone:"/>
         <button>Submit</button>
+        
         </form>
+        {this.props.submitStatus && <div>Your message was sent</div> }
+        </div>
     );
   }
 }
@@ -82,6 +93,13 @@ const WrappedUserForm = reduxForm({
     validate
 })(UserForm);
 
-export default connect(null, {
-    createInquiry 
-})(WrappedUserForm);
+const mapStateToProps = (state) => {
+    return {
+        submitStatus: state.submitStatus
+    };
+}
+
+export default connect(mapStateToProps, {
+    createInquiry,
+    setSubmitStatus 
+})(withRouter(WrappedUserForm));
