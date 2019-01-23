@@ -49,6 +49,11 @@ async function create(req, res) {
     // res.json(booking);
 }
 
+async function form(req,res) {
+    const { guests, checkin, checkout } = req.body;
+
+}
+
 module.exports = {
     create
 }
