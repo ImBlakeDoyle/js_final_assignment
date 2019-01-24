@@ -4,7 +4,7 @@ import BookingForm1 from "./BookingForm1";
 import BookingForm2 from "./BookingForm2";
 // import Payments from "./Payments";
 import { connect } from "react-redux";
-import { createBooking } from "./../../actions";
+import { createBooking } from "../../actions";
 
 class WizardForm extends Component {
     state = {
