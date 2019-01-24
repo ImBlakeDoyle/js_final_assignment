@@ -1,5 +1,6 @@
 const BookingModel = require("./../database/models/booking_model");
 const { google } = require("googleapis");
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 async function create(req, res) {
     const { name, email, guests, cost, phone, comment, stripe_id } = req.body;
@@ -49,11 +50,14 @@ async function create(req, res) {
     // res.json(booking);
 }
 
-async function form(req,res) {
-    const { guests, checkin, checkout } = req.body;
-
+async function payment(req,res) {
+    console.log(req.body);
+    // stripe.charges.create({
+    //     amount: 
+    // });
 }
 
 module.exports = {
-    create
+    create,
+    payment
 }
