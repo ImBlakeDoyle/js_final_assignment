@@ -8,6 +8,8 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import BurgerMenu from './BurgerMenu';
+import ResponsiveDialog from './../ui/ResponsiveDialog';
+
 
 const styles = {
   root: {
@@ -22,23 +24,41 @@ const styles = {
   },
 };
 
-function ButtonAppBar(props) {
-  const { classes } = props;
-  return (
-    <div className={classes.root}>
-      <AppBar position="fixed" color="white">
-        <Toolbar>
-          <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-            <BurgerMenu />
-          </IconButton>
-          <Typography variant="h6" color="inherit" className={classes.grow}>
-            Villa Dewata
-          </Typography>
-          <Button variant="contained" color="primary">Book</Button>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
+// function ButtonAppBar(props) {
+class ButtonAppBar extends React.Component {
+  state = { open: false }
+
+  handleClickOpen = () => {
+    this.setState({ open: true });
+  }
+
+  handleClose= () => {
+    this.setState({ open: false });
+  }
+
+  render() {
+    const { classes } = this.props;
+
+    return (
+      <div className={classes.root}>
+        <AppBar position="fixed" color="white">
+          <Toolbar>
+            <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+              <BurgerMenu />
+            </IconButton>
+            <Typography variant="h6" color="inherit" className={classes.grow}>
+              Villa Dewata
+            </Typography>
+            <Button variant="contained" color="primary" onClick={this.handleClickOpen}>Book</Button>
+          </Toolbar>
+          <ResponsiveDialog 
+            open={this.state.open}
+            handleClose={this.handleClose}
+          />
+        </AppBar>
+      </div>
+    );
+  }
 }
 
 export default withStyles(styles)(ButtonAppBar);
