@@ -52,6 +52,8 @@ async function create(req, res) {
 
 async function payment(req,res) {
     console.log(req.body);
+    // console.log(req.body);
+    // console.log(res);
     // stripe.charges.create({
     //     amount: 
     // });
