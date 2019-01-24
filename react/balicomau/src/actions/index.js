@@ -42,3 +42,14 @@ export function setSubmitStatus(setSubmitStatus) {
     };
  }
 
+ export const handleToken = (token) => {
+     return async (dispatch, getState) => {
+         console.log(token);
+        let response = await axios.post('http://localhost:3000/booking/stripe', token);
+        dispatch({
+            type: "PAYMENT",
+            payload: response.data
+        });
+    };
+}
+

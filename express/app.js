@@ -2,6 +2,9 @@ const express = require("express");
 const morgan = require("morgan");
 const app = express();
 const cors = require("cors");
+const bodyParser = require("body-parser");
+
+app.use(bodyParser.json());
 
 app.use(cors({
     origin: process.env.FRONT_END_DOMAIN
