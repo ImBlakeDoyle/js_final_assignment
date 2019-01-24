@@ -35,14 +35,6 @@ class BookingForm2 extends Component {
                         />                
                 </div>
                 <div>
-                    <label>Cost:</label>
-                        <Field 
-                            type="number"
-                            name="cost"
-                            component="input"
-                        />
-                </div>
-                <div>
                     <label>Phone:</label>
                         <Field 
                             type="number"
