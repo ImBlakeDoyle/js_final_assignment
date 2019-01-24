@@ -7,26 +7,26 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
-import WizardForm from './../forms/WizardForm';
+import WizardForm from '../forms/WizardForm';
 import { withStyles } from '@material-ui/core/styles';
 
-const styles = {
+// const styles = {
+//     paperDialog: {
+//         minHeight: '70vh',
+//         maxHeight: '70vh',
+//     }
+// }
+
+const styles = theme => ({
     paperDialog: {
         minHeight: '70vh',
-        // maxHeight: '70vh',
+        maxHeight: '70vh',
+        [theme.breakpoints.down('xs')]: {
+            minHeight: '100vh',
+            maxHeight: '100vh'
+        }
     }
-}
-
-// const styles = theme => ({
-//     paperDialog: {
-//         minHeight: '50vh',
-//         maxHeight: '50vh',
-//         [theme.breakpoints.down('sm')]: {
-//             minHeight: '100vh',
-//             maxHeight: '100vh'
-//         }
-//     }
-// })
+})
 
 const ResponsiveDialog = (props) => {
     const { fullScreen, classes } = props;
