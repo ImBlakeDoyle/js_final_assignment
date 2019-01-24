@@ -3,13 +3,13 @@ const { google } = require("googleapis");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 async function create(req, res) {
-    const { name, email, guests, phone, comment, stripe_id } = req.body;
+    const { name, email, guests, phone, comment, stripe_id, checkin, checkout } = req.body;
 
     const cost = calculatePayment();
 
     // const newCheckinDate = checkin.toISOString();
-    const checkin = "2019-01-06";
-    const checkout = "2019-01-08"
+    // const checkin = "2019-01-06";
+    // const checkout = "2019-01-08"
     // const newCheckoutDate = checkout.toISOString();
     const booking = await BookingModel.create({ name, email, guests, checkin, checkout, cost, phone, comment, stripe_id});
 
