@@ -1,22 +1,22 @@
 const BookingModel = require("./../database/models/booking_model");
 const { google } = require("googleapis");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const moment = require("moment");
+moment().format();
 
 async function create(req, res) {
     const { name, email, guests, phone, comment, stripe_id, checkin, checkout } = req.body;
 
-    const newCheckoutDate = checkout.split("/").reverse().join("-");
-    const newCheckinDate = checkin.split("/").reverse().join("-");
+    const newCheckinDate = moment(checkin).format("YYYY-MM-DD");
+    
+    const newCheckoutDate = moment(checkout).format("YYYY-MM-DD");
 
     const days = calculateDays(newCheckinDate, newCheckoutDate);
-    console.log(days);
 
     const cost = calculatePayment(days);
-    console.log(cost);
 
     const booking = await BookingModel.create({ name, email, guests, checkin, checkout, cost, phone, comment, stripe_id})
     .catch(err => console.log(err));
-    console.log(booking);
 
     const oauth2Client = new google.auth.OAuth2(
         process.env.GOOGLE_CLIENT_ID,
@@ -25,17 +25,15 @@ async function create(req, res) {
     oauth2Client.setCredentials({
         refresh_token: "1/wMmG3mhhEtBEuBmvBdd3sU61TZxbV_ltp4VokEFFFEc"
     });
-    // const newCheckinDate = "2019-01-25";
-    
-    // const newCheckoutDate = "2019-01-28";
+
     const event = {
         'summary': `${name} ${guests} ${comment}`,
         'start': {
-          'date': `${checkin}`,
+          'date': `${newCheckinDate}`,
           'timeZone': 'Australia/Sydney',
         },
         'end': {
-          'date': `${checkout}`,
+          'date': `${newCheckoutDate}`,
           'timeZone': 'Australia/Sydney',
         },
         'attendees': [
@@ -74,8 +72,8 @@ function calculatePayment(days) {
 
 function calculateDays(checkin, checkout){
     const oneDay = 24*60*60*1000;
-    const date1 = new Date(checkin + "Z");
-    const date2 = new Date(checkout + "Z");
+    const date1 = new Date(checkin);
+    const date2 = new Date(checkout);
 
     return Math.round(Math.abs((date1.getTime() - date2.getTime()) / (oneDay)));
 
