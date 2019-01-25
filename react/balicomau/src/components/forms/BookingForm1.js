@@ -3,13 +3,19 @@ import "react-datepicker/dist/react-datepicker.css";
 // import { connect } from "react-redux";
 // import { bookingAvailability } from "../../actions";
 import { reduxForm, Field } from "redux-form";
-import DatePickerField from "./fields/DatePicker";
+// import DatePickerField from "./fields/DatePicker";
 import { withStyles } from '@material-ui/core/styles';
 // import TextField from '@material-ui/core/TextField';
 import TextField from "./fields/TextField";
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+
+// import DateFnsUtils from "@date-io/date-fns";
+// import { MuiPickersUtilsProvider } from 'material-ui-pickers';
+// import { DatePicker } from "material-ui-pickers";
+
+import NewDatePicker from "./fields/MaterialDatePicker";
 
 const styles = theme => ({
     menu: {
@@ -74,22 +80,17 @@ class BookingForm1 extends React.Component {
         return(
             <form onSubmit={handleSubmit}>
                 <div>
-                    {/* <label>Check in</label> */}
-                <Grid container xs={"auto"} spacing={8} justify="center">
-                <Grid item x={6}>
-                        <Field
-                            id="standard-name"
-                            label="Check-in"
-                            margin="normal"
-                            type="date"
-                            component={TextField}
-                            name="checkin"
-                            InputLabelProps={{
-                                shrink: true,
-                            }}
-                        />
-                    </Grid>
-                    <Grid item x={6}>
+                    <Field 
+                        name="checkin"
+                        label="Check-in"
+                        component={NewDatePicker}
+                    />
+                    <Field
+                        name="checkout"
+                        label="Check-out"
+                        component={NewDatePicker}
+                    />
+                    {/* <Grid item x={6}>
                         <Field
                             id="standard-name"
                             label="Check-out"
@@ -101,7 +102,7 @@ class BookingForm1 extends React.Component {
                                 shrink: true,
                             }}
                         />
-                    </Grid>
+                    </Grid> */}
                     <Grid item xs={6}>
                     <Field
                         id="select-guests"
@@ -125,8 +126,7 @@ class BookingForm1 extends React.Component {
                             </MenuItem>
                         ))}
                     </Field> 
-                    </Grid>
-                    </Grid>          
+                    </Grid>        
                 </div>
                 <div>
                     <Button variant="contained" color="primary" className={classes.button} type="submit">
