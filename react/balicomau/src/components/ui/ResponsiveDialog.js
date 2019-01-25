@@ -10,20 +10,15 @@ import withMobileDialog from '@material-ui/core/withMobileDialog';
 import WizardForm from '../forms/WizardForm';
 import { withStyles } from '@material-ui/core/styles';
 
-// const styles = {
-//     paperDialog: {
-//         minHeight: '70vh',
-//         maxHeight: '70vh',
-//     }
-// }
-
 const styles = theme => ({
     paperDialog: {
-        minHeight: '25vh',
-        maxHeight: '25vh',
+        minHeight: '35vh',
+        maxHeight: '35vh',
+        width: '50vh',
         [theme.breakpoints.down('xs')]: {
             minHeight: '100vh',
-            maxHeight: '100vh'
+            maxHeight: '100vh',
+            width: '100vh'
         }
     },
     title: {
@@ -31,9 +26,6 @@ const styles = theme => ({
             textAlign: 'center'
         }   
     }
-    // content: {
-    //     display: 'inline-block',
-    // }
 })
 
 const ResponsiveDialog = (props) => {
@@ -50,18 +42,12 @@ const ResponsiveDialog = (props) => {
             aria-labelledby="form-dialog-title"
             // fullWidth
         >
-        <DialogTitle id="form-dialog-title" className={classes.title}>Check dates</DialogTitle>
+        <DialogTitle id="form-dialog-title" className={classes.title}>Select dates</DialogTitle>
             <DialogContent>
-                <WizardForm />
+                <WizardForm 
+                    onClose={props.handleClose}
+                />
             </DialogContent>
-            <DialogActions>
-                <Button onClick={props.handleClose} color="primary">
-                    Cancel
-                </Button>
-                <Button onClick={props.handleClose} color="primary">
-                    Subscribe
-                </Button>
-            </DialogActions>
         </Dialog>
     )
 }

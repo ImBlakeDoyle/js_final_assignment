@@ -21,8 +21,8 @@ const styles = theme => ({
     menu: {
         width: 200,
       },
-    button: {
-
+    formButton: {
+        maxWidth: '150px', minWidth: '150px',
     },
     guests : {
         width: 165,
@@ -30,13 +30,9 @@ const styles = theme => ({
     gridItem: {
         textAlign: 'center',
     },
-    button: {
-        textAlign: 'center',
-        paddingTop: 10
+    formButtonGroup: {
+        paddingTop: '30px'
     }
-    // formBody: {
-    //     display: 'inline-block',
-    // }
 });
 
 const numberOfGuests = [
@@ -85,63 +81,64 @@ class BookingForm1 extends React.Component {
       };
 
     render() {
-        const { classes } = this.props;
-        const { handleSubmit } = this.props;
+        const { classes, handleSubmit, cancel } = this.props;
+        // const { handleSubmit } = this.props;
         return(
             <form onSubmit={handleSubmit}>
                 <div>
-                    <Field 
-                        name="checkin"
-                        label="Check-in"
-                        component={NewDatePicker}
-                    />
-                    <Field
-                        name="checkout"
-                        label="Check-out"
-                        component={NewDatePicker}
-                    />
-                    {/* <Grid item x={6}>
-                        <Field
-                            id="standard-name"
-                            label="Check-out"
-                            margin="normal"
-                            type="date"
-                            component={TextField}
-                            name="checkout"
-                            InputLabelProps={{
-                                shrink: true,
-                            }}
-                        />
-                    </Grid> */}
-                    <Grid item xs={6}>
-                    <Field
-                        id="select-guests"
-                        select
-                        label="Number of Guests"
-                        name="guests"
-                        component={TextField}
-                        className={classes.guests}
-                        type="number"
-                        SelectProps={{
-                            MenuProps: {
-                            className: classes.menu,
-                            },
-                        }}
-                        // helperText="Please select the amount of guests"
-                        margin="normal"
-                    >
-                        {numberOfGuests.map(option => (
-                            <MenuItem key={option.value} value={option.value}>
-                            {option.label}
-                            </MenuItem>
-                        ))}
-                    </Field> 
-                    </Grid>        
+                    <Grid container>
+                        <Grid item xs={6}>
+                            <Field 
+                                name="checkin"
+                                label="Check-in"
+                                component={NewDatePicker}
+                            />
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Field
+                                name="checkout"
+                                label="Check-out"
+                                component={NewDatePicker}
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Field
+                                id="select-guests"
+                                select
+                                label="Number of Guests"
+                                name="guests"
+                                component={TextField}
+                                className={classes.guests}
+                                type="number"
+                                SelectProps={{
+                                    MenuProps: {
+                                    className: classes.menu,
+                                    },
+                                }}
+                                margin="normal"
+                            >
+                                {numberOfGuests.map(option => (
+                                    <MenuItem key={option.value} value={option.value}>
+                                    {option.label}
+                                    </MenuItem>
+                                ))}
+                            </Field> 
+                        </Grid>
+                    </Grid>
                 </div>
-                <div>
-                    <Button variant="contained" color="primary" className={classes.button} type="submit">
-                        Check availability 
-                    </Button>
+                <div className={classes.formButtonGroup}>
+                    <Grid container spacing={16} justify="space-evenly">
+                        <Grid item>
+                            <Button variant="contained" color="primary" className={classes.formButton} type="submit">
+                                Continue
+                            </Button>
+                        </Grid>
+                        <Grid item>
+                            <Button variant="contained" color="secondary" className={classes.formButton} onClick={cancel}>
+                                Cancel
+                            </Button>
+                        </Grid>
+                    </Grid>
                 </div>
             </form>
         );
