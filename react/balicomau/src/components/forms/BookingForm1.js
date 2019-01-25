@@ -5,7 +5,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import { reduxForm, Field } from "redux-form";
 import DatePickerField from "./fields/DatePicker";
 import { withStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
+// import TextField from '@material-ui/core/TextField';
+import TextField from "./fields/TextField";
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
@@ -73,43 +74,42 @@ class BookingForm1 extends React.Component {
         return(
             <form onSubmit={handleSubmit}>
                 <div>
-                <Grid container xs={24} spacing={8} justify="center">
-                    <Grid item xs={6}>
-                        <TextField
+                    {/* <label>Check in</label> */}
+                <Grid container xs={"auto"} spacing={8} justify="center">
+                <Grid item x={6}>
+                        <Field
                             id="standard-name"
                             label="Check-in"
-                            // className={classes.textField}
-                            // value={this.state.name}
-                            // onChange={this.handleChange('name')}
                             margin="normal"
                             type="date"
+                            component={TextField}
+                            name="checkin"
                             InputLabelProps={{
                                 shrink: true,
                             }}
                         />
                     </Grid>
                     <Grid item x={6}>
-                        <TextField
+                        <Field
                             id="standard-name"
                             label="Check-out"
-                            // className={classes.textField}
-                            // value={this.state.name}
-                            // onChange={this.handleChange('name')}
                             margin="normal"
                             type="date"
+                            component={TextField}
+                            name="checkout"
                             InputLabelProps={{
                                 shrink: true,
                             }}
                         />
                     </Grid>
                     <Grid item xs={6}>
-                    <TextField
+                    <Field
                         id="select-guests"
                         select
                         label="Number of Guests"
+                        name="guests"
+                        component={TextField}
                         className={classes.guests}
-                        value={this.state.numberOfGuests}
-                        onChange={this.handleChange('numberOfGuests')}
                         type="number"
                         SelectProps={{
                             MenuProps: {
@@ -124,7 +124,7 @@ class BookingForm1 extends React.Component {
                             {option.label}
                             </MenuItem>
                         ))}
-                    </TextField> 
+                    </Field> 
                     </Grid>
                     </Grid>          
                 </div>
@@ -138,13 +138,7 @@ class BookingForm1 extends React.Component {
     }
 }
 
-// const WrappedBookingForm = reduxForm({
-//     form: "booking"
-// })(AvailabilityForm);
 
-// export default connect(null, {
-//     bookingAvailability
-// })(WrappedBookingForm);
 
 export default withStyles(styles)(reduxForm({
     form: "booking",
