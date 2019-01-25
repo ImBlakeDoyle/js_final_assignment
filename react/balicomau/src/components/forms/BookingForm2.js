@@ -3,6 +3,22 @@ import React, { Component } from "react";
 // import { createBooking } from "../../actions";
 import { reduxForm, Field } from "redux-form";
 // import DatePickerField from "./fields/DatePicker";
+import Grid from '@material-ui/core/Grid';
+import TextField from './fields/TextField';
+import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+    textField: {
+        width: '200px'
+    },
+    formButton: {
+        maxWidth: '150px', minWidth: '150px',
+    },
+    formButtonGroup: {
+        paddingTop: '30px'
+    }
+});
 
 class BookingForm2 extends Component {
 
@@ -14,56 +30,80 @@ class BookingForm2 extends Component {
     // }
 
     render(){
-    const { handleSubmit, previousPage } = this.props;
+    const { classes, handleSubmit, previousPage } = this.props;
 
         return(
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label>Name:</label>
-                        <Field 
-                            type="text"
-                            name="name"
-                            component="input"
-                        />
+                    <Grid container spacing={16}>
+                        <Grid item xs={12}>
+                            <Field 
+                                className={classes.textField}
+                                name="first-name" 
+                                type="text" 
+                                component={TextField} 
+                                label="First name" 
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Field 
+                                className={classes.textField}
+                                name="last-name" 
+                                type="text" 
+                                component={TextField} 
+                                label="Last name" 
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Field 
+                                className={classes.textField}
+                                name="contact-number" 
+                                type="text" 
+                                component={TextField} 
+                                label="Contact number" 
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Field 
+                                className={classes.textField}
+                                name="email" 
+                                type="text" 
+                                component={TextField} 
+                                label="Email" 
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Field 
+                                className={classes.textField}
+                                name="comments" 
+                                type="text" 
+                                component={TextField} 
+                                label="Additional comments" 
+                                multiline
+                            />
+                        </Grid>
+                    </Grid>
                 </div>
-                <div>
-                    <label>Email:</label>
-                        <Field 
-                            type="email"
-                            name="email"
-                            component="input"
-                        />                
+                <div className={classes.formButtonGroup}>
+                    <Grid container spacing={16} justify="space-evenly">
+                        <Grid item>
+                            <Button variant="contained" color="primary" className={classes.formButton} type="submit">
+                                Pay
+                            </Button>
+                        </Grid>
+                        <Grid item>
+                            <Button variant="contained" color="secondary" className={classes.formButton} onClick={previousPage}>
+                                Previous
+                            </Button>
+                        </Grid>
+                    </Grid>
                 </div>
-                <div>
-                    <label>Phone:</label>
-                        <Field 
-                            type="number"
-                            name="phone"
-                            component="input"
-                        />
-                </div>
-                <div>
-                    <label>Comment:</label>
-                        <Field 
-                            type="text"
-                            name="comment"
-                            component="input"
-                        />
-                </div>
-                <div>
-                    <label>Stripe id:</label>
-                        <Field 
-                            type="number"
-                            name="stripe_id"
-                            component="input"
-                        />
-                </div>
-                <div>
+                {/* <div>
                     <button type="button" name="previous" onClick={previousPage}>
-                    Previous
+                        Previous
                     </button>
                     <input type="submit" value="submit" />
-                </div>
+                </div> */}
             </form>
         );
     }
@@ -77,8 +117,8 @@ class BookingForm2 extends Component {
 //     createBooking
 // })(WrappedBookingForm);
 
-export default reduxForm({
+export default withStyles(styles)(reduxForm({
     form:"booking",
     destroyOnUnmount: false,
     forceUnregisterOnUnmount: true
-})(BookingForm2);
+})(BookingForm2));
