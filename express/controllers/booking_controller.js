@@ -1,5 +1,6 @@
 const BookingModel = require("./../database/models/booking_model");
 const { google } = require("googleapis");
+// const Mailer = require("./../services/Mailer");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const moment = require("moment");
 moment().format();
@@ -50,6 +51,28 @@ async function create(req, res) {
         console.log(events);
     })
     .catch(err => console.log("ERROR!!!!!", err));
+
+
+    //email sending
+    // const bookingemail = req.body;
+
+    // //email sending booking to admin @ bali 
+    // const mailer = new Mailer("carlgrayau@gmail.com", "admin@bali.com.au", "new booking", JSON.stringify(bookingemail), 
+    // `<p>Hi, a new booking has been made on Bali.com.au website. Details are:<p>
+    // <br/><p>Name: ${bookingemail.name}<p>
+    // <br/><p>Email: ${bookingemail.email}<p> 
+    // <br/><p>Guests: ${bookingemail.guests}<p> 
+    // <br/><p>Checkin: ${bookingemail.checkin}<p> 
+    // <br/><p>Checkout: ${bookingemail.checkout}<p> 
+    // <br/><p>Cost: ${bookingemail.cost}<p> 
+    // <br/><p>Phone: ${bookingemail.phone}<p> 
+    // <br/><p>Comment: ${bookingemail.comment}<p>`);
+    // mailer.send();
+    // return res.status(200)
+
+
+    // res.json(booking);
+
 }
 
 async function payment(req,res) {
