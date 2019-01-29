@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { InlineDatePicker, Day } from "material-ui-pickers";
+import moment from "moment";
 
 // const unavailableDates = [
 //     "2019-01-29"
@@ -13,7 +14,14 @@ class NewDatePicker extends Component {
     // }
 
     unavailableDates = (date) => {
-        return date.getDay() === 0;
+        const newDate = new Date('2019-01-30T00:00:00');
+        console.log(`calendar: ${date}`);
+        console.log(newDate);
+
+        if ((date.getDay() === newDate.getDay()) && (date.getMonth() === newDate.getMonth()) && (date.getFullYear() === newDate.getFullYear())){
+            return newDate;
+        }
+        // console.log(new Date("2019-01-30"));
     }
 
     render(){
