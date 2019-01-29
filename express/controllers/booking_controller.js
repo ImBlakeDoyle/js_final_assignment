@@ -14,11 +14,13 @@ async function create(req, res) {
 
     const days = calculateDays(newCheckinDate, newCheckoutDate);
 
+    const dates = getDates(newCheckinDate, newCheckoutDate);
+
     const cost = calculatePayment(days);
 
     determineUnavailableDates();
 
-    const booking = await BookingModel.create({ name, email, guests, checkin, checkout, cost, phone, comment, stripe_id})
+    const booking = await BookingModel.create({ name, email, guests, checkin, checkout, cost, phone, comment, stripe_id, dates})
     .catch(err => console.log(err));
 
     const oauth2Client = new google.auth.OAuth2(
@@ -93,6 +95,7 @@ determineUnavailableDates = async () => {
 
     results.forEach((result) => {
         invalidDates.push(result.checkin);
+        invalidDates.push(result.checkout);
     });
 
     // allDates.push(date);
@@ -102,6 +105,19 @@ determineUnavailableDates = async () => {
 // function calculateCost(){
 
 // }
+
+function getDates(startDate, stopDate) {
+    let dateArray = [];
+    let currentDate = startDate;
+    console.log(currentDate);
+    console.log(stopDate);
+    while (currentDate <= stopDate){
+        dateArray.push(currentDate);
+        currentDate = moment(currentDate).add(1, 'days').format("YYYY-MM-DD");
+    }
+    console.log(dateArray);
+    return dateArray;
+}
 
 function calculatePayment(days) {
     return days * 100;

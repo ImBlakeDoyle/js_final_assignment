@@ -35,6 +35,9 @@ const BookingSchema = new Schema({
     cost: {
         type: Number,
         required: true
+    },
+    dates: {
+        type: Array
     }
 });
 
