@@ -14,9 +14,13 @@ async function create(req, res) {
 
     const days = calculateDays(newCheckinDate, newCheckoutDate);
 
+    const dates = getDates(newCheckinDate, newCheckoutDate);
+
     const cost = calculatePayment(days);
 
-    const booking = await BookingModel.create({ name, email, guests, checkin, checkout, cost, phone, comment, stripe_id})
+    determineUnavailableDates();
+
+    const booking = await BookingModel.create({ name, email, guests, checkin, checkout, cost, phone, comment, stripe_id, dates})
     .catch(err => console.log(err));
 
     const oauth2Client = new google.auth.OAuth2(
@@ -53,7 +57,7 @@ async function create(req, res) {
     .catch(err => console.log("ERROR!!!!!", err));
 
 
-    //email sending
+    // email sending
     // const bookingemail = req.body;
 
     // //email sending booking to admin @ bali 
@@ -85,9 +89,35 @@ async function payment(req,res) {
 
 }
 
+determineUnavailableDates = async () => {
+    const invalidDates = [];
+    const results = await BookingModel.find();
+
+    results.forEach((result) => {
+        invalidDates.push(result.checkin);
+        invalidDates.push(result.checkout);
+    });
+
+    // allDates.push(date);
+    // console.log(` the dates are ${allDates}`);
+}
+
 // function calculateCost(){
 
 // }
+
+function getDates(startDate, stopDate) {
+    let dateArray = [];
+    let currentDate = startDate;
+    console.log(currentDate);
+    console.log(stopDate);
+    while (currentDate <= stopDate){
+        dateArray.push(currentDate);
+        currentDate = moment(currentDate).add(1, 'days').format("YYYY-MM-DD");
+    }
+    console.log(dateArray);
+    return dateArray;
+}
 
 function calculatePayment(days) {
     return days * 100;
