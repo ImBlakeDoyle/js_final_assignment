@@ -8,21 +8,47 @@ import TextField from "./fields/TextField";
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import Recaptcha from 'react-recaptcha';
 
 class UserForm extends Component {
+    constructor(props) {
+        super(props)
 
+        this.state = {
+            isVerified: false
+        }
+    }
     onSubmit = async (formValues) => {
         const { name, email, comment, phone } = formValues;
         const { createInquiry, reset, setSubmitStatus } = this.props;
 
-        createInquiry({ name, email, comment, phone });
-        reset();
-        setSubmitStatus(true);
-        // this.props.history.push('/inquiry/success')
-        // console.log(this.props)
-        setTimeout(() => {
-            setSubmitStatus(false)
-        }, 4000)
+        if (this.state.isVerified) {
+            createInquiry({ name, email, comment, phone });
+            reset();
+            setSubmitStatus(true);
+            // this.props.history.push('/inquiry/success')
+            // console.log(this.props)
+            setTimeout(() => {
+                setSubmitStatus(false)
+            }, 4000)
+            // alert('Your inquiry has been sent')
+        } else {
+            alert('Please verify that you are human!')
+        }
+
+       
+    }
+
+    recaptchaLoaded = (event) => {
+        console.log('recaptcha has loaded')
+    };
+
+    verifyCallback = (response) => {
+        if (response) {
+            this.setState({
+                isVerified: true
+            })
+        }
     }
 
     render() {
@@ -76,6 +102,14 @@ class UserForm extends Component {
                             multiline
                         />
                     </Grid>
+                    <Grid item xs={10}>
+                        <Recaptcha
+                            sitekey="6Lclc40UAAAAABi7ABxrNdDrkUMSkiSY7AJZZ05o"
+                            render="explicit"
+                            onloadCallback={this.recaptchaLoaded}
+                            verifyCallback={this.verifyCallback}
+                        />
+                </Grid>
                     <Grid item xs={0}>
                         <Button
                             type="submit"
@@ -86,7 +120,9 @@ class UserForm extends Component {
                         </Button>
                     </Grid>
                 </Grid>
+                
                 </form>
+                
                 {this.props.submitStatus && <div>Your message was sent</div> }
             </div>
         );
