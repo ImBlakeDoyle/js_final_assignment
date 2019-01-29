@@ -4,88 +4,107 @@ import { connect } from "react-redux";
 import { createInquiry } from "./../../actions";
 import { setSubmitStatus } from "./../../actions";
 import { withRouter } from 'react-router-dom';
+import TextField from "./fields/TextField";
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 
 class UserForm extends Component {
 
-renderError({ error, touched }) {
-    if (touched && error) {
+    onSubmit = async (formValues) => {
+        const { name, email, comment, phone } = formValues;
+        const { createInquiry, reset, setSubmitStatus } = this.props;
+
+        createInquiry({ name, email, comment, phone });
+        reset();
+        setSubmitStatus(true);
+        // this.props.history.push('/inquiry/success')
+        // console.log(this.props)
+        setTimeout(() => {
+            setSubmitStatus(false)
+        }, 4000)
+    }
+
+    render() {
         return (
-            <div>{error}</div>
+            <div>
+                <form onSubmit={this.props.handleSubmit(this.onSubmit)} >
+                <Grid container 
+                    xs={12}
+                    spacing={8}
+                    justify="center"
+                >
+                    <Grid item xs={10}>
+                        <Typography variant="h6">
+                            Contact Us
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={10} sm={6}>
+                        <Field 
+                            name="name" 
+                            type="text" 
+                            component={TextField} 
+                            label="Name:" 
+                        />
+                    </Grid>
+                    <Grid item 
+                        xs={10} 
+                        sm={6}
+                        justify-self="stretch"
+                    >
+                        <Field 
+                            name="email" 
+                            type="email" 
+                            component={TextField} 
+                            label="Email:"
+                        />
+                    </Grid>
+                    <Grid item xs={10}>
+                        <Field 
+                            name="phone"
+                            type="number" 
+                            component={TextField} 
+                            label="Phone:"
+                        />
+                    </Grid>
+                    <Grid item xs={10}>
+                        <Field 
+                            name="comment" 
+                            type="text" 
+                            component={TextField} 
+                            label="Comment:" 
+                            multiline
+                        />
+                    </Grid>
+                    <Grid item xs={0}>
+                        <Button
+                            type="submit"
+                            variant="contained"
+                            color="primary"
+                        >
+                            Submit
+                        </Button>
+                    </Grid>
+                </Grid>
+                </form>
+                {this.props.submitStatus && <div>Your message was sent</div> }
+            </div>
         );
     }
 }
 
-renderInput = ({ input, label, meta, type }) => {
-    return (
-    <div>
-        <label>{label}</label>
-    <input {...input} type={type}/>
-    {this.renderError(meta)}
-    </div>
-    );
-}  
-
-onSubmit = async (formValues) => {
-const { name, email, comment, phone } = formValues;
-const { createInquiry, reset, setSubmitStatus } = this.props;
-
-createInquiry({ name, email, comment, phone });
-reset();
-setSubmitStatus(true);
-// this.props.history.push('/inquiry/success')
-// console.log(this.props)
-setTimeout(() => {
-    setSubmitStatus(false)
-}, 4000)
-
-
-}
-  render() {
-    return (
-        <div>
-        <form onSubmit={this.props.handleSubmit(this.onSubmit)} >
-            <Field 
-            name="name" 
-            type="text" 
-            component={this.renderInput} 
-            label="Name:" />
-            <Field 
-            name="email" 
-            type="email" 
-            component={this.renderInput} 
-            label="Email:"/>
-            <Field 
-            name="comment" 
-            type="text" 
-            component={this.renderInput} 
-            label="Comment:" />
-            <Field 
-            name="phone"
-            type="number" 
-            component={this.renderInput} 
-            label="Phone:"/>
-        <button>Submit</button>
-        
-        </form>
-        {this.props.submitStatus && <div>Your message was sent</div> }
-        </div>
-    );
-  }
-}
-
 const validate = (formValues) => {
     const errors = {};
- if (!formValues.name) {
-     errors.name = 'You must enter a name'
- }
- if (!formValues.email) {
-    errors.email = 'You must enter an email'
-}
-if (!formValues.comment) {
-    errors.comment = 'You must enter a comment'
-}
-
- return errors;
+    if (!formValues.name) {
+        errors.name = 'You must enter a name'
+    }
+    if (!formValues.email) {
+        errors.email = 'You must enter an email'
+    }
+    if (!formValues.comment) {
+        errors.comment = 'You must enter a comment'
+    }
+    return errors;
 };
 
 const WrappedUserForm = reduxForm({

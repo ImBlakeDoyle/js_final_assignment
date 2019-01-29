@@ -5,7 +5,6 @@ import Typography from '@material-ui/core/Typography';
 import { checkPropTypes } from 'prop-types';
 
 const ImageSection = (props) => {
-
     return (
         <div>
             <Grid container

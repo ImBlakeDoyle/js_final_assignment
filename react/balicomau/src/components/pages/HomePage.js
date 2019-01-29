@@ -8,6 +8,7 @@ import ImageSection from "../sections/ImageSection";
 import CarouselSection from "../sections/CarouselSection";
 import WizardForm from "../forms/WizardForm";
 
+
 class HomePage extends Component {
     render () {
         return (

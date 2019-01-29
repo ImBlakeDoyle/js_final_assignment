@@ -6,8 +6,9 @@ import { reduxForm, Field } from "redux-form";
 
 
 class Payments extends Component {
+
     render() {
-        const {cost, checkin, checkout} = this.props;
+        const {cost } = this.props;
         const { handleToken } = this.props;
         return (
             <StripeCheckout

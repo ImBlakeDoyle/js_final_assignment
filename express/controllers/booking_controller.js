@@ -2,16 +2,22 @@ const BookingModel = require("./../database/models/booking_model");
 const { google } = require("googleapis");
 // const Mailer = require("./../services/Mailer");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const moment = require("moment");
+moment().format();
 
 async function create(req, res) {
-    const { name, email, guests, cost, phone, comment, stripe_id } = req.body;
-    // const newCheckin = checkin.toISOString();
-    const checkin = "2019-01-25";
-    const checkout = "2019-01-28"
-    // const newCheckoutDate = checkout.toISOString();
-    const booking = await BookingModel.create({ name, email, guests, checkin, checkout, cost, phone, comment, stripe_id});
+    const { name, email, guests, phone, comment, stripe_id, checkin, checkout } = req.body;
+
+    const newCheckinDate = moment(checkin).format("YYYY-MM-DD");
     
-    
+    const newCheckoutDate = moment(checkout).format("YYYY-MM-DD");
+
+    const days = calculateDays(newCheckinDate, newCheckoutDate);
+
+    const cost = calculatePayment(days);
+
+    const booking = await BookingModel.create({ name, email, guests, checkin, checkout, cost, phone, comment, stripe_id})
+    .catch(err => console.log(err));
 
     const oauth2Client = new google.auth.OAuth2(
         process.env.GOOGLE_CLIENT_ID,
@@ -20,10 +26,7 @@ async function create(req, res) {
     oauth2Client.setCredentials({
         refresh_token: "1/wMmG3mhhEtBEuBmvBdd3sU61TZxbV_ltp4VokEFFFEc"
     });
-    // const newCheckinDate = checkin.split("/").reverse().join("-");
-    const newCheckinDate = "2019-01-25";
-    // const newCheckoutDate = checkout.split("/").reverse().join("-");
-    const newCheckoutDate = "2019-01-28";
+
     const event = {
         'summary': `${name} ${guests} ${comment}`,
         'start': {
@@ -44,7 +47,7 @@ async function create(req, res) {
         resource: event,
     })
     .then(res => {
-        const events = res.data.items;
+        const events = res.data;
         console.log(events);
     })
     .catch(err => console.log("ERROR!!!!!", err));
@@ -69,13 +72,34 @@ async function create(req, res) {
 
 
     // res.json(booking);
+
 }
 
 async function payment(req,res) {
-    console.log(req.body);
+    // console.log(req.body);
+    // console.log(req.body);
+    // console.log(res);
     // stripe.charges.create({
     //     amount: 
     // });
+
+}
+
+// function calculateCost(){
+
+// }
+
+function calculatePayment(days) {
+    return days * 100;
+}
+
+function calculateDays(checkin, checkout){
+    const oneDay = 24*60*60*1000;
+    const date1 = new Date(checkin);
+    const date2 = new Date(checkout);
+
+    return Math.round(Math.abs((date1.getTime() - date2.getTime()) / (oneDay)));
+
 }
 
 module.exports = {
