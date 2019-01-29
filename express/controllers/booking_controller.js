@@ -16,6 +16,8 @@ async function create(req, res) {
 
     const cost = calculatePayment(days);
 
+    determineUnavailableDates();
+
     const booking = await BookingModel.create({ name, email, guests, checkin, checkout, cost, phone, comment, stripe_id})
     .catch(err => console.log(err));
 
@@ -53,7 +55,7 @@ async function create(req, res) {
     .catch(err => console.log("ERROR!!!!!", err));
 
 
-    //email sending
+    // email sending
     // const bookingemail = req.body;
 
     // //email sending booking to admin @ bali 
@@ -83,6 +85,18 @@ async function payment(req,res) {
     //     amount: 
     // });
 
+}
+
+determineUnavailableDates = async () => {
+    const invalidDates = [];
+    const results = await BookingModel.find();
+
+    results.forEach((result) => {
+        invalidDates.push(result.checkin);
+    });
+
+    // allDates.push(date);
+    // console.log(` the dates are ${allDates}`);
 }
 
 // function calculateCost(){
