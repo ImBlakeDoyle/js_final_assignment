@@ -46,7 +46,7 @@ async function create(req, res) {
         resource: event,
     })
     .then(res => {
-        const events = res.data.items;
+        const events = res.data;
         console.log(events);
     })
     .catch(err => console.log("ERROR!!!!!", err));
