@@ -8,7 +8,16 @@ import { createBooking } from "../../actions";
 
 class WizardForm extends Component {
     state = {
-        page: 1
+        page: 1,
+        events: []
+    }
+
+    componentDidMount = () => {
+        this.getEvents();
+    }
+
+    getEvents = () => {
+        
     }
 
     onFormSubmit = async (formValues) => {

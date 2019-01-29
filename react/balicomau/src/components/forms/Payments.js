@@ -6,6 +6,7 @@ import { reduxForm, Field } from "redux-form";
 
 
 class Payments extends Component {
+
     render() {
         const {cost } = this.props;
         const { handleToken } = this.props;
