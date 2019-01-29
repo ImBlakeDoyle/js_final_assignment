@@ -12,8 +12,8 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
     paperDialog: {
-        minHeight: '35vh',
-        maxHeight: '35vh',
+        minHeight: '50vh',
+        maxHeight: '50vh',
         width: '50vh',
         [theme.breakpoints.down('xs')]: {
             minHeight: '100vh',
