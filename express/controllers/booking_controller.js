@@ -6,7 +6,7 @@ const moment = require("moment");
 moment().format();
 
 async function create(req, res) {
-    const { name, email, guests, phone, comment, stripe_id, checkin, checkout } = req.body;
+    const { first_name, last_name, email, guests, phone, comment, stripe_id, checkin, checkout } = req.body;
 
     const newCheckinDate = moment(checkin).format("YYYY-MM-DD");
     
@@ -20,7 +20,7 @@ async function create(req, res) {
 
     determineUnavailableDates();
 
-    const booking = await BookingModel.create({ name, email, guests, checkin, checkout, cost, phone, comment, stripe_id, dates})
+    const booking = await BookingModel.create({ first_name, last_name, email, guests, checkin, checkout, cost, phone, comment, stripe_id, dates})
     .catch(err => console.log(err));
 
     const oauth2Client = new google.auth.OAuth2(
@@ -32,7 +32,7 @@ async function create(req, res) {
     });
 
     const event = {
-        'summary': `${name} ${guests} ${comment}`,
+        'summary': `${first_name} ${guests} ${comment}`,
         'start': {
           'date': `${newCheckinDate}`,
           'timeZone': 'Australia/Sydney',
@@ -132,7 +132,21 @@ function calculateDays(checkin, checkout){
 
 }
 
+async function populateInvalidDates(req, res){
+    console.log("running");
+    const populateInvalid = [];
+    const data = await BookingModel.find();
+    data.forEach((result) => {
+        for (let i = 0; i < result.dates.length; i++){
+            populateInvalid.push(result.dates[i]);
+        }
+        // populateInvalid.push(result.dates);
+    });
+    res.json(populateInvalid);
+}
+
 module.exports = {
     create,
-    payment
+    payment,
+    populateInvalidDates
 }
