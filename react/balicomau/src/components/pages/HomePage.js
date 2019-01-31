@@ -7,13 +7,34 @@ import Grid from '@material-ui/core/Grid';
 import ImageSection from "../sections/ImageSection";
 import CarouselSection from "../sections/CarouselSection";
 import WizardForm from "../forms/WizardForm";
+import { withStyles } from '@material-ui/core/styles';
+import UserForm from "../forms/UserForm";
+import ContactUsContainer from "./../sections/ContactUsContainer";
 
+const styles = theme => ({
+    imageContainer: {
+        // padding: "0px 0px 40px 0px"
+        paddingBottom: "40px"
+    },
+    contentContainer: {
+        padding: "0px 10px 40px 10px"
+    },
+    contactUsContainer: {
+        padding: "0px 10px 40px 10px",
+        backgroundColor: "whitesmoke"
+    },
+    content: {
+        // maxWidth: "1100px"
+    }
+})
 
 class HomePage extends Component {
+    
     render () {
+        const {classes} = this.props;
         return (
-            <div>
-                <div className="header">
+            <>
+                <div className={classes.imageContainer}>
                     <HeroSection 
                         title="Villa Dewata"
                         img="/hero-image.jpg"
@@ -22,41 +43,59 @@ class HomePage extends Component {
                     />
                 </div>
                 <div className="content">
-                    <AboutSection />
-                    <FeatureContainer 
-                        feature1={
-                            <FeatureSection 
-                                image="/accommodation.jpg"
-                                title="Accommodation"
+                    <div className={classes.contentContainer}>
+                        <AboutSection />
+                    </div>
+                    <div className={classes.contentContainer}>
+                        <FeatureContainer 
+                            feature1={
+                                <FeatureSection 
+                                    image="/accommodation.jpg"
+                                    title="Accommodation"
+                                    content="Villa Dewata has 4 air-conditioned bedrooms each with King sized bed, ensuite bathroom. Two front bedrooms overlook the pool, and contain baths within their ensuites. Each bedroom has an ottoman which can be used as extra bedding if required."
+                                    expandedContent="Large open plan living, and dining areas with ceiling fans to keep you cool, this villa has concertina doors that can open up the living area to the swimming pool and garden to make it feel even more spacious."
+                                />
+                            }
+                            feature2={
+                                <FeatureSection 
+                                    image="/facilities.jpg"
+                                    title="Facilities"
+                                    content="Villa Dewata has 4 air-conditioned bedrooms each with King sized bed, ensuite bathroom. Two front bedrooms overlook the pool, and contain baths within their ensuites. Each bedroom has an ottoman which can be used as extra bedding if required."
+                                    expandedContent="Large open plan living, and dining areas with ceiling fans to keep you cool, this villa has concertina doors that can open up the living area to the swimming pool and garden to make it feel even more spacious."
+                                />
+                            }
+                            feature3={
+                                <FeatureSection 
+                                image="/services.jpg"
+                                title="Services"
                                 content="Villa Dewata has 4 air-conditioned bedrooms each with King sized bed, ensuite bathroom. Two front bedrooms overlook the pool, and contain baths within their ensuites. Each bedroom has an ottoman which can be used as extra bedding if required."
                                 expandedContent="Large open plan living, and dining areas with ceiling fans to keep you cool, this villa has concertina doors that can open up the living area to the swimming pool and garden to make it feel even more spacious."
                             />
-                        }
-                        feature2={
-                            <FeatureSection 
-                                image="/facilities.jpg"
-                                title="Facilities"
-                                content="Villa Dewata has 4 air-conditioned bedrooms each with King sized bed, ensuite bathroom. Two front bedrooms overlook the pool, and contain baths within their ensuites. Each bedroom has an ottoman which can be used as extra bedding if required."
-                                expandedContent="Large open plan living, and dining areas with ceiling fans to keep you cool, this villa has concertina doors that can open up the living area to the swimming pool and garden to make it feel even more spacious."
-                            />
-                        }
-                        feature3={
-                            <FeatureSection 
-                            image="/services.jpg"
-                            title="Services"
-                            content="Villa Dewata has 4 air-conditioned bedrooms each with King sized bed, ensuite bathroom. Two front bedrooms overlook the pool, and contain baths within their ensuites. Each bedroom has an ottoman which can be used as extra bedding if required."
-                            expandedContent="Large open plan living, and dining areas with ceiling fans to keep you cool, this villa has concertina doors that can open up the living area to the swimming pool and garden to make it feel even more spacious."
+                            }
                         />
-                        }
-                    />
-                    <ImageSection 
-                        img="/map.jpg"
-                    />
-                    <CarouselSection />
+                    </div>
+                    <div className={classes.contentContainer}>
+                        <ImageSection 
+                            img="https://s3-ap-southeast-2.amazonaws.com/villa-dewata/seminyak-food.jpg"
+                            content={[
+                                <div>
+                                    <p>Villa Dewata is situated in the Seminyak area only 50 metres from the busy Jalan Raya/Legian streets.</p>
+                                    <p>With an abundance of shops and great restaurants all within walking distance the villa is close enough to all the action, yet being set back off the main road ensures a quiet and peaceful stay.</p>
+                                    <p>The international airport is approx 30 mins away and is also about the same distance to the popular “Bali Nirvana Golf Course” and the famous “Tanah Lot Temple”</p>
+                                </div>
+                            ]}
+                        />
+                    </div>
+                    <div className={classes.imageContainer}>
+                        <CarouselSection />
+                    </div>
+                    <div className={classes.contactUsContainer}>
+                        <ContactUsContainer />
+                    </div>
                 </div>
-            </div>
+                </>
         )
     };
 }
 
-export default HomePage;
+export default withStyles(styles)(HomePage);

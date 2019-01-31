@@ -1,6 +1,7 @@
 body #root {
     /* margin: 10px; */
     overflow-x: hidden;
+    background-color: whitesmoke;
 }
 
 /* @media only screen and (min-width: 1200px) {
@@ -14,6 +15,6 @@ body #root {
   @media only screen and (min-width: 1200px) {
     body .content {
         margin: auto;
-        width: 1200px;
+        width: 1100px;
     }
   }

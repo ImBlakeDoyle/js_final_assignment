@@ -2,15 +2,6 @@ a {
     text-decoration: none;
   }
 
-header .hero-image img {
-    /* width: auto;
-    display: block;
-    height: 400px;
-    padding-top: 10px;
-    padding-bottom: 20px;
-    margin: auto; */
-}
-
 .hero-image {
     height: 700px;
     width: auto;
