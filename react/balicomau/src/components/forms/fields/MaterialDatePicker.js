@@ -24,19 +24,27 @@ class NewDatePicker extends Component {
     // }
 
     unavailableDates = (date) => {
-        const newDate = new Date('2019-02-01T00:00:00');
-        // console.log(`calendar: ${date}`);
-        // console.log(newDate);
+        const { populateInvalid } = this.props;
 
-        if ((date.getDay() === newDate.getDay()) && (date.getMonth() === newDate.getMonth()) && (date.getFullYear() === newDate.getFullYear())){
-            return newDate;
+        for (let i = 0; i < 3; i++){
+            const newDate = moment(populateInvalid[i]).format();
+            console.log(newDate);
+            console.log(date);
         }
+        // const newDate = new Date('2019-02-01T00:00:00');
+        // // console.log(`calendar: ${date}`);
+        // // console.log(newDate);
+
+        // if ((date.getDay() === newDate.getDay()) && (date.getMonth() === newDate.getMonth()) && (date.getFullYear() === newDate.getFullYear())){
+        //     return newDate;
+        // }
+        // console.log(populateInvalid);
         // console.log(new Date("2019-01-30"));
     }
 
     render(){
         const { input, meta, populateInvalid, ...other } = this.props;
-        console.log(populateInvalid);
+        // console.log(populateInvalid);
         
         // console.log(`Invalid dates are ${populateInvalid}`);
 
