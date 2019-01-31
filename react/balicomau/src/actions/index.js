@@ -12,13 +12,13 @@ export const createBooking = ({ first_name, last_name, email, guests, checkin, c
 }
 
 export const fetchInvalid = () => {
-    return async(dispatch, getState) => {
+    return async (dispatch, getState) => {
         let response = await axios.get("http://localhost:3000/booking/invalid");
 
         dispatch({
             type: "INVALID_DATES",
             payload: response.data
-        })
+        });
     }
 }
 

@@ -4,29 +4,41 @@ import moment from "moment";
 import { fetchInvalid } from "./../../../actions";
 import { connect } from "react-redux";
 
-// const unavailableDates = [
-//     "2019-01-29"
-// ]
-
 class NewDatePicker extends Component {
     componentDidMount() {
-        const { fetchInvalid } = this.props;
-        fetchInvalid();
+        // const { fetchInvalid } = this.props;
+        // fetchInvalid();
+        this.props.fetchInvalid();
+        console.log('here')
     }
 
+    // unavailableDates = (date) => {
+    //     const { populateInvalid } = this.props;
+    //     console.log(`Invalid dates are: ${populateInvalid}`);
+    //     // for (let i = 0; i < populateInvalid.length; i++){
+    //     //     const newDate = moment.utc(populateInvalid[i]).format();
+    //     //     if ((date.getDay() === newDate.getDay()) && (date.getMonth() === newDate.getMonth()) && (date.getFullYear() === newDate.getFullYear())){
+    //     //         return newDate;
+    //     //     }
+    //     // }
+    // }
+
     unavailableDates = (date) => {
-        const { invalidDates } = this.props;
-        // console.log(invalidDates);
-        // for (let i = 0; i < invalidDates.length; i++){
-        //     const newDate = moment.utc(invalidDates[i]).format();
-        //     if ((date.getDay() === newDate.getDay()) && (date.getMonth() === newDate.getMonth()) && (date.getFullYear() === newDate.getFullYear())){
-        //         return newDate;
-        //     }
-        // }
+        const newDate = new Date('2019-02-01T00:00:00');
+        // console.log(`calendar: ${date}`);
+        // console.log(newDate);
+
+        if ((date.getDay() === newDate.getDay()) && (date.getMonth() === newDate.getMonth()) && (date.getFullYear() === newDate.getFullYear())){
+            return newDate;
+        }
+        // console.log(new Date("2019-01-30"));
     }
 
     render(){
-        const { input, meta, invalidDates, ...other } = this.props;
+        const { input, meta, populateInvalid, ...other } = this.props;
+        console.log(populateInvalid);
+        
+        // console.log(`Invalid dates are ${populateInvalid}`);
 
         return(
             <InlineDatePicker
@@ -41,7 +53,7 @@ class NewDatePicker extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        invalidDates: state.invalidDates
+        populateInvalid: state.bookings
     }
 }
 
