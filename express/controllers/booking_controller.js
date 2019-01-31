@@ -112,6 +112,7 @@ function getDates(startDate, stopDate) {
     console.log(currentDate);
     console.log(stopDate);
     while (currentDate <= stopDate){
+        moment(currentDate).format();
         dateArray.push(currentDate);
         currentDate = moment(currentDate).add(1, 'days').format("YYYY-MM-DD");
     }

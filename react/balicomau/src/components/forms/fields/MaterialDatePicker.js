@@ -25,28 +25,17 @@ class NewDatePicker extends Component {
 
     unavailableDates = (date) => {
         const { populateInvalid } = this.props;
-
-        for (let i = 0; i < 3; i++){
-            const newDate = moment(populateInvalid[i]).format();
-            console.log(newDate);
-            console.log(date);
+        for (let i = 0; i < populateInvalid.length; i++){
+            const newDate = moment.utc(populateInvalid[i]).format();
+            const calDate = moment.utc(date).startOf('day').format();
+            if (calDate === newDate){
+                return calDate;
+            }
         }
-        // const newDate = new Date('2019-02-01T00:00:00');
-        // // console.log(`calendar: ${date}`);
-        // // console.log(newDate);
-
-        // if ((date.getDay() === newDate.getDay()) && (date.getMonth() === newDate.getMonth()) && (date.getFullYear() === newDate.getFullYear())){
-        //     return newDate;
-        // }
-        // console.log(populateInvalid);
-        // console.log(new Date("2019-01-30"));
     }
 
     render(){
         const { input, meta, populateInvalid, ...other } = this.props;
-        // console.log(populateInvalid);
-        
-        // console.log(`Invalid dates are ${populateInvalid}`);
 
         return(
             <InlineDatePicker
