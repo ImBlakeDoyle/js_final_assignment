@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import "./../../styles/ImageSection.css"
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import { checkPropTypes } from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
@@ -15,10 +14,14 @@ const styles = theme => ({
         display: "block",
         maxWidth: "460px"
     },
-    image: {
+    imageSectionImg: {
         width: "100%",
         height: "auto",
-        padding: "8px"
+        padding: "8px",
+        maxWidth: "370px",
+        display: "block",
+        marginLeft: "auto",
+        marginRight: "auto"
     }
 });
 
@@ -33,7 +36,7 @@ class ImageSection extends Component {
                 justify="center"
             >
                 <Grid item xs={12} md={8}>
-                    <img src={this.props.img} className={this.props.classes.image}/>
+                    <img src={this.props.img} className={this.props.classes.imageSectionImg}/>
                 </Grid>
                 <Grid item xs={12}>
                     <Typography variant="body2" gutterBottom className={this.props.classes.contentBody}>

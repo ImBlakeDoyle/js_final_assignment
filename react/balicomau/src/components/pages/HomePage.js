@@ -10,11 +10,17 @@ import WizardForm from "../forms/WizardForm";
 import { withStyles } from '@material-ui/core/styles';
 import UserForm from "../forms/UserForm";
 import ContactUsContainer from "./../sections/ContactUsContainer";
+import MainFeatureSection from "../sections/MainFeatureSection";
+import AppBar from './../ui/AppBar';
 
 const styles = theme => ({
     imageContainer: {
         // padding: "0px 0px 40px 0px"
-        paddingBottom: "40px"
+        paddingBottom: "40px",
+
+        // z-index testing
+        zIndex: 1,
+        position: "relative"
     },
     contentContainer: {
         padding: "0px 10px 40px 10px"
@@ -23,8 +29,11 @@ const styles = theme => ({
         padding: "0px 10px 40px 10px",
         backgroundColor: "whitesmoke"
     },
-    content: {
-        // maxWidth: "1100px"
+    contentBody: {
+        // z-index testing
+        zIndex: 2,
+        position: "relative",
+        marginTop: "-100px"
     }
 })
 
@@ -34,6 +43,9 @@ class HomePage extends Component {
         const {classes} = this.props;
         return (
             <>
+                <div className="header-menu">
+                    <AppBar />
+                </div>
                 <div className={classes.imageContainer}>
                     <HeroSection 
                         title="Villa Dewata"
@@ -44,7 +56,18 @@ class HomePage extends Component {
                 </div>
                 <div className="content">
                     <div className={classes.contentContainer}>
-                        <AboutSection />
+                        <AboutSection 
+                            heading="Why don't you consider the luxury of staying at a beautiful villa?"
+                            content={[
+                                <>
+                                    <p>Villa dewata can offer you 2 beautiful luxurious villas each with air-conditioned bedrooms, lovely ensuite bathrooms, spacious open-plan living and dining areas, and your own private swimming pool, aswell as trained staff including a fulltime Chef and butler to tend to your every need.</p>
+                        
+                                    <p>Set in a quiet compound (of almost 1 acre) The villa’s are within steps of the famous restaurant area and main shopping of Seminyak and Oberoi area. The international airport is approx 30 mins away and is also about the same distance to the popular “Bali Nirvana Golf Course” and the famous “Tanah Lot Temple”</p>
+                
+                                    <p>Villa dewata is made up of 2 villas, one 4 bedroom villa, and one 5 bedroom villa. Both villas can be combined to comfortably hold up to 18 people. Additional bedding can be arranged.</p>
+                                </>
+                            ]}
+                        />
                     </div>
                     <div className={classes.contentContainer}>
                         <FeatureContainer 
@@ -75,7 +98,19 @@ class HomePage extends Component {
                         />
                     </div>
                     <div className={classes.contentContainer}>
-                        <ImageSection 
+                        {/* <HeroSection 
+                            img="https://s3-ap-southeast-2.amazonaws.com/villa-dewata/seminyak-food.jpg"
+                            // heading="Why don't you consider the luxury of staying at a beautiful villa?"
+                            content={[
+                                <>
+                                    <p>Villa Dewata is situated in the Seminyak area only 50 metres from the busy Jalan Raya/Legian streets.</p>
+                                    <p>With an abundance of shops and great restaurants all within walking distance the villa is close enough to all the action, yet being set back off the main road ensures a quiet and peaceful stay.</p>
+                                    <p>The international airport is approx 30 mins away and is also about the same distance to the popular “Bali Nirvana Golf Course” and the famous “Tanah Lot Temple”</p>
+                                </>
+                            ]}
+                            paperExists="true"
+                        /> */}
+                        <MainFeatureSection 
                             img="https://s3-ap-southeast-2.amazonaws.com/villa-dewata/seminyak-food.jpg"
                             content={[
                                 <div>

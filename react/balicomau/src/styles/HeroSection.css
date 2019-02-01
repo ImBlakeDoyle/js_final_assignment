@@ -9,19 +9,7 @@ a {
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    /* height: 700px;
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw; */
 
-}
-
-.header-menu {
-    /* margin: 5px 10px 0px 10px; */
-    /* position: fixed; */
 }
 
 .header-title {
@@ -31,17 +19,3 @@ a {
 .book-button {
     float: right;
 }
-
-/* @media only screen and (min-width: 600px) {
-    header .hero-image img {
-        height: auto;
-        width: 800px;
-    }
-  }
-
-  @media only screen and (min-width: 960) {
-    header .hero-img img {
-        height: auto;
-        width: 1200px;
-    }
-  } */

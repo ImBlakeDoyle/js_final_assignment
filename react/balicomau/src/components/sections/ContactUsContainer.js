@@ -11,8 +11,8 @@ const styles = theme => ({
         textAlign: "center",
         // marginTop: "10px"
     },
-    gridItem: {
-        // padding: "8px"
+    formContainer: {
+        maxWidth: "1000px"
     },
     paper: {
         ...theme.mixins.gutters(),
@@ -28,7 +28,7 @@ const styles = theme => ({
 class ContactUsContainer extends React.Component {
     render() {
         return (
-            <Grid container xs={12} spacing={16} justify="space-around">
+            <Grid container xs={12} spacing={16} justify="space-around" className={this.props.classes.formContainer}>
                 <Grid item xs={10} className={this.props.classes.containerTitle}>
                     <Typography variant="h4">
                         Contact Us
