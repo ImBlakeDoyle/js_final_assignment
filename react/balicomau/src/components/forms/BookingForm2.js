@@ -75,7 +75,7 @@ class BookingForm2 extends Component {
                         <Grid item xs={12}>
                             <Field 
                                 className={classes.textField}
-                                name="comments" 
+                                name="comment" 
                                 type="text" 
                                 component={TextField} 
                                 label="Additional comments" 

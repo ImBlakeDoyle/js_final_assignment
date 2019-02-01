@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import BookingForm1 from "./BookingForm1";
 import BookingForm2 from "./BookingForm2";
-// import Payments from "./Payments";
+import Payments from "./Payments";
 import { connect } from "react-redux";
 import { createBooking } from "../../actions";
 
@@ -12,13 +12,13 @@ class WizardForm extends Component {
         events: []
     }
 
-    componentDidMount = () => {
-        this.getEvents();
-    }
+    // componentDidMount = () => {
+    //     this.getEvents();
+    // }
 
-    getEvents = () => {
+    // getEvents = () => {
         
-    }
+    // }
 
     onFormSubmit = async (formValues) => {
         const { first_name, last_name, email, guests, checkin, checkout, cost, phone, comment, stripe_id } = formValues;
@@ -42,9 +42,9 @@ class WizardForm extends Component {
         return(
             <div>
                 {page === 1 && <BookingForm1 onSubmit={this.nextPage} cancel={this.props.onClose}/>}
+                {page === 2 && <BookingForm2 previousPage={this.previousPage} onSubmit={this.nextPage} />}
                 {/* {page === 2 && <BookingForm2 previousPage={this.previousPage} onSubmit={this.nextPage} />} */}
-                {page === 2 && <BookingForm2 previousPage={this.previousPage} onSubmit={this.onFormSubmit} />}
-                {/* {page === 3 && <Payments previousPage={this.previousPage} onSubmit={this.onFormSubmit} />} */}
+                {page === 3 && <Payments previousPage={this.previousPage} onSubmit={this.onFormSubmit}/>}
             </div>
         );
     }
