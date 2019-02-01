@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const createBooking = ({ first_name, last_name, email, guests, checkin, checkout, cost, phone, comment, stripe_id }) => {
+export const createBooking = ({ first_name, last_name, email, guests, checkin, checkout, cost, phone, comment, stripe_id, token }) => {
     return async (dispatch, getState) => {
-        let response = await axios.post("http://localhost:3000/booking/new", { first_name, last_name, email, guests, checkin, checkout, cost, phone, comment, stripe_id });
+        let response = await axios.post("http://localhost:3000/booking/new", { first_name, last_name, email, guests, checkin, checkout, cost, phone, comment, stripe_id, token });
 
         dispatch ({
             type: "BOOKING",

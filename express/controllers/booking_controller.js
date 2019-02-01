@@ -6,6 +6,7 @@ const moment = require("moment");
 moment().format();
 
 async function create(req, res) {
+    console.log(req.body);
     const { first_name, last_name, email, guests, phone, comment, stripe_id, checkin, checkout } = req.body;
 
     const newCheckinDate = moment(checkin).format("YYYY-MM-DD");
