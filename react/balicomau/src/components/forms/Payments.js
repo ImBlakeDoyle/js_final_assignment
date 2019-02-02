@@ -1,24 +1,35 @@
 import React, { Component } from "react";
 import StripeCheckout from 'react-stripe-checkout';
 import { connect } from "react-redux";
-// import { handleToken } from "./../../actions";
 import { reduxForm, Field, submit } from "redux-form";
+import axios from "axios";
+
 
 
 class Payments extends Component {
+    state = {
+        cost:null
+    }
 
+async componentDidMount(){
+    await axios.get("http://localhost:3000/")
+    .then(res => {
+        console.log(res.data);
+        this.setState({ cost: res.data.cost });
+    })
+    .catch(err => console.log(err));
+}
 
 handleStripeSubmit = (token) => {
     const { change, dispatch } = this.props;
     change("token", token);
-    dispatch(submit("booking"));
-    
+    dispatch(submit("booking")); 
 }
 
     render() {
-        const {cost } = this.props;
+        const { cost } = this.state;
         console.log(this.props);
-        // const { handleToken } = this.props;
+        console.log(this.state);
         return (
             <div>
             <form onSubmit = {() => console.log("what")}>
@@ -33,7 +44,9 @@ handleStripeSubmit = (token) => {
              name="Complete booking"
              description="Villa Dewata 1"
              // amount={cost * 100}
-             amount={500}
+            //   amount={cost}
+             amount={cost}
+            // amount={this.calculateDays(this.state.form.booking.values.checkin, this.state)}
              token={this.handleStripeSubmit}
              stripeKey={process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY}
              // metadata={this.props}

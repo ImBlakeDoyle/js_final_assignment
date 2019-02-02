@@ -7,19 +7,19 @@ moment().format();
 
 async function create(req, res) {
     console.log(req.body);
-    const { first_name, last_name, email, guests, phone, comment, stripe_id, checkin, checkout } = req.body;
+    const { first_name, last_name, email, guests, phone, comment, stripe_id, checkin, checkout, cost } = req.body;
 
     const newCheckinDate = moment(checkin).format("YYYY-MM-DD");
     
     const newCheckoutDate = moment(checkout).format("YYYY-MM-DD");
 
-    const days = calculateDays(newCheckinDate, newCheckoutDate);
+    // const days = calculateDays(newCheckinDate, newCheckoutDate);
 
     const dates = getDates(newCheckinDate, newCheckoutDate);
 
-    const cost = calculatePayment(days);
+    // const cost = calculatePayment(days);
 
-    determineUnavailableDates();
+    // determineUnavailableDates();
 
     const booking = await BookingModel.create({ first_name, last_name, email, guests, checkin, checkout, cost, phone, comment, stripe_id, dates})
     .catch(err => console.log(err));
@@ -57,6 +57,13 @@ async function create(req, res) {
     })
     .catch(err => console.log("ERROR!!!!!", err));
 
+    const payment = await stripe.charges.create({
+        amount:{cost},
+        currency: 'usd',
+        description: 'Villa Dewata 1 accommodation',
+        source: req.body.token.id
+    })
+
 
     // email sending
     // const bookingemail = req.body;
@@ -80,28 +87,19 @@ async function create(req, res) {
 
 }
 
-async function payment(req,res) {
-    // console.log(req.body);
-    // console.log(req.body);
-    // console.log(res);
-    // stripe.charges.create({
-    //     amount: 
-    // });
 
-}
+// determineUnavailableDates = async () => {
+//     const invalidDates = [];
+//     const results = await BookingModel.find();
 
-determineUnavailableDates = async () => {
-    const invalidDates = [];
-    const results = await BookingModel.find();
+//     results.forEach((result) => {
+//         invalidDates.push(result.checkin);
+//         invalidDates.push(result.checkout);
+//     });
 
-    results.forEach((result) => {
-        invalidDates.push(result.checkin);
-        invalidDates.push(result.checkout);
-    });
-
-    // allDates.push(date);
-    // console.log(` the dates are ${allDates}`);
-}
+//     // allDates.push(date);
+//     // console.log(` the dates are ${allDates}`);
+// }
 
 // function calculateCost(){
 
@@ -122,6 +120,7 @@ function getDates(startDate, stopDate) {
 }
 
 function calculatePayment(days) {
+    console.log("running calculate cost");
     return days * 100;
 }
 
@@ -148,8 +147,23 @@ async function populateInvalidDates(req, res){
     // console.log(populateInvalid);
 }
 
+async function homePage(req, res){
+    const cost = 12345;
+    const populateInvalid = [];
+
+    const data = await BookingModel.find();
+    data.forEach((result) => {
+        for (let i = 0; i < result.dates.length; i++){
+            populateInvalid.push(result.dates[i]);
+        }
+    });
+                                                                                                                                                                                              
+    return res.json({populateInvalid, cost});
+
+}
+
 module.exports = {
     create,
-    payment,
-    populateInvalidDates
+    populateInvalidDates,
+    homePage
 }

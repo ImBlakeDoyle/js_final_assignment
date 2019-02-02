@@ -8,14 +8,16 @@ import Payments from "./forms/Payments";
 import 'normalize.css';
 import "./../styles/index.css";
 import UserForm from "./forms/UserForm";
+import { BrowserRouter, Route } from "react-router-dom";
 
 class App extends Component {
     render() {
         return (
-            <div>
-            <HomePage />
-            <UserForm />
-            </div>
+            <BrowserRouter>
+                <div>
+                    <Route exact path="/" component={HomePage} />
+                </div>
+            </BrowserRouter>
         );
     }
 }
