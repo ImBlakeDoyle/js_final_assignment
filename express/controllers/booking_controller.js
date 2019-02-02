@@ -149,16 +149,16 @@ async function populateInvalidDates(req, res){
 
 async function homePage(req, res){
     const cost = 12345;
-    const populateInvalid = [];
+    // const populateInvalid = [];
 
-    const data = await BookingModel.find();
-    data.forEach((result) => {
-        for (let i = 0; i < result.dates.length; i++){
-            populateInvalid.push(result.dates[i]);
-        }
-    });
-                                                                                                                                                                                              
-    return res.json({populateInvalid, cost});
+    // const data = await BookingModel.find();
+    // data.forEach((result) => {
+    //     for (let i = 0; i < result.dates.length; i++){
+    //         populateInvalid.push(result.dates[i]);
+    //     }
+    // });
+                                                                                                                                                                                             
+    return res.json(cost);
 
 }
 

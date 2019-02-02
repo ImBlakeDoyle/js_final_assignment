@@ -14,8 +14,8 @@ class Payments extends Component {
 async componentDidMount(){
     await axios.get("http://localhost:3000/")
     .then(res => {
-        console.log(res.data);
-        this.setState({ cost: res.data.cost });
+        // console.log(`data is: ${res.data}`);
+        this.setState({ cost: res.data });
     })
     .catch(err => console.log(err));
 }
