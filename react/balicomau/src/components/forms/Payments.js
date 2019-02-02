@@ -3,15 +3,18 @@ import StripeCheckout from 'react-stripe-checkout';
 import { connect } from "react-redux";
 import { reduxForm, Field, submit } from "redux-form";
 import axios from "axios";
+import store from "./../../store";
 
 
 
 class Payments extends Component {
     state = {
-        cost:null
+        cost: null,
+        days: null
     }
 
 async componentDidMount(){
+    const { checkin, checkout } = store.getState().form.booking.values;
     await axios.get("http://localhost:3000/")
     .then(res => {
         // console.log(`data is: ${res.data}`);
@@ -28,8 +31,7 @@ handleStripeSubmit = (token) => {
 
     render() {
         const { cost } = this.state;
-        console.log(this.props);
-        console.log(this.state);
+        const { calculateDays } = this.props;
         return (
             <div>
             <form onSubmit = {() => console.log("what")}>

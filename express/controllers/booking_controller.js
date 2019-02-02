@@ -87,24 +87,6 @@ async function create(req, res) {
 
 }
 
-
-// determineUnavailableDates = async () => {
-//     const invalidDates = [];
-//     const results = await BookingModel.find();
-
-//     results.forEach((result) => {
-//         invalidDates.push(result.checkin);
-//         invalidDates.push(result.checkout);
-//     });
-
-//     // allDates.push(date);
-//     // console.log(` the dates are ${allDates}`);
-// }
-
-// function calculateCost(){
-
-// }
-
 function getDates(startDate, stopDate) {
     let dateArray = [];
     let currentDate = startDate;
@@ -148,18 +130,9 @@ async function populateInvalidDates(req, res){
 }
 
 async function homePage(req, res){
-    const cost = 12345;
-    // const populateInvalid = [];
-
-    // const data = await BookingModel.find();
-    // data.forEach((result) => {
-    //     for (let i = 0; i < result.dates.length; i++){
-    //         populateInvalid.push(result.dates[i]);
-    //     }
-    // });
-                                                                                                                                                                                             
+    const cost = 80000;     
+                                                                                                                                                                               
     return res.json(cost);
-
 }
 
 module.exports = {
