@@ -9,6 +9,26 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Recaptcha from 'react-recaptcha';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+    gridItem: {
+        width: "100%"
+    },
+    gridContainer: {
+        maxWidth: "540px",
+        margin: "auto"
+    },
+    captcha: {
+        display: "inline-block"
+    },
+    captchaDiv: {
+        textAlign: "center"
+    },
+    formTitle: {
+        textAlign: "start"
+    }
+});
 
 class UserForm extends Component {
     constructor(props) {
@@ -52,79 +72,86 @@ class UserForm extends Component {
     }
 
     render() {
+        const { classes } = this.props;
+
         return (
-            <div>
+            <>
                 <form onSubmit={this.props.handleSubmit(this.onSubmit)} >
-                <Grid container 
-                    xs={12}
-                    spacing={8}
-                    justify="center"
-                >
-                    <Grid item xs={10}>
-                        <Typography variant="h6">
-                            Contact Us
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={10} sm={6}>
-                        <Field 
-                            name="name" 
-                            type="text" 
-                            component={TextField} 
-                            label="Name:" 
-                        />
-                    </Grid>
-                    <Grid item 
-                        xs={10} 
-                        sm={6}
-                        justify-self="stretch"
+                    <Grid container 
+                        className={classes.gridContainer}
+                        xs={12}
+                        spacing={16}
+                        justify="center"
                     >
-                        <Field 
-                            name="email" 
-                            type="email" 
-                            component={TextField} 
-                            label="Email:"
-                        />
+                        <Grid item xs={10}>
+                            <Typography variant="h6" className={classes.formTitle}>
+                                Ask a question
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={10}>
+                            <Field 
+                                className={classes.gridItem}
+                                name="name" 
+                                type="text" 
+                                component={TextField} 
+                                label="Name" 
+                                variant="outlined"
+                            />
+                        </Grid>
+                        <Grid item xs={10}>
+                            <Field 
+                                className={classes.gridItem}
+                                name="email" 
+                                type="email" 
+                                component={TextField} 
+                                label="Email"
+                                variant="outlined"
+                            />
+                        </Grid>
+                        <Grid item xs={10}>
+                            <Field 
+                                className={classes.gridItem}
+                                name="phone"
+                                type="number" 
+                                component={TextField} 
+                                label="Phone"
+                                variant="outlined"
+                            />
+                        </Grid>
+                        <Grid item xs={10}>
+                            <Field 
+                                className={classes.gridItem}
+                                name="comment" 
+                                type="text" 
+                                component={TextField} 
+                                label="Message" 
+                                multiline
+                                variant="outlined"
+                            />
+                        </Grid>
+                        <Grid item xs={10} className={classes.captchaDiv}>
+                            <div className={classes.captcha}>
+                                <Recaptcha
+                                    sitekey="6Lclc40UAAAAABi7ABxrNdDrkUMSkiSY7AJZZ05o"
+                                    render="explicit"
+                                    onloadCallback={this.recaptchaLoaded}
+                                    verifyCallback={this.verifyCallback}
+                                />
+                            </div>
+                        </Grid>
+                        <Grid item xs={10} className={classes.captchaDiv}>
+                            <Button
+                                type="submit"
+                                variant="contained"
+                                color="primary"
+                            >
+                                Submit
+                            </Button>
+                        </Grid>
                     </Grid>
-                    <Grid item xs={10}>
-                        <Field 
-                            name="phone"
-                            type="number" 
-                            component={TextField} 
-                            label="Phone:"
-                        />
-                    </Grid>
-                    <Grid item xs={10}>
-                        <Field 
-                            name="comment" 
-                            type="text" 
-                            component={TextField} 
-                            label="Comment:" 
-                            multiline
-                        />
-                    </Grid>
-                    <Grid item xs={10}>
-                        <Recaptcha
-                            sitekey="6Lclc40UAAAAABi7ABxrNdDrkUMSkiSY7AJZZ05o"
-                            render="explicit"
-                            onloadCallback={this.recaptchaLoaded}
-                            verifyCallback={this.verifyCallback}
-                        />
-                </Grid>
-                    <Grid item xs={0}>
-                        <Button
-                            type="submit"
-                            variant="contained"
-                            color="primary"
-                        >
-                            Submit
-                        </Button>
-                    </Grid>
-                </Grid>
-                
                 </form>
-                
                 {this.props.submitStatus && <div>Your message was sent</div> }
-            </div>
+            </>
         );
     }
 }
@@ -154,7 +181,7 @@ const mapStateToProps = (state) => {
     };
 }
 
-export default connect(mapStateToProps, {
+export default withStyles(styles)(connect(mapStateToProps, {
     createInquiry,
     setSubmitStatus 
-})(withRouter(WrappedUserForm));
+})(withRouter(WrappedUserForm)));
