@@ -8,6 +8,7 @@ moment().format();
 async function create(req, res) {
     console.log(req.body);
     const { first_name, last_name, email, guests, phone, comment, stripe_id, checkin, checkout, cost } = req.body;
+    console.log(` Cost is ${cost}`);
 
     const newCheckinDate = moment(checkin).format("YYYY-MM-DD");
     
@@ -33,7 +34,7 @@ async function create(req, res) {
     });
 
     const event = {
-        'summary': `${first_name} ${guests} ${comment}`,
+        'summary': `${first_name} ${guests}`,
         'start': {
           'date': `${newCheckinDate}`,
           'timeZone': 'Australia/Sydney',
@@ -58,11 +59,12 @@ async function create(req, res) {
     .catch(err => console.log("ERROR!!!!!", err));
 
     const payment = await stripe.charges.create({
-        amount:{cost},
+        amount: cost,
         currency: 'usd',
         description: 'Villa Dewata 1 accommodation',
         source: req.body.token.id
     })
+    .catch(err => console.log(err));
 
 
     // email sending
@@ -129,7 +131,7 @@ async function populateInvalidDates(req, res){
     // console.log(populateInvalid);
 }
 
-async function homePage(req, res){
+function homePage(req, res){
     const checkinmoment = moment(req.query.checkin).format("YYYY-MM-DD");
     const checkoutmoment = moment(req.query.checkout).format("YYYY-MM-DD");
     const date1 = new Date(checkinmoment);

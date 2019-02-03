@@ -26,9 +26,16 @@ async componentDidMount(){
     .catch(err => console.log(err));
 }
 
+componentDidUpdate(){
+    // console.log(typeof(this.state.cost));
+    // const { change } = this.props;
+    // change("cost", (this.state.cost * this.state.days));
+}
+
 handleStripeSubmit = (token) => {
     const { change, dispatch } = this.props;
     change("token", token);
+    change("cost", (this.state.cost * this.state.days));
     dispatch(submit("booking")); 
 }
 
@@ -40,6 +47,11 @@ handleStripeSubmit = (token) => {
             <form onSubmit = {() => console.log("what")}>
                <Field
                     name="token"
+                    component="input"
+                    type="hidden"
+               />
+               <Field 
+                    name="cost"
                     component="input"
                     type="hidden"
                />
