@@ -6,7 +6,7 @@ const moment = require("moment");
 moment().format();
 
 async function create(req, res) {
-    const { name, email, guests, phone, comment, stripe_id, checkin, checkout } = req.body;
+    const { first_name, last_name, email, guests, phone, comment, stripe_id, checkin, checkout } = req.body;
 
     const newCheckinDate = moment(checkin).format("YYYY-MM-DD");
     
@@ -14,9 +14,13 @@ async function create(req, res) {
 
     const days = calculateDays(newCheckinDate, newCheckoutDate);
 
+    const dates = getDates(newCheckinDate, newCheckoutDate);
+
     const cost = calculatePayment(days);
 
-    const booking = await BookingModel.create({ name, email, guests, checkin, checkout, cost, phone, comment, stripe_id})
+    determineUnavailableDates();
+
+    const booking = await BookingModel.create({ first_name, last_name, email, guests, checkin, checkout, cost, phone, comment, stripe_id, dates})
     .catch(err => console.log(err));
 
     const oauth2Client = new google.auth.OAuth2(
@@ -28,7 +32,7 @@ async function create(req, res) {
     });
 
     const event = {
-        'summary': `${name} ${guests} ${comment}`,
+        'summary': `${first_name} ${guests} ${comment}`,
         'start': {
           'date': `${newCheckinDate}`,
           'timeZone': 'Australia/Sydney',
@@ -53,7 +57,7 @@ async function create(req, res) {
     .catch(err => console.log("ERROR!!!!!", err));
 
 
-    //email sending
+    // email sending
     // const bookingemail = req.body;
 
     // //email sending booking to admin @ bali 
@@ -85,9 +89,36 @@ async function payment(req,res) {
 
 }
 
+determineUnavailableDates = async () => {
+    const invalidDates = [];
+    const results = await BookingModel.find();
+
+    results.forEach((result) => {
+        invalidDates.push(result.checkin);
+        invalidDates.push(result.checkout);
+    });
+
+    // allDates.push(date);
+    // console.log(` the dates are ${allDates}`);
+}
+
 // function calculateCost(){
 
 // }
+
+function getDates(startDate, stopDate) {
+    let dateArray = [];
+    let currentDate = startDate;
+    console.log(currentDate);
+    console.log(stopDate);
+    while (currentDate <= stopDate){
+        moment(currentDate).format();
+        dateArray.push(currentDate);
+        currentDate = moment(currentDate).add(1, 'days').format("YYYY-MM-DD");
+    }
+    console.log(dateArray);
+    return dateArray;
+}
 
 function calculatePayment(days) {
     return days * 100;
@@ -102,7 +133,22 @@ function calculateDays(checkin, checkout){
 
 }
 
+async function populateInvalidDates(req, res){
+    console.log("running");
+    const populateInvalid = [];
+    const data = await BookingModel.find();
+    data.forEach((result) => {
+        for (let i = 0; i < result.dates.length; i++){
+            populateInvalid.push(result.dates[i]);
+        }
+        // populateInvalid.push(result.dates);
+    });
+    return res.json(populateInvalid);
+    // console.log(populateInvalid);
+}
+
 module.exports = {
     create,
-    payment
+    payment,
+    populateInvalidDates
 }

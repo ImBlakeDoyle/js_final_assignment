@@ -6,6 +6,8 @@ export default (state = defaultState, action) => {
             return action.payload;
         case "PAYMENT":
             return action.payload;
+        case "INVALID_DATES":
+            return action.payload;
         default:
             return state;
     }

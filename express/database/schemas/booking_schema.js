@@ -1,7 +1,11 @@
 const { Schema } = require("mongoose");
 
 const BookingSchema = new Schema({
-    name: {
+    first_name: {
+        type: String,
+        required: true
+    },
+    last_name: {
         type: String,
         required: true
     },
@@ -35,6 +39,9 @@ const BookingSchema = new Schema({
     cost: {
         type: Number,
         required: true
+    },
+    dates: {
+        type: Array
     }
 });
 

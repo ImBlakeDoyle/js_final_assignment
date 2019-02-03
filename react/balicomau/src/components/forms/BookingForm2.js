@@ -39,7 +39,7 @@ class BookingForm2 extends Component {
                         <Grid item xs={12}>
                             <Field 
                                 className={classes.textField}
-                                name="first-name" 
+                                name="first_name" 
                                 type="text" 
                                 component={TextField} 
                                 label="First name" 
@@ -48,7 +48,7 @@ class BookingForm2 extends Component {
                         <Grid item xs={12}>
                             <Field 
                                 className={classes.textField}
-                                name="last-name" 
+                                name="last_name" 
                                 type="text" 
                                 component={TextField} 
                                 label="Last name" 
@@ -57,7 +57,7 @@ class BookingForm2 extends Component {
                         <Grid item xs={12}>
                             <Field 
                                 className={classes.textField}
-                                name="contact-number" 
+                                name="phone" 
                                 type="text" 
                                 component={TextField} 
                                 label="Contact number" 
@@ -80,6 +80,15 @@ class BookingForm2 extends Component {
                                 component={TextField} 
                                 label="Additional comments" 
                                 multiline
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Field 
+                                className={classes.textField}
+                                name="stripe_id" 
+                                type="text" 
+                                component={TextField} 
+                                label="Stripe ID" 
                             />
                         </Grid>
                     </Grid>

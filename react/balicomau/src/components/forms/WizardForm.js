@@ -21,10 +21,10 @@ class WizardForm extends Component {
     }
 
     onFormSubmit = async (formValues) => {
-        const { name, email, guests, checkin, checkout, cost, phone, comment, stripe_id } = formValues;
+        const { first_name, last_name, email, guests, checkin, checkout, cost, phone, comment, stripe_id } = formValues;
         const { createBooking } = this.props;
 
-        createBooking({name, email, guests, checkin, checkout, cost, phone, comment, stripe_id });
+        createBooking({first_name, last_name, email, guests, checkin, checkout, cost, phone, comment, stripe_id });
     }
 
     nextPage = () => {
