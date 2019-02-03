@@ -9,16 +9,19 @@ import store from "./../../store";
 
 class Payments extends Component {
     state = {
-        cost: null,
+        cost: 800000,
         days: null
     }
 
 async componentDidMount(){
     const { checkin, checkout } = store.getState().form.booking.values;
-    await axios.get("http://localhost:3000/")
+    await axios.get("http://localhost:3000/", { 
+        params: { checkin, checkout }
+    })
     .then(res => {
         // console.log(`data is: ${res.data}`);
-        this.setState({ cost: res.data });
+        this.setState({ cost: res.data.cost});
+        this.setState({ days: res.data.totalDays});
     })
     .catch(err => console.log(err));
 }
@@ -30,8 +33,8 @@ handleStripeSubmit = (token) => {
 }
 
     render() {
-        const { cost } = this.state;
-        const { calculateDays } = this.props;
+        const { cost, days } = this.state;
+        // const { calculateDays } = this.props;
         return (
             <div>
             <form onSubmit = {() => console.log("what")}>
@@ -47,7 +50,7 @@ handleStripeSubmit = (token) => {
              description="Villa Dewata 1"
              // amount={cost * 100}
             //   amount={cost}
-             amount={cost}
+             amount={cost*days}
             // amount={this.calculateDays(this.state.form.booking.values.checkin, this.state)}
              token={this.handleStripeSubmit}
              stripeKey={process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY}
