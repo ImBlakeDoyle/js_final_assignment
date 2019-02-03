@@ -75,24 +75,73 @@ class HomePage extends Component {
                                 <FeatureSection 
                                     image="/accommodation.jpg"
                                     title="Accommodation"
-                                    content="Villa Dewata has 4 air-conditioned bedrooms each with King sized bed, ensuite bathroom. Two front bedrooms overlook the pool, and contain baths within their ensuites. Each bedroom has an ottoman which can be used as extra bedding if required."
-                                    expandedContent="Large open plan living, and dining areas with ceiling fans to keep you cool, this villa has concertina doors that can open up the living area to the swimming pool and garden to make it feel even more spacious."
+                                    content="Villa Dewata has 4 air-conditioned bedrooms each with King sized bed, ensuite bathroom. Two front bedrooms overlook the pool, and contain baths within their ensuites."
+                                    expandedContent={[
+                                        <>
+                                            <p>Each bedroom has an ottoman which can be used as extra bedding if required.</p> 
+                                            
+                                            <p>Large open plan living, and dining areas with ceiling fans to keep you cool, this villa has concertina doors that can open up the living area to the swimming pool and garden to make it feel even more spacious.</p>
+                                        </>
+                                    ]}
                                 />
                             }
                             feature2={
                                 <FeatureSection 
                                     image="/facilities.jpg"
                                     title="Facilities"
-                                    content="Villa Dewata has 4 air-conditioned bedrooms each with King sized bed, ensuite bathroom. Two front bedrooms overlook the pool, and contain baths within their ensuites. Each bedroom has an ottoman which can be used as extra bedding if required."
-                                    expandedContent="Large open plan living, and dining areas with ceiling fans to keep you cool, this villa has concertina doors that can open up the living area to the swimming pool and garden to make it feel even more spacious."
+                                    content="Relax by your own private pool, surrounded by luscious gardens or stay in your lounge equipped with air-conditioning, Satellite TV, DVD player, and WIFI."
+                                    expandedContent={[
+                                        <>
+                                            <p>The TV room is air-conditioned and contains a spacious lounge, satellite TV and DVD player.
+                                            There is also a stereo system, telephone and WIFI</p>
+                                            
+                                            <p>There is also a kitchen fully equipped with gas cook top, microwave, toaster etc, as well as a separate chefs kitchen.</p>
+
+                                            <p>An outdoor setting surrounded by tropical gardens provides a relaxing area with 2 Bales (gazebos) containing lounge and day beds, perfect for your afternoon massage or drinks by the pool.</p>
+                                        </>
+                                    ]}
                                 />
                             }
                             feature3={
                                 <FeatureSection 
-                                image="/services.jpg"
-                                title="Services"
-                                content="Villa Dewata has 4 air-conditioned bedrooms each with King sized bed, ensuite bathroom. Two front bedrooms overlook the pool, and contain baths within their ensuites. Each bedroom has an ottoman which can be used as extra bedding if required."
-                                expandedContent="Large open plan living, and dining areas with ceiling fans to keep you cool, this villa has concertina doors that can open up the living area to the swimming pool and garden to make it feel even more spacious."
+                                    image="/services.jpg"
+                                    title="Services"
+                                    content="Included with your villa are a full time Chef, butler, housekeeping and laundry services. There is also a Pool cleaner, Gardener, and Security. In total there is 13 Staff to make sure your stay is perfect."
+                                    expandedContent={[
+                                        <>
+                                            <p>Your Full time chef will prepare many Indonesian dishes, as well as some international cuisine. Simply choose a dish from the selection of cook books supplied and the staff will take care of the rest (ingredients at market prices – simply pay the butler).</p>
+                                            
+                                            <p>Your Butler will make your stay a breeze.
+                                            Should you require anything during your stay; from arranging transportation, to making reservations at your favourite restaurant, your butler will be happy to help your every need.</p>
+                                            
+                                            <p>In addition to the Chef and Butler, your Villa will be serviced daily by our house keeping staff.</p>
+                                            <ul>
+                                                <li>Complimentary airport pick up and transfer</li>
+                                                <li>Welcome drinks and cold towel on arrival</li>
+                                                <li>Inhouse Chef and Butler service Free of charge</li>
+                                                <li>Free grocery shopping service</li>
+                                                <li>Delivery service from local restaurants</li>
+                                                <li>Cot and high chairs</li>
+                                                <li>Reconfirmation of flights</li>
+                                                <li>IDD telephone and fax services</li>
+                                                <li>Free WIFI</li>
+                                                <li>Free air-conditioned car with driver for up to 10 hours a day</li>
+                                                <li>Safety deposit boxes</li>
+                                                <li>Security guards on entry</li>
+                                                <li>House Staff</li>
+                                                <li>Laundry service</li>
+                                            </ul>
+
+                                            The following services can also be arranged for your stay:
+                                            <ul>
+                                                <li>Babysitting</li>
+                                                <li>Massage or reflexology</li>
+                                                <li>Spa treatments</li>
+                                                <li>Tours</li>
+                                                <li>Catering for banquets and parties </li>
+                                            </ul>
+                                        </>
+                                    ]}
                             />
                             }
                         />
