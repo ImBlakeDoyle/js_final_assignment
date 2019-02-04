@@ -17,13 +17,6 @@ const styles = theme => ({
     },
     contentContainer: {
         padding: "0px 10px 90px 10px"
-    },
-    contactUsContainer: {
-        padding: "0px 10px 90px 10px",
-        backgroundColor: "whitesmoke",
-        display: "flex",
-        justifyContent: "center",
-        width: "950px"
     }
 })
 
@@ -136,26 +129,24 @@ class HomePage extends Component {
                             }
                         />
                     </div>
-                <div className={classes.contentContainer}>
-                    <MainFeatureSection 
-                        img="https://s3-ap-southeast-2.amazonaws.com/villa-dewata/seminyak-food.jpg"
-                        title="Situated in the Seminyak area only 50 metres from the busy Jalan Raya/Legian streets"
-                        content={[
-                            <>
-                                <p>With an abundance of shops and great restaurants all within walking distance the villa is close enough to all the action, yet being set back off the main road ensures a quiet and peaceful stay.</p>
-                            </>
-                        ]}
-                    />
-                </div>
-                <div className={classes.contentContainer}>
-                        <CarouselSection />
-                </div>
-                <div className="content">
-                    <div className={classes.contactUsContainer}>
+                    <div className={classes.contentContainer}>
+                        <MainFeatureSection 
+                            img="https://s3-ap-southeast-2.amazonaws.com/villa-dewata/seminyak-food.jpg"
+                            title="Situated in the Seminyak area only 50 metres from the busy Jalan Raya/Legian streets"
+                            content={[
+                                <>
+                                    <p>With an abundance of shops and great restaurants all within walking distance the villa is close enough to all the action, yet being set back off the main road ensures a quiet and peaceful stay.</p>
+                                </>
+                            ]}
+                        />
+                    </div>
+                    <div className={classes.contentContainer}>
+                            <CarouselSection />
+                    </div>
+                    <div className={classes.contentContainer}>
                         <ContactUsContainer />
                     </div>
                 </div>
-            </div>
             </>
         )
     };

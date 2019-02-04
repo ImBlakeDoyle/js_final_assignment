@@ -5,19 +5,9 @@ import { withStyles } from '@material-ui/core/styles';
 // import "./../../styles/MainFeatureSection.css"
 
 const styles = theme => ({
-    // divBody: {
-    //     height: "350px",
-    //     width: "500px",
-        // backgroundPosition: "center",
-        // backgroundRepeat: "no-repeat",
-        // backgroundSize: "cover",
-        // position: "relative",
-
-        // maskImage: "linear-gradient(to left, transparent 10%, black 75%)"
-    // },
     divBody: {
         height: "350px",
-        width: "390px",
+        width: "350px",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
@@ -25,7 +15,7 @@ const styles = theme => ({
         maxWidth: "500px",
         margin: "auto",
         [theme.breakpoints.up('md')]: {
-            width: "390px",
+            width: "500px",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
@@ -47,31 +37,12 @@ const styles = theme => ({
 class MainFeatureSection extends React.Component {
     render() {
         return (
-            // <>
-            //     <Grid container>
-            //         <Grid item xs={6}>
-            //             <div className={this.props.classes.divBody} style={{backgroundImage: `url(${this.props.img})`}}>
-            //             </div>
-            //         </Grid>
-            //         <Grid item xs={6} className={this.props.classes.contentGrid}>
-            //             <div className={this.props.classes.contentContainer}>
-            //                 <Typography variant="h5">
-            //                     {this.props.title}
-            //                 </Typography>
-            //                 <Typography variant="body1">
-            //                     {this.props.content}
-            //                 </Typography>
-            //             </div>
-            //         </Grid>
-            //     </Grid>
-            // </>
-
             <>
                 <Grid container justify="center" spacing={16}>
                     <Grid item xs={12} md={6}>
                         <div className={this.props.classes.divBody} style={{backgroundImage: `url(${this.props.img})`}}/>
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} sm={8} md={6} className={this.props.classes.contentGrid}>
                         <div className={this.props.classes.contentContainer}>
                              <Typography variant="h5">
                                  {this.props.title}
