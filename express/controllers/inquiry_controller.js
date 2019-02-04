@@ -3,6 +3,7 @@ const Mailer = require("./../services/Mailer");
 const inquiryTemplate = require('../services/emailTemplates/inquiryTemplate')
 
 async function create(req, res) {
+    console.log("creating inquiry")
     const { name, email, comment, phone } = req.body;
     const inquiryemail = req.body;
 
@@ -15,7 +16,8 @@ async function create(req, res) {
     <br/><p>Comment: ${inquiryemail.comment}<p> 
     <br/><p>Phone: ${inquiryemail.phone}<p>`);
     mailer.send();
-    return res.status(200)
+    console.log("responding")
+    return res.status(200).send("email sent successfully");
 }
 
 module.exports = {
