@@ -32,6 +32,7 @@ class UserForm extends Component {
             isVerified: false
         }
     }
+    
     onSubmit = async (formValues) => {
         const { name, email, comment, phone } = formValues;
         const { createInquiry, reset, setSubmitStatus } = this.props;

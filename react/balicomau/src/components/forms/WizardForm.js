@@ -12,11 +12,11 @@ class WizardForm extends Component {
     }
 
     onFormSubmit = async (formValues) => {
-        const { first_name, last_name, email, guests, checkin, checkout, phone, comment, stripe_id, token, cost } = formValues;
+        const { first_name, last_name, email, guests, checkin, checkout, phone, comment, token, cost } = formValues;
         // const { cost } = this.state.cost;
         const { createBooking } = this.props;
 
-        createBooking({first_name, last_name, email, guests, checkin, checkout, cost, phone, comment, stripe_id, token });
+        createBooking({first_name, last_name, email, guests, checkin, checkout, cost, phone, comment, token });
     }
 
     nextPage = () => {

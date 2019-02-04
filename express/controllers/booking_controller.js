@@ -7,7 +7,8 @@ moment().format();
 
 async function create(req, res) {
     console.log(req.body);
-    const { first_name, last_name, email, guests, phone, comment, stripe_id, checkin, checkout, cost } = req.body;
+    const { first_name, last_name, email, guests, phone, comment, checkin, checkout, cost } = req.body;
+    const stripe_id  = req.body.token.id;
     console.log(` Cost is ${cost}`);
 
     const newCheckinDate = moment(checkin).format("YYYY-MM-DD");
@@ -22,7 +23,7 @@ async function create(req, res) {
 
     // determineUnavailableDates();
 
-    const booking = await BookingModel.create({ first_name, last_name, email, guests, checkin, checkout, cost, phone, comment, stripe_id, dates})
+    const booking = await BookingModel.create({ first_name, last_name, email, guests, checkin, checkout, cost, phone, comment, dates, stripe_id})
     .catch(err => console.log(err));
 
     const oauth2Client = new google.auth.OAuth2(
