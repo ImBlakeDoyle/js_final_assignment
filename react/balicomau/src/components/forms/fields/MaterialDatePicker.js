@@ -5,6 +5,9 @@ import { fetchInvalid } from "./../../../actions";
 import { connect } from "react-redux";
 
 class NewDatePicker extends Component {
+    state = {
+        date: new Date()
+    }
     componentDidMount() {
         // const { fetchInvalid } = this.props;
         // fetchInvalid();
@@ -34,6 +37,9 @@ class NewDatePicker extends Component {
         }
     }
 
+    focusedDate = () => {
+    }
+
     render(){
         const { input, meta, populateInvalid, ...other } = this.props;
 
@@ -43,6 +49,7 @@ class NewDatePicker extends Component {
                 {...other}
                 {...input}
                 shouldDisableDate={this.unavailableDates}
+                initialFocusedDate={this.focusedDate}
             />
         );
     }
