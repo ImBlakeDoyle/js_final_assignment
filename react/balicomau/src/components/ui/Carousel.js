@@ -35,7 +35,7 @@ const styles = theme => ({
     width: '100%',
       [theme.breakpoints.up('md')]: {
         maxWidth: 900,
-        height: 500
+        height: 600
     }
   },
 });
