@@ -32,6 +32,9 @@ const styles = theme => ({
   },
   expandOpen: {
     transform: 'rotate(180deg)',
+  },
+  cardContentBody: {
+    height: "144px"
   }
 });
 
@@ -54,7 +57,7 @@ class FeatureCard extends React.Component {
             <Typography variant="h6">
                 {this.props.title}
             </Typography>
-            <Typography component="p">
+            <Typography component="p" className={this.props.classes.cardContentBody}>
                 {this.props.content}
             </Typography>
         </CardContent>

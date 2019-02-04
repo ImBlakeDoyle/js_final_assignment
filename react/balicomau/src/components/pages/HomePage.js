@@ -8,29 +8,16 @@ import { withStyles } from '@material-ui/core/styles';
 import ContactUsContainer from "./../sections/ContactUsContainer";
 import MainFeatureSection from "../sections/MainFeatureSection";
 import AppBar from './../ui/AppBar';
+import GridList from "../sections/GridList.js"
 
 const styles = theme => ({
     imageContainer: {
         padding: "40px 0px",
-
-        // z-index testing
         zIndex: 1,
         position: "relative"
     },
     contentContainer: {
-        padding: "0px 10px 40px 10px"
-    },
-    contactUsContainer: {
-        padding: "0px 10px 40px 10px",
-        backgroundColor: "whitesmoke",
-        display: "flex",
-        justifyContent: "center"
-    },
-    contentZIndex: {
-        // z-index testing
-        zIndex: 2,
-        position: "relative",
-        marginTop: "-100px"
+        padding: "0px 10px 90px 10px"
     }
 })
 
@@ -58,7 +45,7 @@ class HomePage extends Component {
                             content={[
                                 <>
                                     <p>Villa dewata can offer you 2 beautiful luxurious villas each with air-conditioned bedrooms, lovely ensuite bathrooms, spacious open-plan living and dining areas, and your own private swimming pool, aswell as trained staff including a fulltime Chef and butler to tend to your every need.</p>
-                        
+                    
                                     <p>Set in a quiet compound (of almost 1 acre) The villa’s are within steps of the famous restaurant area and main shopping of Seminyak and Oberoi area. The international airport is approx 30 mins away and is also about the same distance to the popular “Bali Nirvana Golf Course” and the famous “Tanah Lot Temple”</p>
                 
                                     <p>Villa dewata is made up of 2 villas, one 4 bedroom villa, and one 5 bedroom villa. Both villas can be combined to comfortably hold up to 18 people. Additional bedding can be arranged.</p>
@@ -143,24 +130,77 @@ class HomePage extends Component {
                             }
                         />
                     </div>
-                </div>
-                <div className={classes.imageContainer}>
-                    <MainFeatureSection 
-                        img="https://s3-ap-southeast-2.amazonaws.com/villa-dewata/seminyak-food.jpg"
-                        content={[
-                            <>
-                                <p>Villa Dewata is situated in the Seminyak area only 50 metres from the busy Jalan Raya/Legian streets.</p>
-                                <p>With an abundance of shops and great restaurants all within walking distance the villa is close enough to all the action, yet being set back off the main road ensures a quiet and peaceful stay.</p>
-                                <p>The international airport is approx 30 mins away and is also about the same distance to the popular “Bali Nirvana Golf Course” and the famous “Tanah Lot Temple”</p>
-                            </>
-                        ]}
-                    />
-                </div>
-                <div className={classes.imageContainer}>
-                        <CarouselSection />
+                    <div className={classes.contentContainer}>
+                        <MainFeatureSection 
+                            img="https://s3-ap-southeast-2.amazonaws.com/villa-dewata/seminyak-food.jpg"
+                            title="Situated in the Seminyak area only 50 metres from the busy Jalan Raya/Legian streets"
+                            content={[
+                                <>
+                                    <p>With an abundance of shops and great restaurants all within walking distance the villa is close enough to all the action, yet being set back off the main road ensures a quiet and peaceful stay.</p>
+                                </>
+                            ]}
+                        />
                     </div>
-                <div className="content">
-                    <div className={classes.contactUsContainer}>
+                    <div className={classes.contentContainer}>
+                            {/* <CarouselSection /> */}
+                            <GridList 
+                                images = {[
+                                    {
+                                        url: "https://s3-ap-southeast-2.amazonaws.com/villa-dewata/outside-day-1.jpg",
+                                        label: 'Outside View 1'
+                                    },
+                                    {
+                                        label: "Outside View 2",
+                                        url: "https://s3-ap-southeast-2.amazonaws.com/villa-dewata/outside-night-1.jpg",
+                                    },
+                                    {
+                                        label: "Outside View 3",
+                                        url: "https://s3-ap-southeast-2.amazonaws.com/villa-dewata/outside-night-2.jpg",
+                                    },
+                                    {
+                                        label: "Pool View 1",
+                                        url: "https://s3-ap-southeast-2.amazonaws.com/villa-dewata/pool-day-1.jpg",
+                                    },
+                                    {
+                                        label: "Pool View 2",
+                                        url: "https://s3-ap-southeast-2.amazonaws.com/villa-dewata/pool-day-2.jpg",
+                                    },
+                                    {
+                                        label: "Pool View 3",
+                                        url: "https://s3-ap-southeast-2.amazonaws.com/villa-dewata/pool-night-1.jpg",
+                                    },
+                                    {
+                                        label: "Pool View 4",
+                                        url: "https://s3-ap-southeast-2.amazonaws.com/villa-dewata/pool-night-2.jpg",
+                                    },
+                                    {
+                                        label: "Bedroom 1",
+                                        url: "https://s3-ap-southeast-2.amazonaws.com/villa-dewata/bedroom1-1.jpg",
+                                    },
+                                    {
+                                        label: "Bedroom 2",
+                                        url: "https://s3-ap-southeast-2.amazonaws.com/villa-dewata/bedroom1-2.jpg",
+                                    },
+                                    {
+                                        label: "Bedroom 3",
+                                        url: "https://s3-ap-southeast-2.amazonaws.com/villa-dewata/bedroom2-1.jpg",
+                                    },
+                                    {
+                                        label: "Bathroom",
+                                        url: "https://s3-ap-southeast-2.amazonaws.com/villa-dewata/bathroom-1.jpg",
+                                    },
+                                    {
+                                        label: "Lounge",
+                                        url: "https://s3-ap-southeast-2.amazonaws.com/villa-dewata/lounge-1.jpg",
+                                    },
+                                    {
+                                        label: "Dining",
+                                        url: "https://s3-ap-southeast-2.amazonaws.com/villa-dewata/dining-1.jpg",
+                                    }
+                                ]}
+                            />
+                    </div>
+                    <div className={classes.contentContainer}>
                         <ContactUsContainer />
                     </div>
                 </div>

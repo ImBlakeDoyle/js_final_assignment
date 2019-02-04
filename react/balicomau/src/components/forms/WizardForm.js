@@ -5,7 +5,6 @@ import BookingForm2 from "./BookingForm2";
 import Payments from "./Payments";
 import { connect } from "react-redux";
 import { createBooking } from "../../actions";
-import moment from "moment";
 
 class WizardForm extends Component {
     state = {
@@ -42,12 +41,6 @@ class WizardForm extends Component {
         );
     }
 }
-
-// const mapStateToProps = (state) => {
-//     return {
-//         cost: state.form
-//     }
-// }
 
 WizardForm.PropTypes = {
     onSubmit: PropTypes.func.isRequired

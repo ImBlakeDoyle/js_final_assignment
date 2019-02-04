@@ -1,9 +1,5 @@
 import React from 'react';
 import "./../../styles/HeroSection.css";
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-import BurgerMenu from './../ui/BurgerMenu';
-import Typography from '@material-ui/core/Typography';
 import AboutSection from "./../sections/AboutSection";
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
