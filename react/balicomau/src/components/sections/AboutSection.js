@@ -3,26 +3,21 @@ import "./../../styles/AboutSection.css"
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
-const AboutSection = () => {
-
+const AboutSection = (props) => {
     return (
-        <div>
-            <Grid container
-                spacing={32}
-                justify="center"
-            >
-                <Grid item xs={11}>
-                    <div className="content">
-                        <Typography variant="h6" gutterBottom>
-                            Why don't you consider the luxury of staying at a beautiful villa?
-                        </Typography>
-                        <Typography variant="body2" gutterBottom>
-                            Villa Dewata can offer you 2 beautiful luxurious villas each with air-conditioned bedrooms, lovely ensuite bathrooms, spacious open-plan living and dining areas, and your own private swimming pool, aswell as trained staff including a fulltime Chef and butler to tend to your every need.
-                        </Typography>
-                    </div>
-                </Grid>
+        <Grid container
+            spacing={32}
+            justify="center"
+        >
+            <Grid item xs={11}>
+                <Typography variant="h5" gutterBottom>
+                    {props.heading}
+                </Typography>
+                <Typography variant="body1" gutterBottom>
+                    {props.content}
+                </Typography>
             </Grid>
-        </div>
+        </Grid>
     )
 }
 

@@ -10,6 +10,7 @@ import "./../styles/index.css";
 import UserForm from "./forms/UserForm";
 import { BrowserRouter, Route } from "react-router-dom";
 
+
 class App extends Component {
     render() {
         return (
@@ -18,6 +19,7 @@ class App extends Component {
                     <Route exact path="/" component={HomePage} />
                 </div>
             </BrowserRouter>
+
         );
     }
 }

@@ -16,6 +16,9 @@ const styles = theme => ({
   root: {
     maxWidth: 500,
     flexGrow: 1,
+      [theme.breakpoints.up('md')]: {
+        maxWidth: 900
+    }
   },
   header: {
     display: 'flex',
@@ -30,6 +33,10 @@ const styles = theme => ({
     maxWidth: 500,
     overflow: 'hidden',
     width: '100%',
+      [theme.breakpoints.up('md')]: {
+        maxWidth: 900,
+        height: 600
+    }
   },
 });
 

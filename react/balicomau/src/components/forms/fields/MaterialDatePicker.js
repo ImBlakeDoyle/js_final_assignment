@@ -15,17 +15,6 @@ class NewDatePicker extends Component {
         console.log('here')
     }
 
-    // unavailableDates = (date) => {
-    //     const { populateInvalid } = this.props;
-    //     console.log(`Invalid dates are: ${populateInvalid}`);
-    //     // for (let i = 0; i < populateInvalid.length; i++){
-    //     //     const newDate = moment.utc(populateInvalid[i]).format();
-    //     //     if ((date.getDay() === newDate.getDay()) && (date.getMonth() === newDate.getMonth()) && (date.getFullYear() === newDate.getFullYear())){
-    //     //         return newDate;
-    //     //     }
-    //     // }
-    // }
-
     unavailableDates = (date) => {
         date = moment.utc(date).set('hour', 0).add(1, 'd').format();
         const { populateInvalid } = this.props;
@@ -38,6 +27,7 @@ class NewDatePicker extends Component {
     }
 
     // focusedDate = () => {
+    //     if (this.state.date)
     // }
 
     render(){
