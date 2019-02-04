@@ -4,13 +4,31 @@ const BookingRoutes = require("./booking_routes");
 const InquiryRoutes = require("./inquiry_routes");
 const { google } = require("googleapis");
 const BookingController = require("./../controllers/booking_controller");
-
+const AdminController = require("../controllers/user_controller");
+const { celebrate, Joi } = require("celebrate");
+const passport = require("passport");
 
 router.use("/booking", BookingRoutes);
 
 router.use("/inquiry", InquiryRoutes);
 
+router.post("/register", celebrate({
+    body: {
+        email: Joi.string().required(),
+        password: Joi.string().required()
+    }
+}), AdminController.create);
+
 router.get("/", BookingController.homePage);
+
+router.post("/login", celebrate({
+    body: {
+        email: Joi.string().required(),
+        password: Joi.string().required()
+    }
+}), AdminController.login);
+
+router.get("/admin/all", passport.authenticate("jwt", {session: false}), AdminController.index);
 
 router.get("/test", (req, res) => {
     const oauth2Client = new google.auth.OAuth2(

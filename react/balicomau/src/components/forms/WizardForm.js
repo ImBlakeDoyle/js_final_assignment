@@ -14,7 +14,6 @@ class WizardForm extends Component {
 
     onFormSubmit = async (formValues) => {
         const { first_name, last_name, email, guests, checkin, checkout, phone, comment, token, cost } = formValues;
-        // const { cost } = this.state.cost;
         const { createBooking } = this.props;
 
         createBooking({first_name, last_name, email, guests, checkin, checkout, cost, phone, comment, token });
@@ -42,12 +41,6 @@ class WizardForm extends Component {
         );
     }
 }
-
-// const mapStateToProps = (state) => {
-//     return {
-//         cost: state.form
-//     }
-// }
 
 WizardForm.PropTypes = {
     onSubmit: PropTypes.func.isRequired
