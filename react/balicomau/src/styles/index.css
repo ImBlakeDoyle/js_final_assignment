@@ -12,14 +12,18 @@ body #root {
     }
   } */
 
-  body .content {
-    background-color: whitesmoke;
-  }
-
-  @media only screen and (min-width: 1200px) {
+  @media only screen and (min-width: 960px) {
     body .content {
         margin: auto;
-        padding: 50px;
+        padding-top: 40px;
+        width: 1100px;
+        position: relative;
+    }
+
+    body .contentZIndex {
+        background-color: whitesmoke;
+        margin: auto;
+        padding-top: 50px;
         width: 1100px;
         z-index: 2;
         margin-top: -100px;
