@@ -75,15 +75,6 @@ class BookingForm2 extends Component {
                                 multiline
                             />
                         </Grid>
-                        <Grid item xs={12}>
-                            <Field 
-                                className={classes.textField}
-                                name="stripe_id" 
-                                type="text" 
-                                component={TextField} 
-                                label="Stripe ID" 
-                            />
-                        </Grid>
                     </Grid>
                 </div>
                 <div className={classes.formButtonGroup}>
