@@ -22,13 +22,6 @@ const styles = theme => ({
 
 class BookingForm2 extends Component {
 
-    // onFormSubmit = async (formValues) => {
-    //     const { name, email, guests, checkin, checkout, cost, phone, comment, stripe_id } = formValues;
-    //     const { createBooking } = this.props;
-
-    //     createBooking({name, email, guests, checkin, checkout, cost, phone, comment, stripe_id });
-    // }
-
     render(){
     const { classes, handleSubmit, previousPage } = this.props;
 
@@ -75,7 +68,7 @@ class BookingForm2 extends Component {
                         <Grid item xs={12}>
                             <Field 
                                 className={classes.textField}
-                                name="comments" 
+                                name="comment" 
                                 type="text" 
                                 component={TextField} 
                                 label="Additional comments" 
@@ -107,12 +100,6 @@ class BookingForm2 extends Component {
                         </Grid>
                     </Grid>
                 </div>
-                {/* <div>
-                    <button type="button" name="previous" onClick={previousPage}>
-                        Previous
-                    </button>
-                    <input type="submit" value="submit" />
-                </div> */}
             </form>
         );
     }

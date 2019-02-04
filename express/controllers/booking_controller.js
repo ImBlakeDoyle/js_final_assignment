@@ -6,19 +6,21 @@ const moment = require("moment");
 moment().format();
 
 async function create(req, res) {
-    const { first_name, last_name, email, guests, phone, comment, stripe_id, checkin, checkout } = req.body;
+    console.log(req.body);
+    const { first_name, last_name, email, guests, phone, comment, stripe_id, checkin, checkout, cost } = req.body;
+    console.log(` Cost is ${cost}`);
 
     const newCheckinDate = moment(checkin).format("YYYY-MM-DD");
     
     const newCheckoutDate = moment(checkout).format("YYYY-MM-DD");
 
-    const days = calculateDays(newCheckinDate, newCheckoutDate);
+    // const days = calculateDays(newCheckinDate, newCheckoutDate);
 
     const dates = getDates(newCheckinDate, newCheckoutDate);
 
-    const cost = calculatePayment(days);
+    // const cost = calculatePayment(days);
 
-    determineUnavailableDates();
+    // determineUnavailableDates();
 
     const booking = await BookingModel.create({ first_name, last_name, email, guests, checkin, checkout, cost, phone, comment, stripe_id, dates})
     .catch(err => console.log(err));
@@ -32,7 +34,7 @@ async function create(req, res) {
     });
 
     const event = {
-        'summary': `${first_name} ${guests} ${comment}`,
+        'summary': `${first_name} ${guests}`,
         'start': {
           'date': `${newCheckinDate}`,
           'timeZone': 'Australia/Sydney',
@@ -55,6 +57,14 @@ async function create(req, res) {
         console.log(events);
     })
     .catch(err => console.log("ERROR!!!!!", err));
+
+    const payment = await stripe.charges.create({
+        amount: cost,
+        currency: 'usd',
+        description: 'Villa Dewata 1 accommodation',
+        source: req.body.token.id
+    })
+    .catch(err => console.log(err));
 
 
     // email sending
@@ -79,33 +89,6 @@ async function create(req, res) {
 
 }
 
-async function payment(req,res) {
-    // console.log(req.body);
-    // console.log(req.body);
-    // console.log(res);
-    // stripe.charges.create({
-    //     amount: 
-    // });
-
-}
-
-determineUnavailableDates = async () => {
-    const invalidDates = [];
-    const results = await BookingModel.find();
-
-    results.forEach((result) => {
-        invalidDates.push(result.checkin);
-        invalidDates.push(result.checkout);
-    });
-
-    // allDates.push(date);
-    // console.log(` the dates are ${allDates}`);
-}
-
-// function calculateCost(){
-
-// }
-
 function getDates(startDate, stopDate) {
     let dateArray = [];
     let currentDate = startDate;
@@ -121,6 +104,7 @@ function getDates(startDate, stopDate) {
 }
 
 function calculatePayment(days) {
+    console.log("running calculate cost");
     return days * 100;
 }
 
@@ -147,8 +131,28 @@ async function populateInvalidDates(req, res){
     // console.log(populateInvalid);
 }
 
+function homePage(req, res){
+    const checkinmoment = moment(req.query.checkin).format("YYYY-MM-DD");
+    const checkoutmoment = moment(req.query.checkout).format("YYYY-MM-DD");
+    const date1 = new Date(checkinmoment);
+    const date2 = new Date(checkoutmoment);
+    const oneDay = 24*60*60*1000;
+    const totalDays = Math.round(Math.abs((date1.getTime() - date2.getTime()) / (oneDay)));
+    // console.log(`Check-in is ${req.query.checkin}`);
+    // console.log(`Check-out is ${req.query.checkout}`);
+
+    // Overwrite this function to pass through checkin
+    // & checkout with the axios request. Update cost 
+    // depending on the dates & also calculate how many 
+    // days between the dates to then send back and 
+    // update the days state
+    const cost = 80000;  
+
+    return res.json({cost, totalDays});
+}
+
 module.exports = {
     create,
-    payment,
-    populateInvalidDates
+    populateInvalidDates,
+    homePage
 }
