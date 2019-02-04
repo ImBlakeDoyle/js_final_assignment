@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { InlineDatePicker, Day } from "material-ui-pickers";
+import { InlineDatePicker } from "material-ui-pickers";
 import moment from "moment";
 import { fetchInvalid } from "./../../../actions";
 import { connect } from "react-redux";

@@ -1,5 +1,4 @@
 import React from 'react';
-import "./../../styles/AboutSection.css"
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 

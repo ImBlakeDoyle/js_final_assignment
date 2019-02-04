@@ -5,7 +5,6 @@ import BookingForm2 from "./BookingForm2";
 import Payments from "./Payments";
 import { connect } from "react-redux";
 import { createBooking } from "../../actions";
-import moment from "moment";
 
 class WizardForm extends Component {
     state = {
@@ -13,11 +12,11 @@ class WizardForm extends Component {
     }
 
     onFormSubmit = async (formValues) => {
-        const { first_name, last_name, email, guests, checkin, checkout, phone, comment, stripe_id, token, cost } = formValues;
+        const { first_name, last_name, email, guests, checkin, checkout, phone, comment, token, cost } = formValues;
         // const { cost } = this.state.cost;
         const { createBooking } = this.props;
 
-        createBooking({first_name, last_name, email, guests, checkin, checkout, cost, phone, comment, stripe_id, token });
+        createBooking({first_name, last_name, email, guests, checkin, checkout, cost, phone, comment, token });
     }
 
     nextPage = () => {
@@ -42,12 +41,6 @@ class WizardForm extends Component {
         );
     }
 }
-
-// const mapStateToProps = (state) => {
-//     return {
-//         cost: state.form
-//     }
-// }
 
 WizardForm.PropTypes = {
     onSubmit: PropTypes.func.isRequired
