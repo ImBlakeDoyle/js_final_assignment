@@ -37,8 +37,8 @@ class NewDatePicker extends Component {
         }
     }
 
-    focusedDate = () => {
-    }
+    // focusedDate = () => {
+    // }
 
     render(){
         const { input, meta, populateInvalid, ...other } = this.props;
