@@ -4,10 +4,6 @@ import Carousel from "./../ui/Carousel";
 
 const CarouselSection = (props) => {
     return (
-        // <Grid container 
-        //     justify="center"
-        // >
-        // {/* <Grid item xs={12}> */}
         <>
             <Carousel images={[
                 {
@@ -64,8 +60,6 @@ const CarouselSection = (props) => {
                 }
             ]}/>
         </>
-            // {/* </Grid> */}
-        // </Grid>
     )
 }
 
