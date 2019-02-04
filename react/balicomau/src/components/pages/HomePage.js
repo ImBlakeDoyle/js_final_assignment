@@ -3,20 +3,15 @@ import HeroSection from "../sections/HeroSection";
 import AboutSection from "../sections/AboutSection";
 import FeatureSection from "../sections/FeatureSection";
 import FeatureContainer from "../sections/FeatureContainer";
-import Grid from '@material-ui/core/Grid';
-import ImageSection from "../sections/ImageSection";
 import CarouselSection from "../sections/CarouselSection";
-import WizardForm from "../forms/WizardForm";
 import { withStyles } from '@material-ui/core/styles';
-import UserForm from "../forms/UserForm";
 import ContactUsContainer from "./../sections/ContactUsContainer";
 import MainFeatureSection from "../sections/MainFeatureSection";
 import AppBar from './../ui/AppBar';
 
 const styles = theme => ({
     imageContainer: {
-        // padding: "0px 0px 40px 0px"
-        paddingBottom: "40px",
+        padding: "40px 0px",
 
         // z-index testing
         zIndex: 1,
@@ -29,7 +24,7 @@ const styles = theme => ({
         padding: "0px 10px 40px 10px",
         backgroundColor: "whitesmoke"
     },
-    contentBody: {
+    contentZIndex: {
         // z-index testing
         zIndex: 2,
         position: "relative",
@@ -54,7 +49,7 @@ class HomePage extends Component {
                         buttonText="Book"
                     />
                 </div>
-                <div className="content">
+                <div className="contentZIndex">
                     <div className={classes.contentContainer}>
                         <AboutSection 
                             heading="Why don't you consider the luxury of staying at a beautiful villa?"
@@ -146,38 +141,28 @@ class HomePage extends Component {
                             }
                         />
                     </div>
-                    <div className={classes.contentContainer}>
-                        {/* <HeroSection 
-                            img="https://s3-ap-southeast-2.amazonaws.com/villa-dewata/seminyak-food.jpg"
-                            // heading="Why don't you consider the luxury of staying at a beautiful villa?"
-                            content={[
-                                <>
-                                    <p>Villa Dewata is situated in the Seminyak area only 50 metres from the busy Jalan Raya/Legian streets.</p>
-                                    <p>With an abundance of shops and great restaurants all within walking distance the villa is close enough to all the action, yet being set back off the main road ensures a quiet and peaceful stay.</p>
-                                    <p>The international airport is approx 30 mins away and is also about the same distance to the popular “Bali Nirvana Golf Course” and the famous “Tanah Lot Temple”</p>
-                                </>
-                            ]}
-                            paperExists="true"
-                        /> */}
-                        <MainFeatureSection 
-                            img="https://s3-ap-southeast-2.amazonaws.com/villa-dewata/seminyak-food.jpg"
-                            content={[
-                                <div>
-                                    <p>Villa Dewata is situated in the Seminyak area only 50 metres from the busy Jalan Raya/Legian streets.</p>
-                                    <p>With an abundance of shops and great restaurants all within walking distance the villa is close enough to all the action, yet being set back off the main road ensures a quiet and peaceful stay.</p>
-                                    <p>The international airport is approx 30 mins away and is also about the same distance to the popular “Bali Nirvana Golf Course” and the famous “Tanah Lot Temple”</p>
-                                </div>
-                            ]}
-                        />
-                    </div>
-                    <div className={classes.imageContainer}>
+                </div>
+                <div className={classes.imageContainer}>
+                    <MainFeatureSection 
+                        img="https://s3-ap-southeast-2.amazonaws.com/villa-dewata/seminyak-food.jpg"
+                        content={[
+                            <>
+                                <p>Villa Dewata is situated in the Seminyak area only 50 metres from the busy Jalan Raya/Legian streets.</p>
+                                <p>With an abundance of shops and great restaurants all within walking distance the villa is close enough to all the action, yet being set back off the main road ensures a quiet and peaceful stay.</p>
+                                <p>The international airport is approx 30 mins away and is also about the same distance to the popular “Bali Nirvana Golf Course” and the famous “Tanah Lot Temple”</p>
+                            </>
+                        ]}
+                    />
+                </div>
+                <div className={classes.imageContainer}>
                         <CarouselSection />
                     </div>
+                <div className="content">
                     <div className={classes.contactUsContainer}>
                         <ContactUsContainer />
                     </div>
                 </div>
-                </>
+            </>
         )
     };
 }

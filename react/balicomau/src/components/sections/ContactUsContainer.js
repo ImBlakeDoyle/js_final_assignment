@@ -9,7 +9,7 @@ import Paper from '@material-ui/core/Paper';
 const styles = theme => ({
     containerTitle: {
         textAlign: "center",
-        // marginTop: "10px"
+        marginBottom: "10px"
     },
     formContainer: {
         maxWidth: "1000px"
@@ -29,7 +29,7 @@ class ContactUsContainer extends React.Component {
     render() {
         return (
             <Grid container xs={12} spacing={16} justify="space-around" className={this.props.classes.formContainer}>
-                <Grid item xs={10} className={this.props.classes.containerTitle}>
+                <Grid item xs={12} className={this.props.classes.containerTitle}>
                     <Typography variant="h4">
                         Contact Us
                     </Typography>
