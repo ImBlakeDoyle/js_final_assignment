@@ -1,22 +1,14 @@
 body #root {
-    /* margin: 10px; */
     overflow-x: hidden;
     background-color: whitesmoke;
 }
 
-/* @media only screen and (min-width: 1200px) {
-    body #root {
-        margin: auto;
-        overflow-x: hidden;
-        width: 1200px;
-    }
-  } */
-
-  @media only screen and (min-width: 960px) {
+@media only screen and (min-width: 1000px) {
     body .content {
         margin: auto;
         padding-top: 40px;
-        width: 1100px;
+        width: 1000px; 
+        max-width: 1100px;
         position: relative;
     }
 
@@ -24,9 +16,10 @@ body #root {
         background-color: whitesmoke;
         margin: auto;
         padding-top: 50px;
-        width: 1100px;
+        width: 1000px;
+        max-width: 1100px;
         z-index: 2;
         margin-top: -100px;
         position: relative;
     }
-  }
+}

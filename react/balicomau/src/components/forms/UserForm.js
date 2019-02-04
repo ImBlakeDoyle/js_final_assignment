@@ -19,12 +19,6 @@ const styles = theme => ({
         maxWidth: "540px",
         margin: "auto"
     },
-    captcha: {
-        display: "inline-block"
-    },
-    captchaDiv: {
-        textAlign: "center"
-    },
     formTitle: {
         textAlign: "start"
     }
@@ -129,15 +123,13 @@ class UserForm extends Component {
                                 variant="outlined"
                             />
                         </Grid>
-                        <Grid item xs={10} className={classes.captchaDiv}>
-                            <div className={classes.captcha}>
-                                <Recaptcha
-                                    sitekey="6Lclc40UAAAAABi7ABxrNdDrkUMSkiSY7AJZZ05o"
-                                    render="explicit"
-                                    onloadCallback={this.recaptchaLoaded}
-                                    verifyCallback={this.verifyCallback}
-                                />
-                            </div>
+                        <Grid item xs={0}>
+                            <Recaptcha
+                                sitekey="6Lclc40UAAAAABi7ABxrNdDrkUMSkiSY7AJZZ05o"
+                                render="explicit"
+                                onloadCallback={this.recaptchaLoaded}
+                                verifyCallback={this.verifyCallback}
+                            />
                         </Grid>
                         <Grid item xs={10} className={classes.captchaDiv}>
                             <Button

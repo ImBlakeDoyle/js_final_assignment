@@ -12,8 +12,6 @@ import AppBar from './../ui/AppBar';
 const styles = theme => ({
     imageContainer: {
         padding: "40px 0px",
-
-        // z-index testing
         zIndex: 1,
         position: "relative"
     },
@@ -24,13 +22,8 @@ const styles = theme => ({
         padding: "0px 10px 40px 10px",
         backgroundColor: "whitesmoke",
         display: "flex",
-        justifyContent: "center"
-    },
-    contentZIndex: {
-        // z-index testing
-        zIndex: 2,
-        position: "relative",
-        marginTop: "-100px"
+        justifyContent: "center",
+        width: "950px"
     }
 })
 
@@ -58,7 +51,7 @@ class HomePage extends Component {
                             content={[
                                 <>
                                     <p>Villa dewata can offer you 2 beautiful luxurious villas each with air-conditioned bedrooms, lovely ensuite bathrooms, spacious open-plan living and dining areas, and your own private swimming pool, aswell as trained staff including a fulltime Chef and butler to tend to your every need.</p>
-                        
+                    
                                     <p>Set in a quiet compound (of almost 1 acre) The villa’s are within steps of the famous restaurant area and main shopping of Seminyak and Oberoi area. The international airport is approx 30 mins away and is also about the same distance to the popular “Bali Nirvana Golf Course” and the famous “Tanah Lot Temple”</p>
                 
                                     <p>Villa dewata is made up of 2 villas, one 4 bedroom villa, and one 5 bedroom villa. Both villas can be combined to comfortably hold up to 18 people. Additional bedding can be arranged.</p>
