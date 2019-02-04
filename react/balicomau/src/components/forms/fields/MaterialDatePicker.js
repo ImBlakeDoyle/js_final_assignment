@@ -5,6 +5,9 @@ import { fetchInvalid } from "./../../../actions";
 import { connect } from "react-redux";
 
 class NewDatePicker extends Component {
+    state = {
+        date: new Date()
+    }
     componentDidMount() {
         // const { fetchInvalid } = this.props;
         // fetchInvalid();
@@ -12,27 +15,20 @@ class NewDatePicker extends Component {
         console.log('here')
     }
 
-    // unavailableDates = (date) => {
-    //     const { populateInvalid } = this.props;
-    //     console.log(`Invalid dates are: ${populateInvalid}`);
-    //     // for (let i = 0; i < populateInvalid.length; i++){
-    //     //     const newDate = moment.utc(populateInvalid[i]).format();
-    //     //     if ((date.getDay() === newDate.getDay()) && (date.getMonth() === newDate.getMonth()) && (date.getFullYear() === newDate.getFullYear())){
-    //     //         return newDate;
-    //     //     }
-    //     // }
-    // }
-
     unavailableDates = (date) => {
+        date = moment.utc(date).set('hour', 0).add(1, 'd').format();
         const { populateInvalid } = this.props;
         for (let i = 0; i < populateInvalid.length; i++){
-            const newDate = moment.utc(populateInvalid[i]).format();
-            const calDate = moment.utc(date).startOf('day').format();
-            if (calDate === newDate){
-                return calDate;
+            const newDate = moment.utc(populateInvalid[i]).set('hour', 0).format();
+            if (date === newDate){
+                return true;
             }
         }
     }
+
+    // focusedDate = () => {
+    //     if (this.state.date)
+    // }
 
     render(){
         const { input, meta, populateInvalid, ...other } = this.props;
@@ -43,6 +39,7 @@ class NewDatePicker extends Component {
                 {...other}
                 {...input}
                 shouldDisableDate={this.unavailableDates}
+                initialFocusedDate={this.focusedDate}
             />
         );
     }
