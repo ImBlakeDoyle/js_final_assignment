@@ -9,6 +9,8 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import BurgerMenu from './BurgerMenu';
 import ResponsiveDialog from './../ui/ResponsiveDialog';
+import { connect } from "react-redux";
+import { setFormOpen } from "./../../actions";
 
 
 const styles = {
@@ -29,11 +31,13 @@ class ButtonAppBar extends React.Component {
   state = { open: false }
 
   handleClickOpen = () => {
-    this.setState({ open: true });
+    // this.setState({ open: true });
+    this.props.setFormOpen(true);
   }
 
   handleClose= () => {
-    this.setState({ open: false });
+    // this.setState({ open: false });
+    this.props.setFormOpen(false);
   }
 
   render() {
@@ -52,7 +56,7 @@ class ButtonAppBar extends React.Component {
             <Button variant="contained" color="primary" onClick={this.handleClickOpen}>Book</Button>
           </Toolbar>
           <ResponsiveDialog 
-            open={this.state.open}
+            open={this.props.formOpen}
             handleClose={this.handleClose}
           />
         </AppBar>
@@ -61,4 +65,13 @@ class ButtonAppBar extends React.Component {
   }
 }
 
-export default withStyles(styles)(ButtonAppBar);
+const mapStateToProps = (state) => {
+  return {
+      formOpen: state.formOpen
+  };
+}
+
+
+export default withStyles(styles)(connect(mapStateToProps, {
+  setFormOpen
+})(ButtonAppBar));

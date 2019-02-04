@@ -4,13 +4,16 @@ import { connect } from "react-redux";
 import { reduxForm, Field, submit } from "redux-form";
 import axios from "axios";
 import store from "./../../store";
+import { withRouter } from 'react-router-dom';
+import { setFormOpen } from "./../../actions";
 
 
 
 class Payments extends Component {
     state = {
         cost: 800000,
-        days: null
+        days: null,
+        isPaidSuccessful: false
     }
 
 async componentDidMount(){
@@ -67,14 +70,30 @@ handleStripeSubmit = (token) => {
              token={this.handleStripeSubmit}
              stripeKey={process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY}
              // metadata={this.props}
+             closed={ () => {
+                this.setState({ isPaidSuccessful: true });
+                console.log("rerender new page here on success");
+                console.log(this.state);
+                this.props.setFormOpen(false);
+                // this.props.history.push('/');
+                // axios.get("http://localhost:3001/")
+
+             }}
          />
          </div>
         );
     }
 }
+const mapStateToProps = (state) => {
+    return {
+        formOpen: state.formOpen
+    };
+}
 
-export default connect()(reduxForm({
-    form:"booking",
-})(Payments));
+export default connect(mapStateToProps, {
+    setFormOpen
+})(reduxForm({
+    form:"booking"
+})(withRouter(Payments)));
 
 // export default Payments;

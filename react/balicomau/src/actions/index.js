@@ -40,6 +40,13 @@ export function setSubmitStatus(setSubmitStatus) {
     };
  }
 
+ export function setFormOpen(setFormOpen) {
+    return {
+         type: 'SET_FORM_OPEN',
+         payload: setFormOpen
+    };
+ }
+
  export const handleToken = (token) => {
      return async (dispatch, getState) => {
          console.log(token);
