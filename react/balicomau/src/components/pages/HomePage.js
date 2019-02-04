@@ -22,7 +22,9 @@ const styles = theme => ({
     },
     contactUsContainer: {
         padding: "0px 10px 40px 10px",
-        backgroundColor: "whitesmoke"
+        backgroundColor: "whitesmoke",
+        display: "flex",
+        justifyContent: "center"
     },
     contentZIndex: {
         // z-index testing
