@@ -15,18 +15,19 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 const styles = theme => ({
   root: {
     maxWidth: 500,
+    margin: "auto",
     flexGrow: 1,
       [theme.breakpoints.up('md')]: {
-        maxWidth: 900
+        maxWidth: 1000
     }
   },
-  header: {
-    display: 'flex',
-    alignItems: 'center',
-    height: 50,
-    paddingLeft: theme.spacing.unit * 4,
-    backgroundColor: theme.palette.background.default,
-  },
+  // header: {
+  //   display: 'flex',
+  //   alignItems: 'center',
+  //   height: 50,
+  //   paddingLeft: theme.spacing.unit * 4,
+  //   backgroundColor: theme.palette.background.default,
+  // },
   img: {
     height: 355,
     display: 'block',
@@ -34,7 +35,7 @@ const styles = theme => ({
     overflow: 'hidden',
     width: '100%',
       [theme.breakpoints.up('md')]: {
-        maxWidth: 900,
+        maxWidth: 1000,
         height: 600
     }
   },

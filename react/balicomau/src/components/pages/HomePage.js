@@ -16,10 +16,10 @@ const styles = theme => ({
         position: "relative"
     },
     contentContainer: {
-        padding: "0px 10px 40px 10px"
+        padding: "0px 10px 90px 10px"
     },
     contactUsContainer: {
-        padding: "0px 10px 40px 10px",
+        padding: "0px 10px 90px 10px",
         backgroundColor: "whitesmoke",
         display: "flex",
         justifyContent: "center",
@@ -136,27 +136,26 @@ class HomePage extends Component {
                             }
                         />
                     </div>
-                </div>
-                <div className={classes.imageContainer}>
+                <div className={classes.contentContainer}>
                     <MainFeatureSection 
                         img="https://s3-ap-southeast-2.amazonaws.com/villa-dewata/seminyak-food.jpg"
+                        title="Situated in the Seminyak area only 50 metres from the busy Jalan Raya/Legian streets"
                         content={[
                             <>
-                                <p>Villa Dewata is situated in the Seminyak area only 50 metres from the busy Jalan Raya/Legian streets.</p>
                                 <p>With an abundance of shops and great restaurants all within walking distance the villa is close enough to all the action, yet being set back off the main road ensures a quiet and peaceful stay.</p>
-                                <p>The international airport is approx 30 mins away and is also about the same distance to the popular “Bali Nirvana Golf Course” and the famous “Tanah Lot Temple”</p>
                             </>
                         ]}
                     />
                 </div>
-                <div className={classes.imageContainer}>
+                <div className={classes.contentContainer}>
                         <CarouselSection />
-                    </div>
+                </div>
                 <div className="content">
                     <div className={classes.contactUsContainer}>
                         <ContactUsContainer />
                     </div>
                 </div>
+            </div>
             </>
         )
     };

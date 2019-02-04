@@ -4,9 +4,11 @@ import Carousel from "./../ui/Carousel";
 
 const CarouselSection = (props) => {
     return (
-        <Grid container 
-            justify="center"
-        >
+        // <Grid container 
+        //     justify="center"
+        // >
+        // {/* <Grid item xs={12}> */}
+        <>
             <Carousel images={[
                 {
                     label: "Outside View 1", 
@@ -61,7 +63,9 @@ const CarouselSection = (props) => {
                     url: "https://s3-ap-southeast-2.amazonaws.com/villa-dewata/dining-1.jpg",
                 }
             ]}/>
-        </Grid>
+        </>
+            // {/* </Grid> */}
+        // </Grid>
     )
 }
 

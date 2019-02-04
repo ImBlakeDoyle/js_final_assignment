@@ -7,7 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = theme => ({
     divBody: {
         height: "350px",
-        width: "auto",
+        width: "500px",
         // maxWidth: "1100px",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
@@ -15,10 +15,11 @@ const styles = theme => ({
         position: "relative",
         textAlign: "center",
         display: "flex",
-        justifyContent: "center",
-        alignItems: "center"
+        justifyContent: "flex-end",
+        alignItems: "center",
         // linearGradient: "to right, rbga(255,0,0,0), rgba(255,0,0,1)"
         // background: 'linear-gradient(to right, #000000, #ffffff)'
+        maskImage: "linear-gradient(to left, transparent 10%, black 75%)"
     },
     imageBody: {
         height: "700px",
@@ -30,13 +31,15 @@ const styles = theme => ({
         // height: "400px",
         // width: "535px"
     },
-    imageContainer: {
+    contentGrid: {
+        display: "flex",
+        alignItems: "center"
     },
     contentContainer: {
-        backgroundColor: "rgba(255,255,255,0.85)",
-        width: "500px",
-        textAlign: "justify",
-        padding: "0px 14px"
+        // backgroundColor: "rgba(255,255,255,0.85)",
+        // width: "500px",
+        textAlign: "left"
+        // padding: "0px 14px"
         // margin: "auto",
         // position: "absolute", 
         // top: "50%",
@@ -58,14 +61,24 @@ class MainFeatureSection extends React.Component {
             //         </Typography>
             //     </Grid>
             // </Grid>
-
-            <div className={this.props.classes.divBody} style={{backgroundImage: `url(${this.props.img})`}}>
-                <div className={this.props.classes.contentContainer}>
-                    <Typography variant="body2">
-                        {this.props.content}
-                    </Typography>
-                </div>
-            </div>
+            <>
+            <Grid container>
+                <Grid item xs={6}>
+                    <div className={this.props.classes.divBody} style={{backgroundImage: `url(${this.props.img})`}}>
+                    </div>
+                </Grid>
+                <Grid item xs={6} className={this.props.classes.contentGrid}>
+                    <div className={this.props.classes.contentContainer}>
+                        <Typography variant="h5">
+                            {this.props.title}
+                        </Typography>
+                        <Typography variant="body1">
+                            {this.props.content}
+                        </Typography>
+                    </div>
+                </Grid>
+            </Grid>
+            </>
 
             // div containing an image fading to the right with transparency
             // <div className={this.props.classes.imageContainer}>
