@@ -24,12 +24,12 @@ class NewDatePicker extends Component {
     // }
 
     unavailableDates = (date) => {
+        date = moment.utc(date).set('hour', 0).add(1, 'd').format();
         const { populateInvalid } = this.props;
         for (let i = 0; i < populateInvalid.length; i++){
-            const newDate = moment.utc(populateInvalid[i]).format();
-            const calDate = moment.utc(date).startOf('day').format();
-            if (calDate === newDate){
-                return calDate;
+            const newDate = moment.utc(populateInvalid[i]).set('hour', 0).format();
+            if (date === newDate){
+                return true;
             }
         }
     }
