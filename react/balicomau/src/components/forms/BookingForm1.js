@@ -16,16 +16,19 @@ import Grid from '@material-ui/core/Grid';
 // import { DatePicker } from "material-ui-pickers";
 
 import NewDatePicker from "./fields/MaterialDatePicker";
+import { Typography } from "@material-ui/core";
 
 const styles = theme => ({
     menu: {
-        width: 200,
+        // width: 200,
     },
     formButton: {
         maxWidth: '150px', minWidth: '150px',
     },
     guests : {
-        width: 165,
+        // width: 165,
+        minWidth: "135px",
+        width: "50%",
         textAlign: "left"
     },
     gridItem: {
@@ -38,6 +41,10 @@ const styles = theme => ({
     },
     formControl: {
         padding: '0px'
+    },
+    formField: {
+        minWidth: "135px",
+        width: "50%"
     }
 });
 
@@ -94,7 +101,11 @@ class BookingForm1 extends React.Component {
                         <div>
                     <Grid container>
                         <Grid item xs={12} className={classes.gridItem}>
+                            <Typography variant="h5">Select your dates</Typography>
+                        </Grid>
+                        <Grid item xs={12} className={classes.gridItem}>
                             <Field 
+                                className={classes.formField}
                                 name="checkin"
                                 label="Check-in"
                                 component={NewDatePicker}
@@ -102,6 +113,7 @@ class BookingForm1 extends React.Component {
                         </Grid>
                         <Grid item xs={12} className={classes.gridItem}>
                             <Field
+                                className={classes.formField}
                                 name="checkout"
                                 label="Check-out"
                                 component={NewDatePicker}
@@ -109,9 +121,10 @@ class BookingForm1 extends React.Component {
                         </Grid>
                         <Grid item xs={12} className={classes.gridItem}>
                             <Field
+                                className={classes.formField}
                                 id="select-guests"
                                 select
-                                label="Number of Guests"
+                                label="Guests"
                                 name="guests"
                                 component={TextField}
                                 className={classes.guests}
