@@ -20,18 +20,24 @@ import NewDatePicker from "./fields/MaterialDatePicker";
 const styles = theme => ({
     menu: {
         width: 200,
-      },
+    },
     formButton: {
         maxWidth: '150px', minWidth: '150px',
     },
     guests : {
         width: 165,
+        textAlign: "left"
     },
     gridItem: {
         textAlign: 'center',
+        marginTop: '16px',
+        marginBottom: '8px'
     },
     formButtonGroup: {
         paddingTop: '30px'
+    },
+    formControl: {
+        padding: '0px'
     }
 });
 
@@ -82,26 +88,26 @@ class BookingForm1 extends React.Component {
 
     render() {
         const { classes, handleSubmit, cancel } = this.props;
-        // const { handleSubmit } = this.props;
         return(
+
             <form onSubmit={handleSubmit}>
-                <div>
+                        <div>
                     <Grid container>
-                        <Grid item xs={6}>
+                        <Grid item xs={12} className={classes.gridItem}>
                             <Field 
                                 name="checkin"
                                 label="Check-in"
                                 component={NewDatePicker}
                             />
                         </Grid>
-                        <Grid item xs={6}>
+                        <Grid item xs={12} className={classes.gridItem}>
                             <Field
                                 name="checkout"
                                 label="Check-out"
                                 component={NewDatePicker}
                             />
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item xs={12} className={classes.gridItem}>
                             <Field
                                 id="select-guests"
                                 select
@@ -115,7 +121,7 @@ class BookingForm1 extends React.Component {
                                     className: classes.menu,
                                     },
                                 }}
-                                margin="normal"
+                                // margin="normal"
                             >
                                 {numberOfGuests.map(option => (
                                     <MenuItem key={option.value} value={option.value}>
@@ -125,7 +131,6 @@ class BookingForm1 extends React.Component {
                             </Field> 
                         </Grid>
                     </Grid>
-                </div>
                 <div className={classes.formButtonGroup}>
                     <Grid container spacing={16} justify="space-evenly">
                         <Grid item>
@@ -140,7 +145,9 @@ class BookingForm1 extends React.Component {
                         </Grid>
                     </Grid>
                 </div>
+                </div>
             </form>
+
         );
     }
 }

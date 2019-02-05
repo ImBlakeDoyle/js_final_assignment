@@ -12,24 +12,30 @@ const styles = theme => ({
     textField: {
         width: '200px'
     },
+    gridItem: {
+        textAlign: "center"
+    },
     formButton: {
         maxWidth: '150px', minWidth: '150px',
     },
     formButtonGroup: {
         paddingTop: '30px'
+    },
+    formBody: {
+
     }
 });
 
 class BookingForm2 extends Component {
 
-    render(){
+    render() {
     const { classes, handleSubmit, previousPage } = this.props;
 
         return(
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className={classes.formBody}>
                 <div>
-                    <Grid container spacing={16}>
-                        <Grid item xs={12}>
+                    <Grid container spacing={16} justify="center">
+                        <Grid item xs={12} className={classes.gridItem}>
                             <Field 
                                 className={classes.textField}
                                 name="first_name" 
@@ -38,7 +44,7 @@ class BookingForm2 extends Component {
                                 label="First name" 
                             />
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item xs={12} className={classes.gridItem}>
                             <Field 
                                 className={classes.textField}
                                 name="last_name" 
@@ -47,7 +53,7 @@ class BookingForm2 extends Component {
                                 label="Last name" 
                             />
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item xs={12} className={classes.gridItem}>
                             <Field 
                                 className={classes.textField}
                                 name="phone" 
@@ -56,7 +62,7 @@ class BookingForm2 extends Component {
                                 label="Contact number" 
                             />
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item xs={12} className={classes.gridItem}>
                             <Field 
                                 className={classes.textField}
                                 name="email" 
@@ -65,7 +71,7 @@ class BookingForm2 extends Component {
                                 label="Email" 
                             />
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item xs={12} className={classes.gridItem}>
                             <Field 
                                 className={classes.textField}
                                 name="comment" 

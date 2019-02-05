@@ -13,8 +13,8 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = theme => ({
     paperDialog: {
         minHeight: '50vh',
-        maxHeight: '50vh',
-        width: '50vh',
+        maxHeight: '70vh',
+        width: '70vh',
         [theme.breakpoints.down('xs')]: {
             minHeight: '100vh',
             maxHeight: '100vh',
@@ -42,7 +42,7 @@ const ResponsiveDialog = (props) => {
             aria-labelledby="form-dialog-title"
             // fullWidth
         >
-        <DialogTitle id="form-dialog-title" className={classes.title}>Select dates</DialogTitle>
+            <DialogTitle id="form-dialog-title" className={classes.title}>Select dates</DialogTitle>
             <DialogContent>
                 <WizardForm 
                     onClose={props.handleClose}
