@@ -5,16 +5,11 @@ import "react-datepicker/dist/react-datepicker.css";
 import { reduxForm, Field } from "redux-form";
 // import DatePickerField from "./fields/DatePicker";
 import { withStyles } from '@material-ui/core/styles';
-// import TextField from '@material-ui/core/TextField';
 import TextField from "./fields/TextField";
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import store from "./../../store";
 
-// import DateFnsUtils from "@date-io/date-fns";
-// import { MuiPickersUtilsProvider } from 'material-ui-pickers';
-// import { DatePicker } from "material-ui-pickers";
 
 import NewDatePicker from "./fields/MaterialDatePicker";
 
@@ -155,6 +150,15 @@ class BookingForm1 extends React.Component {
 
 const validate = (formValues) => {
     const errors = {};
+    if (!formValues.guests) {
+        errors.guests = "You must enter number of guests"
+    }
+    if (formValues.guests > 8){
+        errors.guests = "You can only select up to 8 guests"
+    }
+    if (formValues.guests < 1){
+        errors.guests = "There must be at least 1 guest"
+    }
     if (!formValues.checkin) {
         errors.checkin = 'You must enter a check-in date'
     }
@@ -162,7 +166,7 @@ const validate = (formValues) => {
         errors.checkout = 'You must enter a check-out date'
     }
     if (formValues.checkout < formValues.checkin){
-        errors.checkin = "check-out must be after check-in"
+        errors.checkout = "check-out must be after check-in"
     }
     return errors;
 };
