@@ -12,8 +12,10 @@ ReactDOM.render(
         <BrowserRouter>
         <div>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <Route path="/" exact component={App} />
+                {/* <Route exact path="/" exact component={App} /> */}
+                <App />
             </MuiPickersUtilsProvider>
+            {/* <App /> */}
         </div>
         </BrowserRouter>
     </Provider>,
