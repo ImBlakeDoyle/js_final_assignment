@@ -41,12 +41,9 @@ class UserForm extends Component {
             createInquiry({ name, email, comment, phone });
             reset();
             setSubmitStatus(true);
-            // this.props.history.push('/inquiry/success')
-            // console.log(this.props)
             setTimeout(() => {
                 setSubmitStatus(false)
             }, 4000)
-            // alert('Your inquiry has been sent')
         } else {
             alert('Please verify that you are human!')
         }

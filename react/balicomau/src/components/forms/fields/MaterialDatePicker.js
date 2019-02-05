@@ -5,9 +5,6 @@ import { fetchInvalid } from "./../../../actions";
 import { connect } from "react-redux";
 
 class NewDatePicker extends Component {
-    state = {
-        date: new Date()
-    }
     componentDidMount() {
         this.props.fetchInvalid();
     }
@@ -25,10 +22,14 @@ class NewDatePicker extends Component {
     
     render(){
         const { input, meta, populateInvalid, ...other } = this.props;
+        console.log(meta.error);
 
         return(
             <InlineDatePicker
                 disablePast={true}
+                helperText={(meta.touched && meta.error ? meta.error : null)}
+                error={(meta.touched && meta.error ? true : false)}
+                invalidLabel="Please select a date"
                 {...other}
                 {...input}
                 shouldDisableDate={this.unavailableDates}
