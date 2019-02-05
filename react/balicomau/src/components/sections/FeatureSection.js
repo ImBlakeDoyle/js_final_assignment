@@ -17,7 +17,7 @@ const styles = theme => ({
     margin: 'auto',
   },
   media: {
-    height: "150px",
+    height: "300px",
     paddingTop: '56.25%', // 16:9
   },
   actions: {
@@ -34,7 +34,7 @@ const styles = theme => ({
     transform: 'rotate(180deg)',
   },
   cardContentBody: {
-    height: "144px"
+    height: "160px"
   }
 });
 
@@ -53,11 +53,12 @@ class FeatureCard extends React.Component {
             image={this.props.image}
             title={this.props.title}
         />
-        <CardContent>
+        <CardContent className={this.props.classes.cardContentBody}>
             <Typography variant="h6">
                 {this.props.title}
             </Typography>
-            <Typography component="p" className={this.props.classes.cardContentBody}>
+            {/* <Typography component="p" className={this.props.classes.cardContentBody}> */}
+            <Typography component="p">
                 {this.props.content}
             </Typography>
         </CardContent>

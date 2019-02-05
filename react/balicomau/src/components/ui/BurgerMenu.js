@@ -18,6 +18,10 @@ const styles = {
   },
 };
 
+function ListItemLink(props) {
+  return <ListItem button component="a" {...props} />;
+}
+
 class TemporaryDrawer extends React.Component {
   state = {
     top: false,
@@ -30,9 +34,7 @@ class TemporaryDrawer extends React.Component {
     this.setState({
       [side]: open,
     });
-  };
-
-
+  };  
 
   render() {
     const { classes } = this.props;
@@ -40,10 +42,14 @@ class TemporaryDrawer extends React.Component {
     const sideList = (
       <div className={classes.list}>
         <List>
-          {['Home', 'About', 'Contact'].map((text) => (
-            <ListItem button key={text}>
+          {['Home', 'About', 'Features', 'Gallery', 'Contact', ].map((text) => (
+            // <ListItemLink href="#Contact">
+            <ListItemLink href={`#${text}`}>
+            {/* <ListItem button key={text}> */}
               <ListItemText primary={text} />
-            </ListItem>
+
+            {/* </ListItem> */}
+            </ListItemLink>
           ))}
         </List>
       </div>

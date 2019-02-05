@@ -17,7 +17,7 @@ const styles = theme => ({
         position: "relative"
     },
     contentContainer: {
-        padding: "0px 10px 90px 10px"
+        padding: "90px 10px 0px 10px"
     }
 })
 
@@ -30,7 +30,7 @@ class HomePage extends Component {
                 <div className="header-menu">
                     <AppBar />
                 </div>
-                <div className={classes.imageContainer}>
+                <div className={classes.imageContainer} id="Home">
                     <HeroSection 
                         title="Villa Dewata"
                         img="/hero-image.jpg"
@@ -38,7 +38,8 @@ class HomePage extends Component {
                         buttonText="Book"
                     />
                 </div>
-                <div className="contentZIndex">
+                <div className="contentZIndex" id='About'>
+                    {/* <div id="About"/> */}
                     <div className={classes.contentContainer}>
                         <AboutSection 
                             heading="Why don't you consider the luxury of staying at a beautiful villa?"
@@ -53,7 +54,7 @@ class HomePage extends Component {
                             ]}
                         />
                     </div>
-                    <div className={classes.contentContainer}>
+                    <div className={classes.contentContainer} id="Features">
                         <FeatureContainer 
                             feature1={
                                 <FeatureSection 
@@ -141,9 +142,9 @@ class HomePage extends Component {
                             ]}
                         />
                     </div>
-                    <div className={classes.contentContainer}>
-                            {/* <CarouselSection /> */}
-                            <GridList 
+                    <div className={classes.contentContainer} id="Gallery">
+                            <CarouselSection />
+                            {/* <GridList 
                                 images = {[
                                     {
                                         url: "https://s3-ap-southeast-2.amazonaws.com/villa-dewata/outside-day-1.jpg",
@@ -198,9 +199,9 @@ class HomePage extends Component {
                                         url: "https://s3-ap-southeast-2.amazonaws.com/villa-dewata/dining-1.jpg",
                                     }
                                 ]}
-                            />
+                            /> */}
                     </div>
-                    <div className={classes.contentContainer}>
+                    <div className={classes.contentContainer} id="Contact">
                         <ContactUsContainer />
                     </div>
                 </div>

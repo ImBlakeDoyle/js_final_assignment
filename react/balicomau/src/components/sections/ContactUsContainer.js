@@ -12,7 +12,8 @@ const styles = theme => ({
         marginBottom: "10px"
     },
     formContainer: {
-        maxWidth: "1000px"
+        maxWidth: "1000px",
+        paddingBottom: "90px"
     },
     paper: {
         ...theme.mixins.gutters(),
