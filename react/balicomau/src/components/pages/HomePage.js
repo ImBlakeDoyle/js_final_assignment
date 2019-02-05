@@ -12,12 +12,12 @@ import GridList from "../sections/GridList.js"
 
 const styles = theme => ({
     imageContainer: {
-        padding: "40px 0px",
+        paddingTop: "40px",
         zIndex: 1,
         position: "relative"
     },
     contentContainer: {
-        padding: "0px 10px 50px 10px"
+        padding: "80px 10px 0px 10px"
     }
 })
 

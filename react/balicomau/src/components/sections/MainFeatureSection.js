@@ -15,7 +15,8 @@ const styles = theme => ({
         maxWidth: "500px",
         margin: "auto",
         [theme.breakpoints.up('md')]: {
-            width: "500px",
+            // width: "500px",
+            width: "465px",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
