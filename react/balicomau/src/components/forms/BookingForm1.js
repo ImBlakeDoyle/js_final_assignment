@@ -19,32 +19,25 @@ import NewDatePicker from "./fields/MaterialDatePicker";
 import { Typography } from "@material-ui/core";
 
 const styles = theme => ({
-    menu: {
-        // width: 200,
-    },
     formButton: {
         maxWidth: '150px', minWidth: '150px',
     },
     guests : {
-        // width: 165,
         minWidth: "135px",
-        width: "50%",
+        width: "60%",
         textAlign: "left"
     },
     gridItem: {
         textAlign: 'center',
         marginTop: '16px',
-        marginBottom: '8px'
+        // marginBottom: '8px'
     },
     formButtonGroup: {
         paddingTop: '30px'
     },
-    formControl: {
-        padding: '0px'
-    },
     formField: {
         minWidth: "135px",
-        width: "50%"
+        width: "60%"
     }
 });
 
@@ -98,7 +91,7 @@ class BookingForm1 extends React.Component {
         return(
 
             <form onSubmit={handleSubmit}>
-                        <div>
+                <div>
                     <Grid container>
                         <Grid item xs={12} className={classes.gridItem}>
                             <Typography variant="h5">Select your dates</Typography>
@@ -109,6 +102,7 @@ class BookingForm1 extends React.Component {
                                 name="checkin"
                                 label="Check-in"
                                 component={NewDatePicker}
+                                variant="outlined"
                             />
                         </Grid>
                         <Grid item xs={12} className={classes.gridItem}>
@@ -117,6 +111,7 @@ class BookingForm1 extends React.Component {
                                 name="checkout"
                                 label="Check-out"
                                 component={NewDatePicker}
+                                variant="outlined"
                             />
                         </Grid>
                         <Grid item xs={12} className={classes.gridItem}>
@@ -129,6 +124,7 @@ class BookingForm1 extends React.Component {
                                 component={TextField}
                                 className={classes.guests}
                                 type="number"
+                                variant="outlined"
                                 SelectProps={{
                                     MenuProps: {
                                     className: classes.menu,

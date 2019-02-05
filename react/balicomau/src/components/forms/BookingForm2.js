@@ -7,11 +7,9 @@ import Grid from '@material-ui/core/Grid';
 import TextField from './fields/TextField';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
-    textField: {
-        width: '200px'
-    },
     gridItem: {
         textAlign: "center"
     },
@@ -21,8 +19,9 @@ const styles = theme => ({
     formButtonGroup: {
         paddingTop: '30px'
     },
-    formBody: {
-
+    formField: {
+        minWidth: "135px",
+        width: "70%"
     }
 });
 
@@ -36,48 +35,56 @@ class BookingForm2 extends Component {
                 <div>
                     <Grid container spacing={16} justify="center">
                         <Grid item xs={12} className={classes.gridItem}>
+                            <Typography variant="h5">Your Information</Typography>
+                        </Grid>
+                        <Grid item xs={12} className={classes.gridItem}>
                             <Field 
-                                className={classes.textField}
+                                className={classes.formField}
                                 name="first_name" 
                                 type="text" 
                                 component={TextField} 
                                 label="First name" 
+                                variant="outlined"
                             />
                         </Grid>
                         <Grid item xs={12} className={classes.gridItem}>
                             <Field 
-                                className={classes.textField}
+                                className={classes.formField}
                                 name="last_name" 
                                 type="text" 
                                 component={TextField} 
                                 label="Last name" 
+                                variant="outlined"
                             />
                         </Grid>
                         <Grid item xs={12} className={classes.gridItem}>
                             <Field 
-                                className={classes.textField}
+                                className={classes.formField}
                                 name="phone" 
                                 type="text" 
                                 component={TextField} 
                                 label="Contact number" 
+                                variant="outlined"
                             />
                         </Grid>
                         <Grid item xs={12} className={classes.gridItem}>
                             <Field 
-                                className={classes.textField}
+                                className={classes.formField}
                                 name="email" 
                                 type="text" 
                                 component={TextField} 
                                 label="Email" 
+                                variant="outlined"
                             />
                         </Grid>
                         <Grid item xs={12} className={classes.gridItem}>
                             <Field 
-                                className={classes.textField}
+                                className={classes.formField}
                                 name="comment" 
                                 type="text" 
                                 component={TextField} 
                                 label="Additional comments" 
+                                variant="outlined"
                                 multiline
                             />
                         </Grid>

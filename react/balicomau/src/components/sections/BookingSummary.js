@@ -41,14 +41,14 @@ function BookingSummary(props) {
         <div className={props.classes.divBody}>
             <Grid container spacing={24} className={props.classes.gridContainer}>
                 <Grid item xs={12}>
-                    <Typography variant="h6" className={props.classes.heading}>Your Booking</Typography>
+                    <Typography variant="h5" className={props.classes.heading}>Your Booking</Typography>
                 </Grid>
                 <Divider variant="middle" className={props.classes.sectionDivider}/>
                 <Grid item xs={12}>
-                    <Typography variant="body2">{props.guests} Guests</Typography>
+                    <Typography variant="body1">{props.guests} Guests</Typography>
                 </Grid>
                 <Grid item xs={12}>
-                    <Typography variant="body2">{props.checkin} to {props.checkout}</Typography>
+                    <Typography variant="body1">{props.checkin} to {props.checkout}</Typography>
                 </Grid>
                 {/* <Grid item xs={6}>
                     <Typography variant="body2">{props.checkout}</Typography>
