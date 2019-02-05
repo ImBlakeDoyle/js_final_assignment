@@ -1,6 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
-const passport = require("passport");
+// const passport = require("passport");
 const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
@@ -16,8 +16,8 @@ app.use(cors({
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-require("./services/passport");
-app.use(passport.initialize());
+// require("./services/passport");
+// app.use(passport.initialize());
 
 app.use(morgan("combined"));
 

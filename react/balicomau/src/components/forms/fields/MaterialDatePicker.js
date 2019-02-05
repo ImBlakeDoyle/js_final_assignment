@@ -12,12 +12,12 @@ class NewDatePicker extends Component {
         this.props.fetchInvalid();
     }
 
-    componentDidUpdate() {
-        const { populateInvalid } = this.props;
-        if (populateInvalid.length > 10){
-            this.focusedDate();
-        }
-    }
+    // componentDidUpdate() {
+    //     const { populateInvalid } = this.props;
+    //     if (populateInvalid.length > 10){
+    //         this.focusedDate();
+    //     }
+    // }
 
     unavailableDates = (date) => {
         date = moment.utc(date).set('hour', 0).add(1, 'd').format();
@@ -30,22 +30,22 @@ class NewDatePicker extends Component {
         }
     }
 
-    focusedDate = () => {
-        const { populateInvalid } = this.props;
-        const newArray = [];
-        const newestDate = moment.utc(this.state.date).startOf('d').format();
-        for (let i = 0; i < populateInvalid.length; i++){
-            const newDate = moment.utc(populateInvalid[i]).startOf('d').format();
-            newArray.push(newDate);
-        }
-        for (let x = 0; x < populateInvalid.length; x++){
-            if (newArray.includes(newestDate)){
-                moment.utc(newestDate).startOf('d').add(1,'d').format();
-            } else {
-                this.setState({date: newestDate}); 
-            }
-        }
-    }
+    // focusedDate = () => {
+    //     const { populateInvalid } = this.props;
+    //     const newArray = [];
+    //     const newestDate = moment.utc(this.state.date).startOf('d').format();
+    //     for (let i = 0; i < populateInvalid.length; i++){
+    //         const newDate = moment.utc(populateInvalid[i]).startOf('d').format();
+    //         newArray.push(newDate);
+    //     }
+    //     for (let x = 0; x < populateInvalid.length; x++){
+    //         if (newArray.includes(newestDate)){
+    //             moment.utc(newestDate).startOf('d').add(1,'d').format();
+    //         } else {
+    //             this.setState({date: newestDate}); 
+    //         }
+    //     }
+    // }
     
 
     render(){
@@ -57,7 +57,7 @@ class NewDatePicker extends Component {
                 {...other}
                 {...input}
                 shouldDisableDate={this.unavailableDates}
-                value={this.state.date}
+                // value={this.state.date}
             />
         );
     }
