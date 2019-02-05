@@ -42,7 +42,7 @@ const ResponsiveDialog = (props) => {
             aria-labelledby="form-dialog-title"
             // fullWidth
         >
-            <DialogTitle id="form-dialog-title" className={classes.title}>Select dates</DialogTitle>
+            {/* <DialogTitle id="form-dialog-title" className={classes.title}>Select dates</DialogTitle> */}
             <DialogContent>
                 <WizardForm 
                     onClose={props.handleClose}
