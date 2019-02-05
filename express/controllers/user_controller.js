@@ -45,6 +45,5 @@ module.exports = {
     create,
     index,
     deleteEntry,
-    // generateJWT,
     login
 }
