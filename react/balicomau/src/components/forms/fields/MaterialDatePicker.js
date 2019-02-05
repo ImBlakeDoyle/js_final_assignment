@@ -9,10 +9,14 @@ class NewDatePicker extends Component {
         date: new Date()
     }
     componentDidMount() {
-        // const { fetchInvalid } = this.props;
-        // fetchInvalid();
         this.props.fetchInvalid();
-        console.log('here')
+    }
+
+    componentDidUpdate() {
+        const { populateInvalid } = this.props;
+        if (populateInvalid.length > 10){
+            this.focusedDate();
+        }
     }
 
     unavailableDates = (date) => {
@@ -26,9 +30,23 @@ class NewDatePicker extends Component {
         }
     }
 
-    // focusedDate = () => {
-    //     if (this.state.date)
-    // }
+    focusedDate = () => {
+        const { populateInvalid } = this.props;
+        const newArray = [];
+        const newestDate = moment.utc(this.state.date).startOf('d').format();
+        for (let i = 0; i < populateInvalid.length; i++){
+            const newDate = moment.utc(populateInvalid[i]).startOf('d').format();
+            newArray.push(newDate);
+        }
+        for (let x = 0; x < populateInvalid.length; x++){
+            if (newArray.includes(newestDate)){
+                moment.utc(newestDate).startOf('d').add(1,'d').format();
+            } else {
+                this.setState({date: newestDate}); 
+            }
+        }
+    }
+    
 
     render(){
         const { input, meta, populateInvalid, ...other } = this.props;
@@ -39,7 +57,7 @@ class NewDatePicker extends Component {
                 {...other}
                 {...input}
                 shouldDisableDate={this.unavailableDates}
-                initialFocusedDate={this.focusedDate}
+                value={this.state.date}
             />
         );
     }
