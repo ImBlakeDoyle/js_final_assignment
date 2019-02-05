@@ -12,6 +12,12 @@ class AllBookingsPage extends Component{
         .catch(err => console.log(err))
     }
 
+    onBookingDeleteClick = async (booking) => {
+        await axios.delete(`http://localhost:3000/admin/${booking}`)
+        .then(response => this.setState({bookings: response.data}))
+        .catch(err => console.log(err))
+    }
+
     render(){
         const { bookings } = this.state;
         console.log(this.state);
@@ -41,9 +47,7 @@ class AllBookingsPage extends Component{
                             <div>
                                 Stripe ID: {booking.stripe_id}
                             </div>
-                            <h3>
-                                Delete Booking
-                            </h3>
+                            <button onClick={() => this.onBookingDeleteClick(booking._id)}>Delete Booking</button>
                             <hr></hr>
                         </div>
                     );

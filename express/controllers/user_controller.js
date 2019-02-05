@@ -34,9 +34,17 @@ async function login(req,res) {
     }
 }
 
+async function deleteEntry(req,res) {
+    console.log(req.params);
+    booking = await BookingModel.findByIdAndDelete(req.params.id);
+    const allBookings = await BookingModel.find();
+    return res.json(allBookings);
+}
+
 module.exports = {
     create,
     index,
+    deleteEntry,
     // generateJWT,
     login
 }

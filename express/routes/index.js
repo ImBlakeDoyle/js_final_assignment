@@ -32,4 +32,6 @@ router.post("/login", celebrate({
     }
 }), UserController.login);
 
+router.delete("/admin/:id", UserController.deleteEntry)
+
 module.exports = router;
