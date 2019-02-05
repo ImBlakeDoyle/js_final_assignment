@@ -4,9 +4,6 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
-    gridContainer: {
-        // padding: "8px"
-    },
     contentBody: {
         marginLeft: "auto",
         marginRight: "auto",
@@ -21,6 +18,9 @@ const styles = theme => ({
         display: "block",
         marginLeft: "auto",
         marginRight: "auto"
+    },
+    contactInfo: {
+        listStyle: "none"
     }
 });
 
@@ -39,7 +39,9 @@ class ImageSection extends Component {
                 </Grid>
                 <Grid item xs={12}>
                     <Typography variant="body2" gutterBottom className={this.props.classes.contentBody}>
-                        {this.props.content}
+                        <ul className={this.props.classes.contactInfo}>
+                            {this.props.children}
+                        </ul>
                     </Typography>
                 </Grid>
             </Grid>

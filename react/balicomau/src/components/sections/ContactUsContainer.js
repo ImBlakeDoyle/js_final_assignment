@@ -5,6 +5,9 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
+import PhoneIcon from '@material-ui/icons/Phone';
+import EmailIcon from '@material-ui/icons/Email';
 
 const styles = theme => ({
     containerTitle: {
@@ -23,6 +26,14 @@ const styles = theme => ({
     },
     userFormContainer: {
         textAlign: "center"
+    },
+    listItem: {
+        display: "flex",
+        alignItems: "center",
+        padding: "8px",
+    },
+    listIcon: {
+        marginRight: "5px"
     }
 });
 
@@ -36,18 +47,12 @@ class ContactUsContainer extends React.Component {
                     </Typography>
                 </Grid>
                 <Grid item xs={12} md={6} className={this.props.classes.gridItem}>
-                    <ImageSection 
-                        img="/map.jpg"
-                        content={[
-                            <div>
-                                <ul>
-                                    <li>Jln. Raya Basangkasa, Gg. Dewata NO. 15 B Seminyak - Kuta - Bali</li>
-                                    <li>+62 (0)81238-33370</li>
-                                    <li>info@bali.com.au</li>
-                                </ul>
-                            </div>
-                        ]}
-                    />
+                
+                    <ImageSection img="/map.jpg">
+                        <li className={this.props.classes.listItem}><LocationOnIcon className={this.props.classes.listIcon}/> Jln. Raya Basangkasa, Gg. Dewata NO. 15 B Seminyak - Kuta - Bali</li>
+                        <li className={this.props.classes.listItem}><PhoneIcon  className={this.props.classes.listIcon}/> +62 (0)81238-33370</li>
+                        <li className={this.props.classes.listItem}><EmailIcon className={this.props.classes.listIcon}/>  info@bali.com.au</li>
+                    </ImageSection>
                 </Grid>
                 <Grid item xs={12} md={6} className={this.props.classes.userFormContainer}>
                     <Paper className={this.props.classes.paper} elevation={1}>  

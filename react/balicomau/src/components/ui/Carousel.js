@@ -29,14 +29,14 @@ const styles = theme => ({
   //   backgroundColor: theme.palette.background.default,
   // },
   img: {
-    height: 355,
+    height: "auto",
     display: 'block',
     maxWidth: 500,
     overflow: 'hidden',
     width: '100%',
       [theme.breakpoints.up('md')]: {
         maxWidth: 1000,
-        height: 600
+        height: "auto"
     }
   },
 });
