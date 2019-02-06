@@ -1,39 +1,34 @@
 import React from "react";
 import "react-datepicker/dist/react-datepicker.css";
-// import { connect } from "react-redux";
-// import { bookingAvailability } from "../../actions";
 import { reduxForm, Field } from "redux-form";
-// import DatePickerField from "./fields/DatePicker";
 import { withStyles } from '@material-ui/core/styles';
 import TextField from "./fields/TextField";
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
-
 import NewDatePicker from "./fields/MaterialDatePicker";
+import { Typography } from "@material-ui/core";
 
 const styles = theme => ({
-    menu: {
-        width: 200,
-    },
     formButton: {
         maxWidth: '150px', minWidth: '150px',
     },
     guests : {
-        width: 165,
+        minWidth: "135px",
+        width: "60%",
         textAlign: "left"
     },
     gridItem: {
         textAlign: 'center',
         marginTop: '16px',
-        marginBottom: '8px'
     },
     formButtonGroup: {
         paddingTop: '30px'
     },
-    formControl: {
-        padding: '0px'
+    formField: {
+        minWidth: "135px",
+        width: "60%"
     }
 });
 
@@ -87,37 +82,45 @@ class BookingForm1 extends React.Component {
         return(
 
             <form onSubmit={handleSubmit}>
-                        <div>
+                <div>
                     <Grid container>
                         <Grid item xs={12} className={classes.gridItem}>
+                            <Typography variant="h5">Select your dates</Typography>
+                        </Grid>
+                        <Grid item xs={12} className={classes.gridItem}>
                             <Field 
+                                className={classes.formField}
                                 name="checkin"
                                 label="Check-in"
                                 component={NewDatePicker}
+                                variant="outlined"
                             />
                         </Grid>
                         <Grid item xs={12} className={classes.gridItem}>
                             <Field
+                                className={classes.formField}
                                 name="checkout"
                                 label="Check-out"
                                 component={NewDatePicker}
+                                variant="outlined"
                             />
                         </Grid>
                         <Grid item xs={12} className={classes.gridItem}>
                             <Field
+                                className={classes.formField}
                                 id="select-guests"
                                 select
-                                label="Number of Guests"
+                                label="Guests"
                                 name="guests"
                                 component={TextField}
                                 className={classes.guests}
                                 type="number"
+                                variant="outlined"
                                 SelectProps={{
                                     MenuProps: {
                                     className: classes.menu,
                                     },
                                 }}
-                                // margin="normal"
                             >
                                 {numberOfGuests.map(option => (
                                     <MenuItem key={option.value} value={option.value}>
