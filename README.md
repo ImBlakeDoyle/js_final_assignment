@@ -63,9 +63,6 @@ The design process was based off similar applications. We drew inspiration from 
 ### Wireframes
 ![require](docs/wireframe1.png)
 ![require](docs/wireframe2.png)
-![require](docs/wireframe3.png)
-![require](docs/wireframe4.png)
-![require](docs/wireframe5.png)
 
 ### Database Entity Relationship Diagrams
 * Booking - (First name, Last name, Email, Guests, Checkin, Checkout, Phone, Comment, Cost, Dates )
