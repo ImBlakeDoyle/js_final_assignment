@@ -35,7 +35,7 @@ async function create(req, res) {
     });
 
     const event = {
-        'summary': `${first_name} ${guests}`,
+        'summary': `${first_name}, Guests: ${guests}, Comment: ${comment}`,
         'start': {
           'date': `${newCheckinDate}`,
           'timeZone': 'Australia/Sydney',
