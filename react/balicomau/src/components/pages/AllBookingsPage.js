@@ -13,7 +13,7 @@ class AllBookingsPage extends Component{
     }
 
     onBookingDeleteClick = async (booking) => {
-        await axios.delete(`${process.env.REACT_APP_API_URI}${booking}`)
+        await axios.delete(`${process.env.REACT_APP_API_URI}admin/${booking}`)
         .then(response => this.setState({bookings: response.data}))
         .catch(err => console.log(err))
     }
