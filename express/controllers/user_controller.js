@@ -38,7 +38,7 @@ async function deleteEntry(req,res) {
     console.log(req.params);
     booking = await BookingModel.findByIdAndDelete(req.params.id);
     const allBookings = await BookingModel.find();
-    return allBookings;
+    return res.json(allBookings);
 }
 
 module.exports = {
