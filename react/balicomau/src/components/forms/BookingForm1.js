@@ -152,6 +152,8 @@ class BookingForm1 extends React.Component {
 
 const validate = (formValues) => {
     const errors = {};
+    const newCheckin = moment(formValues.checkin).startOf('day').format();
+    const newCheckout = moment(formValues.checkout).startOf('day').format();
     if (!formValues.guests) {
         errors.guests = "You must enter number of guests"
     }
@@ -169,6 +171,9 @@ const validate = (formValues) => {
     }
     if (formValues.checkout < formValues.checkin){
         errors.checkout = "check-out must be after check-in"
+    }
+    if (newCheckin === newCheckout){
+        errors.checkout = "Cannot check-out on the same day"
     }
     return errors;
 };

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
-// import { connect } from "react-redux";
 
 class LoginForm extends Component{
     state = {
@@ -13,7 +12,7 @@ class LoginForm extends Component{
         event.preventDefault();
         const {email, password} = this.state;
 
-        await axios.post("http://localhost:3000/login", { email, password })
+        await axios.post(`${process.env.REACT_APP_API_URI}login`, { email, password })
             .then(response => {
                 console.log(response);
                 this.props.history.push("/admin/all");
