@@ -8,6 +8,7 @@ class LoginForm extends Component{
         password: ""
     }
 
+    //Takes values from login form and posts to the url to view all the current bookings
     onLoginSubmit = async (event) => {
         event.preventDefault();
         const {email, password} = this.state;

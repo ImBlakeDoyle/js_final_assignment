@@ -130,6 +130,5 @@ const validate = (formValues) => {
 export default withStyles(styles)(reduxForm({
     form:"booking",
     destroyOnUnmount: false,
-    // forceUnregisterOnUnmount: true,
     validate
 })(BookingForm2));

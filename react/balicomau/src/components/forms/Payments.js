@@ -35,6 +35,8 @@ class Payments extends Component {
         checkout: null
     }
 
+
+    //Grab the current values from the form
     async componentDidMount(){
         console.log(store.getState().form.booking.values);
         const { first_name, last_name, email, phone, checkin, checkout, guests } = store.getState().form.booking.values;
@@ -55,6 +57,7 @@ class Payments extends Component {
         .catch(err => console.log(err));
     }
 
+    //Submit the completed form as well as handle the Stripe token
     handleStripeSubmit = (token) => {
         const { change, dispatch } = this.props;
         change("token", token);

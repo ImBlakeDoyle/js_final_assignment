@@ -74,13 +74,14 @@ const numberOfGuests = [
 class BookingForm1 extends React.Component {
     state = {
         numberOfGuests: 0,
-        bookings: []
     }
 
+    //Fetch the list of already booked dates
     componentDidMount(){
         this.props.fetchinvalid();
     }
 
+    //Changes the value of guests
     handleChange = name => event => {
         this.setState({
           [name]: event.target.value,
@@ -170,23 +171,23 @@ class BookingForm1 extends React.Component {
 
 const validate = (formValues, props) => {
     let { populateInvalid } = props;
+
+    //Checks if the booked dates is an array, otherwise converts to an array
     populateInvalid = populateInvalid instanceof Array ? populateInvalid : [];
 
-
+    //Format the form check-in and check-out form values to match the values of the booked dates array
     const newCheckin = moment(formValues.checkin).format("YYYY-MM-DD");
     const newCheckout = moment(formValues.checkout).format("YYYY-MM-DD");
 
     let dateArray = [];
     let currentDate = newCheckin;
     let stopDate = newCheckout;
+    //Create an array of all the dates between the form check-in and check-out days
     while (currentDate <= stopDate){
         moment(currentDate).format();
         dateArray.push(currentDate);
         currentDate = moment(currentDate).add(1, 'days').format("YYYY-MM-DD");
     }
-
-
-
 
     const errors = {};
 
@@ -215,6 +216,8 @@ const validate = (formValues, props) => {
     if (newCheckin === newCheckout){
         errors.checkout = "Cannot check-out on the same day"
     }
+    //If a day within the range of the check-in and check-out is present in the
+    //array of already booked dates, render an error
     for (let a = 0; a < dateArray.length; a++){
         if (populateInvalid.includes(dateArray[a])){
             errors.checkin = "Requested dates are invalid"
@@ -224,12 +227,15 @@ const validate = (formValues, props) => {
     return errors;
 };
 
+    //Map the array of already booked dates to the props
 const mapStateToProps = (state) => {
     return {
         populateInvalid: state.bookings
     }
 }
 
+
+//Allows the form to continue without clearing the data
 export default connect(mapStateToProps, { fetchinvalid })(withStyles(styles)(reduxForm({
     form: "booking",
     destroyOnUnmount: false,
