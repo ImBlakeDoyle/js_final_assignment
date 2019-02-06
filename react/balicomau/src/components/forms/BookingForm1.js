@@ -9,6 +9,9 @@ import Grid from '@material-ui/core/Grid';
 import moment from "moment";
 import NewDatePicker from "./fields/MaterialDatePicker";
 import { Typography } from "@material-ui/core";
+import store from "./../../store";
+import { fetchinvalid } from "./../../actions";
+import { connect } from "react-redux";
 
 
 const styles = theme => ({
@@ -73,6 +76,11 @@ class BookingForm1 extends React.Component {
         numberOfGuests: 0,
         bookings: []
     }
+
+    componentDidMount(){
+        this.props.fetchinvalid();
+    }
+
     handleChange = name => event => {
         this.setState({
           [name]: event.target.value,
@@ -160,10 +168,32 @@ class BookingForm1 extends React.Component {
     }
 }
 
-const validate = (formValues) => {
+const validate = (formValues, props) => {
+    let { populateInvalid } = props;
+    populateInvalid = populateInvalid instanceof Array ? populateInvalid : [];
+
+
+    const newCheckin = moment(formValues.checkin).format("YYYY-MM-DD");
+    const newCheckout = moment(formValues.checkout).format("YYYY-MM-DD");
+
+    let dateArray = [];
+    let currentDate = newCheckin;
+    let stopDate = newCheckout;
+    while (currentDate <= stopDate){
+        moment(currentDate).format();
+        dateArray.push(currentDate);
+        currentDate = moment(currentDate).add(1, 'days').format("YYYY-MM-DD");
+    }
+
+
+
+
     const errors = {};
-    const newCheckin = moment(formValues.checkin).startOf('day').format();
-    const newCheckout = moment(formValues.checkout).startOf('day').format();
+
+    console.log(dateArray);
+    console.log(populateInvalid);
+    console.log(newCheckin);
+    console.log(newCheckout);
     if (!formValues.guests) {
         errors.guests = "You must enter number of guests"
     }
@@ -185,12 +215,24 @@ const validate = (formValues) => {
     if (newCheckin === newCheckout){
         errors.checkout = "Cannot check-out on the same day"
     }
+    for (let a = 0; a < dateArray.length; a++){
+        if (populateInvalid.includes(dateArray[a])){
+            errors.checkin = "Requested dates are invalid"
+        }
+    }
+
     return errors;
 };
 
-export default withStyles(styles)(reduxForm({
+const mapStateToProps = (state) => {
+    return {
+        populateInvalid: state.bookings
+    }
+}
+
+export default connect(mapStateToProps, { fetchinvalid })(withStyles(styles)(reduxForm({
     form: "booking",
     destroyOnUnmount: false,
     forceUnregisterOnUnmount: true,
     validate
-})(BookingForm1));
+})(BookingForm1)));
