@@ -58,7 +58,7 @@ class BookingForm2 extends Component {
                             <Field 
                                 className={classes.formField}
                                 name="phone" 
-                                type="text" 
+                                type="number" 
                                 component={TextField} 
                                 label="Contact number" 
                                 variant="outlined"
@@ -106,8 +106,26 @@ class BookingForm2 extends Component {
     }
 }
 
+const validate = (formValues) => {
+    const errors = {};
+    if (!formValues.first_name) {
+        errors.first_name = "You must enter a first name"
+    }
+    if (!formValues.last_name) {
+        errors.last_name = "You must enter a last name"
+    }
+    if (!formValues.phone) {
+        errors.phone = "You must enter a phone number"
+    }
+    if (!formValues.email) {
+        errors.email = "You must enter an email address"
+    }
+    return errors;
+};
+
 export default withStyles(styles)(reduxForm({
     form:"booking",
     destroyOnUnmount: false,
-    // forceUnregisterOnUnmount: true
+    // forceUnregisterOnUnmount: true,
+    validate
 })(BookingForm2));

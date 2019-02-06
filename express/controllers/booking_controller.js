@@ -139,14 +139,6 @@ function homePage(req, res){
     const date2 = new Date(checkoutmoment);
     const oneDay = 24*60*60*1000;
     const totalDays = Math.round(Math.abs((date1.getTime() - date2.getTime()) / (oneDay)));
-    // console.log(`Check-in is ${req.query.checkin}`);
-    // console.log(`Check-out is ${req.query.checkout}`);
-
-    // Overwrite this function to pass through checkin
-    // & checkout with the axios request. Update cost 
-    // depending on the dates & also calculate how many 
-    // days between the dates to then send back and 
-    // update the days state
     const cost = 80000;  
 
     return res.json({cost, totalDays});

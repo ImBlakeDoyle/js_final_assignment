@@ -151,10 +151,32 @@ class BookingForm1 extends React.Component {
     }
 }
 
-
+const validate = (formValues) => {
+    const errors = {};
+    if (!formValues.guests) {
+        errors.guests = "You must enter number of guests"
+    }
+    if (formValues.guests > 8){
+        errors.guests = "You can only select up to 8 guests"
+    }
+    if (formValues.guests < 1){
+        errors.guests = "There must be at least 1 guest"
+    }
+    if (!formValues.checkin) {
+        errors.checkin = 'You must enter a check-in date'
+    }
+    if (!formValues.checkout) {
+        errors.checkout = 'You must enter a check-out date'
+    }
+    if (formValues.checkout < formValues.checkin){
+        errors.checkout = "check-out must be after check-in"
+    }
+    return errors;
+};
 
 export default withStyles(styles)(reduxForm({
     form: "booking",
     destroyOnUnmount: false,
-    // forceUnregisterOnUnmount: true
+    forceUnregisterOnUnmount: true,
+    validate
 })(BookingForm1));
