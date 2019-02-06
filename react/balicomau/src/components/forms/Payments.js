@@ -120,6 +120,9 @@ class Payments extends Component {
                                     console.log("rerender new page here on success");
                                     console.log(this.state);
                                     this.props.setFormOpen(false);
+                                    setTimeout(() => {
+                                        alert('Booking successful!')
+                                    }, 1000)
                                 }}
                             />
                         </Grid>
