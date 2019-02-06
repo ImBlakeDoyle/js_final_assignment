@@ -10,6 +10,7 @@ import moment from "moment";
 import NewDatePicker from "./fields/MaterialDatePicker";
 import { Typography } from "@material-ui/core";
 
+
 const styles = theme => ({
     formButton: {
         maxWidth: '150px', minWidth: '150px',
@@ -69,7 +70,8 @@ const numberOfGuests = [
 
 class BookingForm1 extends React.Component {
     state = {
-        numberOfGuests: 0
+        numberOfGuests: 0,
+        bookings: []
     }
     handleChange = name => event => {
         this.setState({
@@ -78,6 +80,7 @@ class BookingForm1 extends React.Component {
       };
 
     render() {
+        console.log(this.state);
         const { classes, handleSubmit, cancel } = this.props;
         return(
 
