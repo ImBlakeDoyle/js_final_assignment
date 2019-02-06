@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-// import { connect } from "react-redux";
-// import { createBooking } from "../../actions";
 import { reduxForm, Field } from "redux-form";
-// import DatePickerField from "./fields/DatePicker";
 import Grid from '@material-ui/core/Grid';
 import TextField from './fields/TextField';
 import Button from '@material-ui/core/Button';
@@ -109,16 +106,8 @@ class BookingForm2 extends Component {
     }
 }
 
-// const WrappedBookingForm = reduxForm({
-//     form: "booking"
-// })(BookingForm);
-
-// export default connect(null, {
-//     createBooking
-// })(WrappedBookingForm);
-
 export default withStyles(styles)(reduxForm({
     form:"booking",
     destroyOnUnmount: false,
-    forceUnregisterOnUnmount: true
+    // forceUnregisterOnUnmount: true
 })(BookingForm2));

@@ -1,11 +1,4 @@
 import React, { Component } from "react";
-import StripeCheckout from 'react-stripe-checkout';
-import { connect } from "react-redux";
-import { reduxForm, Field, submit } from "redux-form";
-import axios from "axios";
-import store from "./../../store";
-import { withRouter } from 'react-router-dom';
-import { setFormOpen } from "./../../actions";
 import Typography from '@material-ui/core/Typography';
 import { Grid, withStyles } from "@material-ui/core";
 import Divider from '@material-ui/core/Divider';
@@ -31,7 +24,6 @@ const styles = () => ({
 });
 
 function BookingSummary(props) {
-    const cost = props.cost;
 
     function toTwoDec(x) {
         return Number.parseFloat(x).toFixed(2);
@@ -41,7 +33,7 @@ function BookingSummary(props) {
         <div className={props.classes.divBody}>
             <Grid container spacing={24} className={props.classes.gridContainer}>
                 <Grid item xs={12}>
-                    <Typography variant="h5" className={props.classes.heading}>Your Booking</Typography>
+                    <Typography variant="h6" className={props.classes.heading}>Your Booking</Typography>
                 </Grid>
                 <Divider variant="middle" className={props.classes.sectionDivider}/>
                 <Grid item xs={12}>
@@ -50,9 +42,6 @@ function BookingSummary(props) {
                 <Grid item xs={12}>
                     <Typography variant="body1">{props.checkin} to {props.checkout}</Typography>
                 </Grid>
-                {/* <Grid item xs={6}>
-                    <Typography variant="body2">{props.checkout}</Typography>
-                </Grid> */}
                 <Divider variant="middle" className={props.classes.sectionDivider}/>
                 <Grid item xs={6}>
                     <Typography variant="body1">${toTwoDec(`${props.cost}`)} x {props.days} nights</Typography>

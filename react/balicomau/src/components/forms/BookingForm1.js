@@ -1,19 +1,11 @@
 import React from "react";
 import "react-datepicker/dist/react-datepicker.css";
-// import { connect } from "react-redux";
-// import { bookingAvailability } from "../../actions";
 import { reduxForm, Field } from "redux-form";
-// import DatePickerField from "./fields/DatePicker";
 import { withStyles } from '@material-ui/core/styles';
-// import TextField from '@material-ui/core/TextField';
 import TextField from "./fields/TextField";
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-
-// import DateFnsUtils from "@date-io/date-fns";
-// import { MuiPickersUtilsProvider } from 'material-ui-pickers';
-// import { DatePicker } from "material-ui-pickers";
 
 import NewDatePicker from "./fields/MaterialDatePicker";
 import { Typography } from "@material-ui/core";
@@ -30,7 +22,6 @@ const styles = theme => ({
     gridItem: {
         textAlign: 'center',
         marginTop: '16px',
-        // marginBottom: '8px'
     },
     formButtonGroup: {
         paddingTop: '30px'
@@ -130,7 +121,6 @@ class BookingForm1 extends React.Component {
                                     className: classes.menu,
                                     },
                                 }}
-                                // margin="normal"
                             >
                                 {numberOfGuests.map(option => (
                                     <MenuItem key={option.value} value={option.value}>
@@ -166,5 +156,5 @@ class BookingForm1 extends React.Component {
 export default withStyles(styles)(reduxForm({
     form: "booking",
     destroyOnUnmount: false,
-    forceUnregisterOnUnmount: true
+    // forceUnregisterOnUnmount: true
 })(BookingForm1));

@@ -10,6 +10,7 @@ import BookingSummary from "./../sections/BookingSummary";
 import moment from "moment";
 import { Grid, withStyles } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
+import CustomerSummary from "./../sections/CustomerSummary";
 
 const styles = () => ({
     payButtonGridItem: {
@@ -34,19 +35,21 @@ class Payments extends Component {
     }
 
     async componentDidMount(){
-        // pass values in as props
         console.log(store.getState().form.booking.values);
-        const { checkin, checkout, guests } = store.getState().form.booking.values;
+        const { first_name, last_name, email, phone, checkin, checkout, guests } = store.getState().form.booking.values;
         await axios.get("http://localhost:3000/", { 
             params: { checkin, checkout }
         })
         .then(res => {
-            // console.log(`data is: ${res.data}`);
             this.setState({ cost: res.data.cost});
             this.setState({ days: res.data.totalDays});
             this.setState({checkin: moment(checkin).format("DD MMM YY")});
             this.setState({checkout: moment(checkout).format("DD MMM YY")});
             this.setState({guests});
+            this.setState({first_name});
+            this.setState({last_name});
+            this.setState({email});
+            this.setState({phone});
         })
         .catch(err => console.log(err));
     }
@@ -65,9 +68,8 @@ class Payments extends Component {
     }
 
     render() {
-        const { cost, days, guests, checkin, checkout } = this.state;
+        const { first_name, last_name, email, phone, cost, days, guests, checkin, checkout } = this.state;
         const { classes, previousPage } = this.props;
-        // const { calculateDays } = this.props;
         return (
             <>
                 <Grid container spacing={16} justify="center">
@@ -79,6 +81,14 @@ class Payments extends Component {
                             cost={(cost/100)}
                             days={days}
                             amount={((cost*days)/100)}
+                        />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <CustomerSummary
+                            first_name={first_name}
+                            last_name={last_name}
+                            email={email}
+                            phone={phone}
                         />
                     </Grid>
                     <form onSubmit = {() => console.log("what")}>
@@ -131,7 +141,8 @@ const mapStateToProps = (state) => {
 export default withStyles(styles)(connect(mapStateToProps, {
     setFormOpen
 })(reduxForm({
-    form:"booking"
+    form:"booking",
+    destroyOnUnmount: false
 })(withRouter(Payments))));
 
 // export default Payments;
