@@ -8,7 +8,7 @@ import { withStyles } from '@material-ui/core/styles';
 import ContactUsContainer from "./../sections/ContactUsContainer";
 import MainFeatureSection from "../sections/MainFeatureSection";
 import AppBar from './../ui/AppBar';
-import GridList from "../sections/GridList.js"
+import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
     imageContainer: {
@@ -22,7 +22,6 @@ const styles = theme => ({
 })
 
 class HomePage extends Component {
-    
     render () {
         const {classes} = this.props;
         return (
@@ -45,11 +44,11 @@ class HomePage extends Component {
                             heading="Why don't you consider the luxury of staying at a beautiful villa?"
                             content={[
                                 <>
-                                    <p>Villa dewata can offer you 2 beautiful luxurious villas each with air-conditioned bedrooms, lovely ensuite bathrooms, spacious open-plan living and dining areas, and your own private swimming pool, aswell as trained staff including a fulltime Chef and butler to tend to your every need.</p>
+                                    <Typography variant="body1" gutterBottom paragraph={true}>Villa dewata can offer you 2 beautiful luxurious villas each with air-conditioned bedrooms, lovely ensuite bathrooms, spacious open-plan living and dining areas, and your own private swimming pool, aswell as trained staff including a fulltime Chef and butler to tend to your every need.</Typography>
                     
-                                    <p>Set in a quiet compound (of almost 1 acre) The villa’s are within steps of the famous restaurant area and main shopping of Seminyak and Oberoi area. The international airport is approx 30 mins away and is also about the same distance to the popular “Bali Nirvana Golf Course” and the famous “Tanah Lot Temple”</p>
+                                    <Typography variant="body1" gutterBottom paragraph={true}>Set in a quiet compound (of almost 1 acre) The villa’s are within steps of the famous restaurant area and main shopping of Seminyak and Oberoi area. The international airport is approx 30 mins away and is also about the same distance to the popular “Bali Nirvana Golf Course” and the famous “Tanah Lot Temple”.</Typography>
                 
-                                    <p>Villa dewata is made up of 2 villas, one 4 bedroom villa, and one 5 bedroom villa. Both villas can be combined to comfortably hold up to 18 people. Additional bedding can be arranged.</p>
+                                    <Typography variant="body1" gutterBottom paragraph={true}>Villa dewata is made up of 2 villas, one 4 bedroom villa, and one 5 bedroom villa. Both villas can be combined to comfortably hold up to 18 people. Additional bedding can be arranged.</Typography>
                                 </>
                             ]}
                         />
@@ -135,11 +134,8 @@ class HomePage extends Component {
                         <MainFeatureSection 
                             img="https://s3-ap-southeast-2.amazonaws.com/villa-dewata/seminyak-food.jpg"
                             title="Situated in the Seminyak area only 50 metres from the busy Jalan Raya/Legian streets"
-                            content={[
-                                <>
-                                    <p>With an abundance of shops and great restaurants all within walking distance the villa is close enough to all the action, yet being set back off the main road ensures a quiet and peaceful stay.</p>
-                                </>
-                            ]}
+                            content=
+                                "With an abundance of shops and great restaurants all within walking distance the villa is close enough to all the action, yet being set back off the main road ensures a quiet and peaceful stay."
                         />
                     </div>
                     <div className={classes.contentContainer} id="Gallery">

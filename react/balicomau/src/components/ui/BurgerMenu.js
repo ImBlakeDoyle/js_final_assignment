@@ -2,9 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -26,8 +24,7 @@ class TemporaryDrawer extends React.Component {
   state = {
     top: false,
     left: false,
-    bottom: false,
-    left: false,
+    bottom: false
   };
 
   toggleDrawer = (side, open) => () => {

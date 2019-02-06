@@ -107,7 +107,6 @@ class BookingForm1 extends React.Component {
                         </Grid>
                         <Grid item xs={12} className={classes.gridItem}>
                             <Field
-                                className={classes.formField}
                                 id="select-guests"
                                 select
                                 label="Guests"

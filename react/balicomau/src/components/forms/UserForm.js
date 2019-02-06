@@ -71,7 +71,6 @@ class UserForm extends Component {
                 <form onSubmit={this.props.handleSubmit(this.onSubmit)} >
                     <Grid container 
                         className={classes.gridContainer}
-                        xs={12}
                         spacing={16}
                         justify="center"
                     >
@@ -121,7 +120,7 @@ class UserForm extends Component {
                                 variant="outlined"
                             />
                         </Grid>
-                        <Grid item xs={0}>
+                        <Grid item>
                             <Recaptcha
                                 sitekey="6Lclc40UAAAAABi7ABxrNdDrkUMSkiSY7AJZZ05o"
                                 render="explicit"

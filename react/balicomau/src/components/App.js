@@ -13,13 +13,13 @@ class App extends Component {
             <>
                 <CssBaseline />
                 <BrowserRouter>
-                    <div>
+                    {/* <div> */}
                         <Switch>
                             <Route exact path="/" component={HomePage} />
                             <Route exact path="/login" component={LoginPage} />
                             <Route exact path="/admin/all" component={AllBookingsPage} />
                         </Switch>
-                    </div>
+                    {/* </div> */}
                 </BrowserRouter>
             </>
         );
