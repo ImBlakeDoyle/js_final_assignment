@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const createBooking = ({ first_name, last_name, email, guests, checkin, checkout, cost, phone, comment, token }) => {
     return async (dispatch, getState) => {
-        let response = await axios.post("http://localhost:3000/booking/new", { first_name, last_name, email, guests, checkin, checkout, cost, phone, comment, token});
+        let response = await axios.post(`${process.env.REACT_APP_API_URI}booking/new`, { first_name, last_name, email, guests, checkin, checkout, cost, phone, comment, token});
 
         dispatch ({
             type: "BOOKING",
@@ -13,7 +13,7 @@ export const createBooking = ({ first_name, last_name, email, guests, checkin, c
 
 export const fetchinvalid = () => {
     return async (dispatch, getState) => {
-        let response = await axios.get("http://localhost:3000/booking/invalid");
+        let response = await axios.get(`${process.env.REACT_APP_API_URI}booking/invalid`);
 
         dispatch({
             type: "INVALID_DATES",
@@ -24,7 +24,7 @@ export const fetchinvalid = () => {
 
 export const createInquiry = ({ name, email, comment, phone }) => {
     return async (dispatch, getState) => {
-        let response = await axios.post("http://localhost:3000/inquiry/new", {name, email, comment, phone});
+        let response = await axios.post(`${process.env.REACT_APP_API_URI}inquiry/new`, {name, email, comment, phone});
 
         dispatch({
             type: "INQUIRY_CREATE",
@@ -50,7 +50,7 @@ export function setSubmitStatus(setSubmitStatus) {
  export const handleToken = (token) => {
      return async (dispatch, getState) => {
          console.log(token);
-        let response = await axios.post('http://localhost:3000/booking/stripe', token);
+        let response = await axios.post(`${process.env.REACT_APP_API_URI}booking/stripe`, token);
         dispatch({
             type: "PAYMENT",
             payload: response.data

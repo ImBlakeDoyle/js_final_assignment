@@ -37,7 +37,7 @@ class Payments extends Component {
     async componentDidMount(){
         console.log(store.getState().form.booking.values);
         const { first_name, last_name, email, phone, checkin, checkout, guests } = store.getState().form.booking.values;
-        await axios.get("http://localhost:3000/", { 
+        await axios.get(process.env.REACT_APP_API_URI, { 
             params: { checkin, checkout }
         })
         .then(res => {
