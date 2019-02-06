@@ -47,7 +47,7 @@ class ButtonAppBar extends React.Component {
             <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
               <BurgerMenu />
             </IconButton>
-            <Typography variant="h4" color="inherit" className={classes.grow}>
+            <Typography variant="h6" color="inherit" className={classes.grow}>
               Villa Dewata
             </Typography>
             <Button variant="contained" color="primary" onClick={this.handleClickOpen}>Book</Button>
