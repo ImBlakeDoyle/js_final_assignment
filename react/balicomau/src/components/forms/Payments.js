@@ -11,6 +11,7 @@ import moment from "moment";
 import { Grid, withStyles } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import CustomerSummary from "./../sections/CustomerSummary";
+import { reset } from "redux-form";
 
 const styles = () => ({
     payButtonGridItem: {
@@ -54,17 +55,12 @@ class Payments extends Component {
         .catch(err => console.log(err));
     }
 
-    componentDidUpdate(){
-        // console.log(typeof(this.state.cost));
-        // const { change } = this.props;
-        // change("cost", (this.state.cost * this.state.days));
-    }
-
     handleStripeSubmit = (token) => {
         const { change, dispatch } = this.props;
         change("token", token);
         change("cost", (this.state.cost * this.state.days));
         dispatch(submit("booking")); 
+        dispatch(reset('booking'));
     }
 
     render() {
