@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { InlineDatePicker } from "material-ui-pickers";
 import moment from "moment";
-import { fetchInvalid } from "./../../../actions";
+import { fetchinvalid } from "./../../../actions";
 import { connect } from "react-redux";
 
 class NewDatePicker extends Component {
     componentDidMount() {
-        this.props.fetchInvalid();
+        this.props.fetchinvalid();
     }
 
     unavailableDates = (date) => {
@@ -44,4 +44,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { fetchInvalid })(NewDatePicker);
+export default connect(mapStateToProps, { fetchinvalid })(NewDatePicker);
