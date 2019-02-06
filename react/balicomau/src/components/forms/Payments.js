@@ -111,6 +111,7 @@ class Payments extends Component {
                                 name="Complete booking"
                                 description="Villa Dewata 1"
                                 amount={cost*days}
+                                email={email}
                                 token={this.handleStripeSubmit}
                                 stripeKey={process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY}
                                 closed={ () => {
