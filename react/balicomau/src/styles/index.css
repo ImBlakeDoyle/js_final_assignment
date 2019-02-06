@@ -3,14 +3,13 @@ html {
 }
 
 body #root {
-    overflow-x: hidden;
+    overflow: hidden;
     background-color: whitesmoke;
 }
 
 @media only screen and (min-width: 1000px) {
     body .content {
         margin: auto;
-        /* padding-top: 40px; */
         width: 1000px; 
         max-width: 1100px;
         position: relative;

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+import propTypes from "prop-types";
 import BookingForm1 from "./BookingForm1";
 import BookingForm2 from "./BookingForm2";
 import Payments from "./Payments";
@@ -41,8 +41,8 @@ class WizardForm extends Component {
     }
 }
 
-WizardForm.PropTypes = {
-    onSubmit: PropTypes.func.isRequired
-}
+// WizardForm.propTypes = {
+//     onSubmit: propTypes.func.isRequired
+// }
 
 export default connect(null, {createBooking})(WizardForm);

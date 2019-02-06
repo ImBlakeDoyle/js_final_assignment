@@ -12,9 +12,9 @@ const AboutSection = (props) => {
                 <Typography variant="h5" gutterBottom>
                     {props.heading}
                 </Typography>
-                <Typography variant="body1" gutterBottom>
-                    {props.content}
-                </Typography>
+                {/* <Typography variant="body1" gutterBottom> */}
+                {props.content}
+                {/* </Typography> */}
             </Grid>
         </Grid>
     )

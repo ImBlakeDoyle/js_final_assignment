@@ -20,7 +20,8 @@ const styles = theme => ({
         marginRight: "auto"
     },
     contactInfo: {
-        listStyle: "none"
+        listStyle: "none",
+        paddingRight: "20px"
     }
 });
 
@@ -30,19 +31,17 @@ class ImageSection extends Component {
         return (
             <Grid container
                 className={this.props.classes.gridContainer}
-                xs={12}
                 spacing={8}
                 justify="center"
             >
                 <Grid item xs={12} md={8}>
-                    <img src={this.props.img} className={this.props.classes.imageSectionImg}/>
+                    <img src={this.props.img} className={this.props.classes.imageSectionImg} alt={this.props.alt}/>
                 </Grid>
                 <Grid item xs={12}>
-                    <Typography variant="body2" gutterBottom className={this.props.classes.contentBody}>
-                        <ul className={this.props.classes.contactInfo}>
-                            {this.props.children}
-                        </ul>
-                    </Typography>
+                    {/* <Typography variant="body2" gutterBottom className={this.props.classes.contentBody}></Typography> */}
+                    <ul className={this.props.classes.contactInfo}>
+                        {this.props.children}
+                    </ul>
                 </Grid>
             </Grid>
         )

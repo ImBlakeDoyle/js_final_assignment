@@ -17,9 +17,6 @@ const styles = theme => ({
 });
 
 class HeroSection extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         const paperExists = this.props.paperExists;
