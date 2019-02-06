@@ -30,7 +30,8 @@ const BookingSchema = new Schema({
         required: true
     },
     comment: {
-        type: String
+        type: String,
+        default: "no comment"
     },
     stripe_id: {
         type: String,
