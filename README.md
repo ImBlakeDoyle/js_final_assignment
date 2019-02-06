@@ -28,7 +28,7 @@ Replacing an old website for Bali hotel accommodation with a new and improved de
 ### Tech stack
 1. HTML, 
 2. CSS, 
-3. Materialize, 
+3. Material UI, 
 4. React, 
 5. Redux, 
 6. Mongo, 
@@ -60,10 +60,6 @@ The design process was based off similar applications. We drew inspiration from 
 * As an owner, send of confirmation emails once a booking has been received.
 * As an owner, charge different prices according to time of year.
 
-
-### Workflow Diagram
-![require](docs/userworkflow.png)
-
 ### Wireframes
 ![require](docs/wireframe1.png)
 ![require](docs/wireframe2.png)
@@ -72,7 +68,9 @@ The design process was based off similar applications. We drew inspiration from 
 ![require](docs/wireframe5.png)
 
 ### Database Entity Relationship Diagrams
-![require](docs/erd.png)
+* Booking - (First name, Last name, Email, Guests, Checkin, Checkout, Phone, Comment, Cost, Dates )
+* Inquiry - (Name, Email, Phone, Comment)
+* User - (Email, Password)
 
 ---
 
@@ -82,8 +80,6 @@ We then divided the work based on the team member's interest and area of strengt
 
 We divided the time line to get the work done. Every day standups where very handy to get updated on team member's work. All of us finished what we initially promised on the timeline.
 ![require](docs/trello1.png)
-![require](docs/trello2.png)
-
 
 
 ---
@@ -103,7 +99,7 @@ We divided the time line to get the work done. Every day standups where very han
 
 1. React – front end library/framework enabling incorporation of javascript, jsx, components into web development, 
 2. Redux – state management enabling storing data across the app, 
-3. Materialize –enabling easier application of design/styling within html and css, 
+3. Material UI –enabling easier application of design/styling within html and css, 
 4. Express – enabling effective/ease of routing throughout the application
 5. Mongoose – database that holds data for the application, 
 6. Sendgrip – enabling email within the application, 
@@ -135,4 +131,4 @@ We divided the time line to get the work done. Every day standups where very han
 
 >>5. Evaluate how effective your knowledge and skills were this project, using examples, and suggest changes or improvements for future projects of a similar nature? 
 
-Skills and understanding improved throughout the project, particularly in react and redux (understanding the use-cases for redux and benefits of it) materialize, how the back-end ties into the front-end, and testing.
+Skills and understanding improved throughout the project, particularly in react and redux (understanding the use-cases for redux and benefits of it) material UI, how the back-end ties into the front-end, and testing.
