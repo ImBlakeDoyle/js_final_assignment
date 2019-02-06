@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
@@ -38,7 +37,6 @@ class ImageSection extends Component {
                     <img src={this.props.img} className={this.props.classes.imageSectionImg} alt={this.props.alt}/>
                 </Grid>
                 <Grid item xs={12}>
-                    {/* <Typography variant="body2" gutterBottom className={this.props.classes.contentBody}></Typography> */}
                     <ul className={this.props.classes.contactInfo}>
                         {this.props.children}
                     </ul>

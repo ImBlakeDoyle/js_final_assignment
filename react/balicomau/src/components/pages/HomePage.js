@@ -22,7 +22,6 @@ const styles = theme => ({
 })
 
 class HomePage extends Component {
-    
     render () {
         const {classes} = this.props;
         return (

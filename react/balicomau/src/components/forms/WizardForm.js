@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import propTypes from "prop-types";
 import BookingForm1 from "./BookingForm1";
 import BookingForm2 from "./BookingForm2";
 import Payments from "./Payments";
