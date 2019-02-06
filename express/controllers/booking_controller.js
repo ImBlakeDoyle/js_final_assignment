@@ -128,7 +128,7 @@ async function populateInvalidDates(req, res){
         }
         // populateInvalid.push(result.dates);
     });
-    return res.json(populateInvalid);
+    return (populateInvalid);
     // console.log(populateInvalid);
 }
 
