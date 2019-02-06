@@ -30,12 +30,11 @@ class WizardForm extends Component {
         const { page } = this.state;
 
         return(
-            <div>
+            <>
                 {page === 1 && <BookingForm1 onSubmit={this.nextPage} cancel={this.props.onClose}/>}
                 {page === 2 && <BookingForm2 previousPage={this.previousPage} onSubmit={this.nextPage} />}
-                {/* {page === 2 && <BookingForm2 previousPage={this.previousPage} onSubmit={this.nextPage} />} */}
                 {page === 3 && <Payments previousPage={this.previousPage} onSubmit={this.onFormSubmit} />}
-            </div>
+            </>
         );
     }
 }
