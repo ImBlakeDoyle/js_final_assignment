@@ -11,6 +11,7 @@ import moment from "moment";
 import { Grid, withStyles } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import CustomerSummary from "./../sections/CustomerSummary";
+import { reset } from "redux-form";
 
 const styles = () => ({
     payButtonGridItem: {
@@ -36,6 +37,8 @@ class Payments extends Component {
         checkout: null
     }
 
+
+    //Grab the current values from the form
     async componentDidMount(){
         console.log(store.getState().form.booking.values);
         const { first_name, last_name, email, phone, checkin, checkout, guests } = store.getState().form.booking.values;
@@ -56,17 +59,13 @@ class Payments extends Component {
         .catch(err => console.log(err));
     }
 
-    componentDidUpdate(){
-        // console.log(typeof(this.state.cost));
-        // const { change } = this.props;
-        // change("cost", (this.state.cost * this.state.days));
-    }
-
+    //Submit the completed form as well as handle the Stripe token
     handleStripeSubmit = (token) => {
         const { change, dispatch } = this.props;
         change("token", token);
         change("cost", (this.state.cost * this.state.days));
         dispatch(submit("booking")); 
+        dispatch(reset('booking'));
     }
 
     render() {

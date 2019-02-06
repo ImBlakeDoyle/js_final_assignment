@@ -5,10 +5,13 @@ import { fetchinvalid } from "./../../../actions";
 import { connect } from "react-redux";
 
 class NewDatePicker extends Component {
+
+    //Fetch the array of already booked dates
     componentDidMount() {
         this.props.fetchinvalid();
     }
 
+    //Renders unavailable dates on the calendar according to the booked dates array
     unavailableDates = (date) => {
         date = moment.utc(date).set('hour', 0).add(1, 'd').format();
         const { populateInvalid } = this.props;
@@ -38,6 +41,7 @@ class NewDatePicker extends Component {
     }
 }
 
+//Adds the booked dates state as a prop
 const mapStateToProps = (state) => {
     return {
         populateInvalid: state.bookings

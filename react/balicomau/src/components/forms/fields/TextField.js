@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import TextField from '@material-ui/core/TextField';
 
-
+//Displays errors for the form fields
 class TextInput extends Component {
 
     render() {
