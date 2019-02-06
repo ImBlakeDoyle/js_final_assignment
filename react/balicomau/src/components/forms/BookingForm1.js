@@ -33,6 +33,9 @@ const styles = theme => ({
     formField: {
         minWidth: "135px",
         width: "60%"
+    },
+    formBody: {
+        marginBottom: "16px"
     }
 });
 
@@ -93,8 +96,7 @@ class BookingForm1 extends React.Component {
         const { classes, handleSubmit, cancel } = this.props;
         return(
 
-            <form onSubmit={handleSubmit}>
-                <div>
+            <form onSubmit={handleSubmit} className={classes.formBody}>
                     <Grid container>
                         <Grid item xs={12} className={classes.gridItem}>
                             <Typography variant="h5">Select your dates</Typography>
@@ -161,7 +163,6 @@ class BookingForm1 extends React.Component {
                             </Button>
                         </Grid>
                     </Grid>
-                </div>
                 </div>
             </form>
 

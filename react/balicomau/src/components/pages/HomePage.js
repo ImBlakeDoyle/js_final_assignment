@@ -102,37 +102,47 @@ class HomePage extends Component {
                                     content="Included with your villa are a full time Chef, butler, housekeeping and laundry services. There is also a Pool cleaner, Gardener, and Security. In total there is 13 Staff to make sure your stay is perfect."
                                     expandedContent={
                                         <>
-                                            <p>Your Full time chef will prepare many Indonesian dishes, as well as some international cuisine. Simply choose a dish from the selection of cook books supplied and the staff will take care of the rest (ingredients at market prices – simply pay the butler).</p>
+                                            <Typography variant="body1" paragraph={true}>
+                                                Your Full time chef will prepare many Indonesian dishes, as well as some international cuisine. Simply choose a dish from the selection of cook books supplied and the staff will take care of the rest (ingredients at market prices – simply pay the butler).
+                                            </Typography>
                                             
-                                            <p>Your Butler will make your stay a breeze.
-                                            Should you require anything during your stay; from arranging transportation, to making reservations at your favourite restaurant, your butler will be happy to help your every need.</p>
+                                            <Typography variant="body1" paragraph={true}>
+                                                Your Butler will make your stay a breeze. Should you require anything during your stay; from arranging transportation, to making reservations at your favourite restaurant, your butler will be happy to help your every need.
+                                            </Typography>
                                             
-                                            <p>In addition to the Chef and Butler, your Villa will be serviced daily by our house keeping staff.</p>
-                                            <ul>
-                                                <li>Complimentary airport pick up and transfer</li>
-                                                <li>Welcome drinks and cold towel on arrival</li>
-                                                <li>Inhouse Chef and Butler service Free of charge</li>
-                                                <li>Free grocery shopping service</li>
-                                                <li>Delivery service from local restaurants</li>
-                                                <li>Cot and high chairs</li>
-                                                <li>Reconfirmation of flights</li>
-                                                <li>IDD telephone and fax services</li>
-                                                <li>Free WIFI</li>
-                                                <li>Free air-conditioned car with driver for up to 10 hours a day</li>
-                                                <li>Safety deposit boxes</li>
-                                                <li>Security guards on entry</li>
-                                                <li>House Staff</li>
-                                                <li>Laundry service</li>
-                                            </ul>
+                                            <Typography variant="body1" paragraph={true}>
+                                                In addition to the Chef and Butler, your Villa will be serviced daily by our house keeping staff.
+                                            </Typography>
 
-                                            The following services can also be arranged for your stay:
-                                            <ul>
-                                                <li>Babysitting</li>
-                                                <li>Massage or reflexology</li>
-                                                <li>Spa treatments</li>
-                                                <li>Tours</li>
-                                                <li>Catering for banquets and parties </li>
-                                            </ul>
+                                            <Typography variant="body1" paragraph={true}>
+                                                <ul>
+                                                    <li>Complimentary airport pick up and transfer</li>
+                                                    <li>Welcome drinks and cold towel on arrival</li>
+                                                    <li>Inhouse Chef and Butler service Free of charge</li>
+                                                    <li>Free grocery shopping service</li>
+                                                    <li>Delivery service from local restaurants</li>
+                                                    <li>Cot and high chairs</li>
+                                                    <li>Reconfirmation of flights</li>
+                                                    <li>IDD telephone and fax services</li>
+                                                    <li>Free WIFI</li>
+                                                    <li>Free air-conditioned car with driver for up to 10 hours a day</li>
+                                                    <li>Safety deposit boxes</li>
+                                                    <li>Security guards on entry</li>
+                                                    <li>House Staff</li>
+                                                    <li>Laundry service</li>
+                                                </ul>
+                                            </Typography>
+
+                                            <Typography variant="body1" paragraph={true}>
+                                                The following services can also be arranged for your stay:
+                                                <ul>
+                                                    <li>Babysitting</li>
+                                                    <li>Massage or reflexology</li>
+                                                    <li>Spa treatments</li>
+                                                    <li>Tours</li>
+                                                    <li>Catering for banquets and parties </li>
+                                                </ul>
+                                            </Typography>
                                         </>
                                     }
                             />

@@ -19,6 +19,9 @@ const styles = theme => ({
     formField: {
         minWidth: "135px",
         width: "70%"
+    },
+    formBody: {
+        marginBottom: "16px"
     }
 });
 

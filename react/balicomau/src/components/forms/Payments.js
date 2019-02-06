@@ -16,13 +16,15 @@ import { reset } from "redux-form";
 const styles = () => ({
     payButtonGridItem: {
         textAlign: "center",
-        // display: "none"
     },
     formButton: {
         maxWidth: '150px', minWidth: '150px',
     },
     formButtonGroup: {
         paddingTop: '30px'
+    },
+    gridContainer: {
+        margin: '16px 0px'
     }
 });
 
@@ -71,7 +73,7 @@ class Payments extends Component {
         const { classes, previousPage } = this.props;
         return (
             <>
-                <Grid container spacing={16} justify="center">
+                <Grid container justify="center" className={classes.gridContainer}>
                     <Grid item xs={12}>
                         <BookingSummary 
                             guests={guests}
@@ -122,9 +124,9 @@ class Payments extends Component {
                             />
                         </Grid>
                         <Grid item>
-                                <Button variant="contained" color="secondary" className={classes.formButton} onClick={previousPage}>
-                                    Previous
-                                </Button>
+                            <Button variant="contained" color="secondary" className={classes.formButton} onClick={previousPage}>
+                                Previous
+                            </Button>
                         </Grid>
                     </Grid>
                 </Grid>

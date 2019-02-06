@@ -2,6 +2,9 @@ import React from "react";
 import Typography from '@material-ui/core/Typography';
 import { Grid, withStyles } from "@material-ui/core";
 import Divider from '@material-ui/core/Divider';
+import ContactsIcon from '@material-ui/icons/Contacts';
+import EmailIcon from '@material-ui/icons/Email';
+import PhoneIcon from '@material-ui/icons/Phone'
 
 const styles = () => ({
     divBody: {
@@ -12,7 +15,8 @@ const styles = () => ({
         width: "90%"
     },
     heading: {
-        textAlign: "center"
+        textAlign: "center",
+        paddingTop: "20px"
     },
     gridContainer: {
         width: "350px"
@@ -20,6 +24,13 @@ const styles = () => ({
     totalAmountText: {
         display: "flex",
         justifyContent: "flex-end"
+    },
+    iconParagraph: {
+        display: 'flex',
+        alignItems: 'center'
+    },
+    icon: {
+        marginRight: "5px"
     }
 });
 
@@ -34,13 +45,19 @@ function CustomerSummary(props) {
                 </Grid>
                 <Divider variant="middle" className={props.classes.sectionDivider}/>
                 <Grid item xs={12}>
-                    <Typography variant="body1">{first_name} {last_name}</Typography>
+                    <Typography variant="body1" className={props.classes.iconParagraph}>
+                        <ContactsIcon className={props.classes.icon}/> {first_name} {last_name}
+                    </Typography>
                 </Grid>
                 <Grid item xs={12}>
-                    <Typography variant="body1">{email}</Typography>
+                    <Typography variant="body1" className={props.classes.iconParagraph}>
+                        <EmailIcon className={props.classes.icon}/> {email}
+                    </Typography>
                 </Grid>
                 <Grid item xs={12}>
-                    <Typography variant="body1">{phone}</Typography>
+                    <Typography variant="body1" className={props.classes.iconParagraph}>
+                        <PhoneIcon className={props.classes.icon}/> {phone}
+                    </Typography>
                 </Grid>
             </Grid>
         </div>

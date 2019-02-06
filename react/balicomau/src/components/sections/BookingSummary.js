@@ -2,6 +2,8 @@ import React from "react";
 import Typography from '@material-ui/core/Typography';
 import { Grid, withStyles } from "@material-ui/core";
 import Divider from '@material-ui/core/Divider';
+import PersonIcon from "@material-ui/icons/Person";
+import CalendarIcon from "@material-ui/icons/CalendarToday";
 
 const styles = () => ({
     divBody: {
@@ -20,6 +22,13 @@ const styles = () => ({
     totalAmountText: {
         display: "flex",
         justifyContent: "flex-end"
+    },
+    iconParagraph: {
+        display: 'flex',
+        alignItems: 'center'
+    },
+    icon: {
+        marginRight: "5px"
     }
 });
 
@@ -37,10 +46,14 @@ function BookingSummary(props) {
                 </Grid>
                 <Divider variant="middle" className={props.classes.sectionDivider}/>
                 <Grid item xs={12}>
-                    <Typography variant="body1">{props.guests} Guests</Typography>
+                    <Typography variant="body1" className={props.classes.iconParagraph}>
+                        <PersonIcon className={props.classes.icon}/> {props.guests} Guests
+                    </Typography>
                 </Grid>
                 <Grid item xs={12}>
-                    <Typography variant="body1">{props.checkin} to {props.checkout}</Typography>
+                    <Typography variant="body1" className={props.classes.iconParagraph}>
+                        <CalendarIcon className={props.classes.icon}/> {props.checkin} to {props.checkout}
+                    </Typography>
                 </Grid>
                 <Divider variant="middle" className={props.classes.sectionDivider}/>
                 <Grid item xs={6}>
