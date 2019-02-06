@@ -38,7 +38,7 @@ const styles = theme => ({
   }
 });
 
-class FeatureCard extends React.Component {
+class FeatureSection extends React.Component {
   state = { expanded: false };
 
   handleExpandClick = () => {
@@ -57,16 +57,13 @@ class FeatureCard extends React.Component {
             <Typography variant="h6">
                 {this.props.title}
             </Typography>
-            {/* <Typography component="p" className={this.props.classes.cardContentBody}> */}
-            <Typography component="p">
+            <Typography variant="body1">
                 {this.props.content}
             </Typography>
         </CardContent>
         <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography paragraph>
-                {this.props.expandedContent}
-            </Typography>
+            {this.props.expandedContent}
           </CardContent>
         </Collapse>
         <CardActions className={this.props.classes.actions} disableActionSpacing>
@@ -86,8 +83,8 @@ class FeatureCard extends React.Component {
   }
 }
 
-FeatureCard.propTypes = {
+FeatureSection.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(FeatureCard);
+export default withStyles(styles)(FeatureSection);

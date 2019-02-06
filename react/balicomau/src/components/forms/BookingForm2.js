@@ -42,6 +42,7 @@ class BookingForm2 extends Component {
                                 component={TextField} 
                                 label="First name" 
                                 variant="outlined"
+                                required={true}
                             />
                         </Grid>
                         <Grid item xs={12} className={classes.gridItem}>
@@ -52,6 +53,7 @@ class BookingForm2 extends Component {
                                 component={TextField} 
                                 label="Last name" 
                                 variant="outlined"
+                                required={true}
                             />
                         </Grid>
                         <Grid item xs={12} className={classes.gridItem}>
@@ -62,6 +64,7 @@ class BookingForm2 extends Component {
                                 component={TextField} 
                                 label="Contact number" 
                                 variant="outlined"
+                                required={true}
                             />
                         </Grid>
                         <Grid item xs={12} className={classes.gridItem}>
@@ -72,6 +75,7 @@ class BookingForm2 extends Component {
                                 component={TextField} 
                                 label="Email" 
                                 variant="outlined"
+                                required={true}
                             />
                         </Grid>
                         <Grid item xs={12} className={classes.gridItem}>
@@ -82,7 +86,7 @@ class BookingForm2 extends Component {
                                 component={TextField} 
                                 label="Additional comments" 
                                 variant="outlined"
-                                multiline
+                                multiline={true}
                             />
                         </Grid>
                     </Grid>
