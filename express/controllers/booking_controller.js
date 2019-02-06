@@ -128,7 +128,7 @@ async function populateInvalidDates(req, res){
         }
         // populateInvalid.push(result.dates);
     });
-    return (populateInvalid);
+    return res(populateInvalid);
     // console.log(populateInvalid);
 }
 
@@ -141,7 +141,7 @@ function homePage(req, res){
     const totalDays = Math.round(Math.abs((date1.getTime() - date2.getTime()) / (oneDay)));
     const cost = 80000;  
 
-    return ({cost, totalDays});
+    return res({cost, totalDays});
 }
 
 module.exports = {
