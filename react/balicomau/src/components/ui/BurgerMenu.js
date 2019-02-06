@@ -40,12 +40,8 @@ class TemporaryDrawer extends React.Component {
       <div className={classes.list}>
         <List>
           {['Home', 'About', 'Features', 'Gallery', 'Contact', ].map((text) => (
-            // <ListItemLink href="#Contact">
-            <ListItemLink href={`#${text}`}>
-            {/* <ListItem button key={text}> */}
+            <ListItemLink key={text.toString()} href={`#${text}`}>
               <ListItemText primary={text} />
-
-            {/* </ListItem> */}
             </ListItemLink>
           ))}
         </List>

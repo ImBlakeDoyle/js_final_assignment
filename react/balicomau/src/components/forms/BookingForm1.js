@@ -86,7 +86,11 @@ class BookingForm1 extends React.Component {
                     <Grid container>
                         <Grid item xs={12} className={classes.gridItem}>
                             <Typography variant="h5">Select your dates</Typography>
+                            {/* <Typography variant="">* Required</Typography> */}
                         </Grid>
+                        {/* <Grid item>
+                            
+                        </Grid> */}
                         <Grid item xs={12} className={classes.gridItem}>
                             <Field 
                                 className={classes.formField}
@@ -94,6 +98,7 @@ class BookingForm1 extends React.Component {
                                 label="Check-in"
                                 component={NewDatePicker}
                                 variant="outlined"
+                                required={true}
                             />
                         </Grid>
                         <Grid item xs={12} className={classes.gridItem}>
@@ -103,6 +108,7 @@ class BookingForm1 extends React.Component {
                                 label="Check-out"
                                 component={NewDatePicker}
                                 variant="outlined"
+                                required={true}
                             />
                         </Grid>
                         <Grid item xs={12} className={classes.gridItem}>
@@ -115,6 +121,7 @@ class BookingForm1 extends React.Component {
                                 className={classes.guests}
                                 type="number"
                                 variant="outlined"
+                                required={true}
                                 SelectProps={{
                                     MenuProps: {
                                     className: classes.menu,

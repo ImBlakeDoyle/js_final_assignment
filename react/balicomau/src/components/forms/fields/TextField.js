@@ -6,7 +6,9 @@ class TextInput extends Component {
 
     render() {
     const {input, meta, variant, ...other} = this.props;
+
     return (
+        <>
         <TextField 
             error={meta.touched && meta.error}
             helperText={meta.touched && meta.error}
@@ -14,6 +16,7 @@ class TextInput extends Component {
             {...input}
             {...other}
         />
+        </>
     )}
 }
 

@@ -32,17 +32,16 @@ class HomePage extends Component {
                 <div className={classes.imageContainer} id="Home">
                     <HeroSection 
                         title="Villa Dewata"
-                        img="/hero-image.jpg"
+                        img="https://s3-ap-southeast-2.amazonaws.com/villa-dewata/hero-image-min.jpg"
                         price="From $800 / night"
                         buttonText="Book"
                     />
                 </div>
                 <div className="contentZIndex" id='About'>
-                    {/* <div id="About"/> */}
                     <div className={classes.contentContainer}>
                         <AboutSection 
                             heading="Why don't you consider the luxury of staying at a beautiful villa?"
-                            content={[
+                            content={
                                 <>
                                     <Typography variant="body1" gutterBottom paragraph={true}>Villa dewata can offer you 2 beautiful luxurious villas each with air-conditioned bedrooms, lovely ensuite bathrooms, spacious open-plan living and dining areas, and your own private swimming pool, aswell as trained staff including a fulltime Chef and butler to tend to your every need.</Typography>
                     
@@ -50,48 +49,58 @@ class HomePage extends Component {
                 
                                     <Typography variant="body1" gutterBottom paragraph={true}>Villa dewata is made up of 2 villas, one 4 bedroom villa, and one 5 bedroom villa. Both villas can be combined to comfortably hold up to 18 people. Additional bedding can be arranged.</Typography>
                                 </>
-                            ]}
+                            }
                         />
                     </div>
                     <div className={classes.contentContainer} id="Features">
                         <FeatureContainer 
                             feature1={
                                 <FeatureSection 
-                                    image="/accommodation.jpg"
+                                    image="https://s3-ap-southeast-2.amazonaws.com/villa-dewata/accommodation.jpg"
                                     title="Accommodation"
                                     content="Villa Dewata has 4 air-conditioned bedrooms each with King sized bed, ensuite bathroom. Two front bedrooms overlook the pool, and contain baths within their ensuites."
-                                    expandedContent={[
+                                    expandedContent={
                                         <>
-                                            <p>Each bedroom has an ottoman which can be used as extra bedding if required.</p> 
-                                            
-                                            <p>Large open plan living, and dining areas with ceiling fans to keep you cool, this villa has concertina doors that can open up the living area to the swimming pool and garden to make it feel even more spacious.</p>
+                                            <Typography variant="body1" paragraph={true}>
+                                                Each bedroom has an ottoman which can be used as extra bedding if required
+                                            </Typography>
+                                                
+                                            <Typography variant="body1" paragraph={true}>
+                                                Large open plan living, and dining areas with ceiling fans to keep you cool, this villa has concertina doors that can open up the living area to the swimming pool and garden to make it feel even more spacious.
+                                            </Typography>
                                         </>
-                                    ]}
+                                    }
                                 />
                             }
                             feature2={
                                 <FeatureSection 
-                                    image="/facilities.jpg"
+                                    image="https://s3-ap-southeast-2.amazonaws.com/villa-dewata/facilities-min.jpg"
                                     title="Facilities"
                                     content="Relax by your own private pool, surrounded by luscious gardens or stay in your lounge equipped with air-conditioning, Satellite TV, DVD player, and WIFI."
-                                    expandedContent={[
+                                    expandedContent={
                                         <>
-                                            <p>The TV room is air-conditioned and contains a spacious lounge, satellite TV and DVD player.
-                                            There is also a stereo system, telephone and WIFI</p>
+                                        <Typography variant="body1" paragraph={true}>
+                                            The TV room is air-conditioned and contains a spacious lounge, satellite TV and DVD player.
+                                            There is also a stereo system, telephone and WIFI
+                                        </Typography>
                                             
-                                            <p>There is also a kitchen fully equipped with gas cook top, microwave, toaster etc, as well as a separate chefs kitchen.</p>
-
-                                            <p>An outdoor setting surrounded by tropical gardens provides a relaxing area with 2 Bales (gazebos) containing lounge and day beds, perfect for your afternoon massage or drinks by the pool.</p>
+                                        <Typography variant="body1" paragraph={true}>
+                                            There is also a kitchen fully equipped with gas cook top, microwave, toaster etc, as well as a separate chefs kitchen.
+                                        </Typography>
+                                        
+                                        <Typography variant="body1" paragraph={true}>
+                                            An outdoor setting surrounded by tropical gardens provides a relaxing area with 2 Bales (gazebos) containing lounge and day beds, perfect for your afternoon massage or drinks by the pool.
+                                        </Typography>    
                                         </>
-                                    ]}
+                                    }
                                 />
                             }
                             feature3={
                                 <FeatureSection 
-                                    image="/services.jpg"
+                                    image="https://s3-ap-southeast-2.amazonaws.com/villa-dewata/services-min.jpg"
                                     title="Services"
                                     content="Included with your villa are a full time Chef, butler, housekeeping and laundry services. There is also a Pool cleaner, Gardener, and Security. In total there is 13 Staff to make sure your stay is perfect."
-                                    expandedContent={[
+                                    expandedContent={
                                         <>
                                             <p>Your Full time chef will prepare many Indonesian dishes, as well as some international cuisine. Simply choose a dish from the selection of cook books supplied and the staff will take care of the rest (ingredients at market prices – simply pay the butler).</p>
                                             
@@ -125,7 +134,7 @@ class HomePage extends Component {
                                                 <li>Catering for banquets and parties </li>
                                             </ul>
                                         </>
-                                    ]}
+                                    }
                             />
                             }
                         />
@@ -140,62 +149,6 @@ class HomePage extends Component {
                     </div>
                     <div className={classes.contentContainer} id="Gallery">
                             <CarouselSection />
-                            {/* <GridList 
-                                images = {[
-                                    {
-                                        url: "https://s3-ap-southeast-2.amazonaws.com/villa-dewata/outside-day-1.jpg",
-                                        label: 'Outside View 1'
-                                    },
-                                    {
-                                        label: "Outside View 2",
-                                        url: "https://s3-ap-southeast-2.amazonaws.com/villa-dewata/outside-night-1.jpg",
-                                    },
-                                    {
-                                        label: "Outside View 3",
-                                        url: "https://s3-ap-southeast-2.amazonaws.com/villa-dewata/outside-night-2.jpg",
-                                    },
-                                    {
-                                        label: "Pool View 1",
-                                        url: "https://s3-ap-southeast-2.amazonaws.com/villa-dewata/pool-day-1.jpg",
-                                    },
-                                    {
-                                        label: "Pool View 2",
-                                        url: "https://s3-ap-southeast-2.amazonaws.com/villa-dewata/pool-day-2.jpg",
-                                    },
-                                    {
-                                        label: "Pool View 3",
-                                        url: "https://s3-ap-southeast-2.amazonaws.com/villa-dewata/pool-night-1.jpg",
-                                    },
-                                    {
-                                        label: "Pool View 4",
-                                        url: "https://s3-ap-southeast-2.amazonaws.com/villa-dewata/pool-night-2.jpg",
-                                    },
-                                    {
-                                        label: "Bedroom 1",
-                                        url: "https://s3-ap-southeast-2.amazonaws.com/villa-dewata/bedroom1-1.jpg",
-                                    },
-                                    {
-                                        label: "Bedroom 2",
-                                        url: "https://s3-ap-southeast-2.amazonaws.com/villa-dewata/bedroom1-2.jpg",
-                                    },
-                                    {
-                                        label: "Bedroom 3",
-                                        url: "https://s3-ap-southeast-2.amazonaws.com/villa-dewata/bedroom2-1.jpg",
-                                    },
-                                    {
-                                        label: "Bathroom",
-                                        url: "https://s3-ap-southeast-2.amazonaws.com/villa-dewata/bathroom-1.jpg",
-                                    },
-                                    {
-                                        label: "Lounge",
-                                        url: "https://s3-ap-southeast-2.amazonaws.com/villa-dewata/lounge-1.jpg",
-                                    },
-                                    {
-                                        label: "Dining",
-                                        url: "https://s3-ap-southeast-2.amazonaws.com/villa-dewata/dining-1.jpg",
-                                    }
-                                ]}
-                            /> */}
                     </div>
                     <div className={classes.contentContainer} id="Contact">
                         <ContactUsContainer />

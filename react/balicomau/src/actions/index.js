@@ -11,7 +11,7 @@ export const createBooking = ({ first_name, last_name, email, guests, checkin, c
     }
 }
 
-export const fetchInvalid = () => {
+export const fetchinvalid = () => {
     return async (dispatch, getState) => {
         let response = await axios.get(`${process.env.REACT_APP_API_URI}booking/invalid`);
 
