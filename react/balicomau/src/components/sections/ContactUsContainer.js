@@ -47,7 +47,7 @@ class ContactUsContainer extends React.Component {
                     </Typography>
                 </Grid>
                 <Grid item xs={12} md={6} className={this.props.classes.gridItem}>
-                    <ImageSection img="/map.jpg" alt="Seminyak map">
+                    <ImageSection img="https://s3-ap-southeast-2.amazonaws.com/villa-dewata/map.jpg" alt="Seminyak map">
                         <Typography variant="body2">
                             <li className={this.props.classes.listItem}><LocationOnIcon className={this.props.classes.listIcon}/> Jln. Raya Basangkasa, Gg. Dewata NO. 15 B Seminyak - Kuta - Bali</li>
                             <li className={this.props.classes.listItem}><PhoneIcon  className={this.props.classes.listIcon}/> +62 (0)81238-33370</li>
