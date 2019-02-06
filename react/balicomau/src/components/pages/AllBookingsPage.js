@@ -6,14 +6,14 @@ class AllBookingsPage extends Component{
         bookings: []
     }
     async componentDidMount(){
-        await axios.get(`${process.env.REACT_APP_API_URI}/admin/all`)
+        await axios.get(`${process.env.REACT_APP_API_URI}admin/all`)
         // .then(response => console.log(response.data))
         .then(response => this.setState({bookings: response.data}))
         .catch(err => console.log(err))
     }
 
     onBookingDeleteClick = async (booking) => {
-        await axios.delete(`${process.env.REACT_APP_API_URI}/${booking}`)
+        await axios.delete(`${process.env.REACT_APP_API_URI}${booking}`)
         .then(response => this.setState({bookings: response.data}))
         .catch(err => console.log(err))
     }
